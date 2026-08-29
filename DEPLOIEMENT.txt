@@ -1,0 +1,11 @@
+NOXSTREAM V371
+
+Cette version utilise un Pages Function en mode Advanced (_worker.js)
+pour fournir /api/video.
+
+IMPORTANT :
+Cloudflare indique que l'Advanced Mode avec _worker.js doit être déployé
+via l'intégration Git/Wrangler ; le Direct Upload du tableau de bord ne
+prend pas en charge les Functions.
+
+Le visuel du site n'a pas été modifié.

@@ -1,0 +1,2003 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050608"><meta name="mobile-web-app-capable" content="yes">
+<title>NoxStream — Premium</title>
+<style>
+:root{--bg:#050608;--panel:#0b0d11;--panel2:#11141a;--text:#f5f5f2;--muted:#8b919d;--line:rgba(255,255,255,.09);--gold:#d8b66d;--gold2:#f0d79a;--green:#7bd28c;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.app{min-height:100vh;background:radial-gradient(900px 500px at 85% -5%,rgba(214,176,91,.10),transparent 55%)}
+.top{position:fixed;top:0;left:0;right:0;height:72px;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:linear-gradient(180deg,rgba(5,6,8,.96),rgba(5,6,8,.55),transparent);backdrop-filter:blur(14px)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px}.logoMark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;border:1px solid rgba(216,182,109,.55);color:var(--gold2);font-weight:900;box-shadow:0 0 30px rgba(216,182,109,.08)}.logo em{font-style:normal;color:var(--gold)}
+.nav{display:flex;gap:28px;color:#858b96;font-size:13px;font-weight:700}.nav a.active,.nav a:hover{color:#fff}.actions{display:flex;gap:8px}.icon{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#101319;color:#fff}.avatar{background:linear-gradient(145deg,#f2d99c,#a97e3f);color:#111;border:0;font-weight:900}
+.hero{min-height:760px;height:92vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 8vw 86px}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 68% 34%,rgba(205,129,62,.46),transparent 17%),radial-gradient(circle at 76% 28%,rgba(120,78,48,.34),transparent 29%),linear-gradient(105deg,#10141b 0%,#171b21 37%,#302117 68%,#07080b 100%)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,5,7,.96) 0%,rgba(4,5,7,.72) 43%,rgba(4,5,7,.08) 72%),linear-gradient(0deg,#050608 0%,transparent 43%)}
+.heroArt{position:absolute;right:9%;top:15%;width:310px;height:470px;border-radius:22px;transform:rotate(3deg);background:radial-gradient(circle at 67% 27%,#c88448 0,#694122 18%,#292126 46%,#090a0d 78%);border:1px solid rgba(255,255,255,.14);box-shadow:35px 45px 100px #000,0 0 80px rgba(206,136,64,.10);overflow:hidden}.heroArt:before{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.12),transparent 25%,transparent 55%,rgba(0,0,0,.82)),repeating-linear-gradient(155deg,transparent 0 12px,rgba(255,255,255,.025) 13px 15px)}.posterBig{position:absolute;left:26px;bottom:90px;font-size:48px;line-height:.84;font-weight:950;letter-spacing:-3px}.posterSmall{position:absolute;left:29px;bottom:66px;color:#f0d79a;font-size:8px;letter-spacing:3px;font-weight:800}.posterFoot{position:absolute;left:29px;bottom:26px;font-size:8px;color:#c2bdb2;letter-spacing:1.5px}
+.heroContent{position:relative;z-index:3;max-width:640px}.eyebrow{font-size:10px;letter-spacing:2.4px;color:var(--gold);font-weight:900}.hero h1{font-size:clamp(60px,9vw,116px);line-height:.88;letter-spacing:-6px;margin:15px 0}.meta{display:flex;flex-wrap:wrap;gap:15px;color:#c5c8cf;font-size:12px}.match{color:var(--green);font-weight:900}.hero p{color:#a8adb7;line-height:1.7;font-size:14px;max-width:570px;margin:20px 0 27px}.buttons{display:flex;gap:9px}.btn{border:0;border-radius:11px;padding:13px 19px;font-weight:900;font-size:13px}.primary{background:#f4f3ef;color:#111}.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line)}
+.section{padding:55px 5vw}.head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}.eyebrow2{font-size:9px;color:var(--gold);letter-spacing:2.2px;font-weight:900;margin-bottom:7px}.head h2{margin:0;font-size:30px;letter-spacing:-1.3px}.filters{display:flex;gap:7px;overflow:auto}.filter{white-space:nowrap;border:1px solid var(--line);background:#0d1015;color:#969ca7;padding:8px 13px;border-radius:99px;font-size:11px;font-weight:800}.filter.active{background:#eeeae1;color:#111}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.card{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden;transition:.25s;min-width:0}.card:hover{transform:translateY(-6px);border-color:rgba(216,182,109,.35);box-shadow:0 25px 55px #000}.art{height:255px;position:relative;padding:14px;display:flex;align-items:flex-end;background:var(--art);overflow:hidden}.art.hasPoster{background-image:var(--poster),var(--art);background-size:cover;background-position:center}.art.hasPoster:before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(255,255,255,.10),transparent 30%,rgba(0,0,0,.86))}.art b{position:relative;z-index:2;font-size:20px;line-height:.95;letter-spacing:-.6px}.tag{position:absolute;z-index:3;top:10px;left:10px;font-size:8px;letter-spacing:1px;font-weight:900;padding:6px 7px;border-radius:6px;background:rgba(3,4,6,.62);border:1px solid rgba(255,255,255,.12)}.cardInfo{padding:12px}.cardInfo strong{font-size:12px}.cardInfo small{display:block;color:#707782;font-size:10px;margin-top:4px}
+.band{margin:25px 5vw;padding:45px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(120deg,#0d1015,#11100c);display:grid;grid-template-columns:.8fr 1.4fr;gap:45px}.band h2{font-size:43px;line-height:1.02;letter-spacing:-2px;margin:0}.band h2 span{color:#727985}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.features article{border-left:1px solid var(--line);padding-left:18px}.features b{font-size:10px;color:var(--gold)}.features strong{display:block;margin:12px 0 6px;font-size:14px}.features p{color:#777e89;font-size:11px;line-height:1.6;margin:0}
+.genres{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.genre{min-height:140px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(145deg,#12151b,#080a0d);padding:19px;text-align:left;color:#fff;position:relative;overflow:hidden}.genre:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-45px;bottom:-60px;background:rgba(216,182,109,.15);filter:blur(25px)}.genre strong,.genre span{position:relative;z-index:2;display:block}.genre strong{font-size:18px}.genre span{margin-top:7px;color:#777e89;font-size:10px}
+.bottom{display:none}
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(2,3,5,.88);backdrop-filter:blur(20px);padding:25px;overflow:auto}.dialog{max-width:1000px;margin:2vh auto;background:#0a0c10;border:1px solid var(--line);border-radius:23px;padding:22px;box-shadow:0 40px 120px #000}.close{float:right;width:40px;height:40px;border-radius:50%;background:#15181e;color:#fff;border:1px solid var(--line);font-size:25px}.detail{display:grid;grid-template-columns:220px 1fr;gap:28px;padding:18px 4px 30px}.detailArt{height:310px;background:var(--detail,linear-gradient(145deg,#20252d,#080a0e));background-size:cover;background-position:center;border-radius:16px;border:1px solid var(--line);display:flex;align-items:flex-end;padding:18px;font-size:26px;font-weight:950;box-shadow:0 20px 50px #000;position:relative;overflow:hidden}.detailArt:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.82));pointer-events:none}.detailArt{color:#fff}.detailArt::after{content:attr(data-title);position:absolute;left:18px;right:18px;bottom:18px;font-size:26px;font-weight:950;line-height:.95}.detail h2{font-size:45px;letter-spacing:-2px;margin:6px 0 14px}.detail p{color:#939aa5;font-size:13px;line-height:1.7}.sourceTitle{border-top:1px solid var(--line);padding-top:22px}.sourceTitle h3{margin:0;font-size:22px}.sourceTitle p{color:#727984;font-size:11px}.sources{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.source{background:#11141a;color:#aeb4bf;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:11px;font-weight:800}.source.active{border-color:rgba(216,182,109,.55);background:#1a1710;color:var(--gold2)}.player{width:100%;aspect-ratio:16/9;height:auto;min-height:0;border-radius:16px;background:#040507;border:1px solid var(--line);display:grid;place-items:center;color:#7b828d;overflow:hidden}.player iframe{display:block;width:100%;height:100%;border:0}.ready{text-align:center}.ready i{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#f0eee7;color:#111;font-style:normal;margin:auto auto 10px}
+.search{position:fixed;inset:0;z-index:110;background:rgba(3,4,6,.96);padding:13vh 7%;display:none}.search.open{display:block}.searchBox{max-width:800px;margin:auto}.searchBox .topline{display:flex;justify-content:space-between;color:var(--gold);font-size:10px;letter-spacing:2px;font-weight:900}.searchBox button{background:none;border:0;color:#fff;font-size:30px}.input{margin-top:20px;background:#101319;border:1px solid var(--line);border-radius:16px;padding:0 18px;display:flex;align-items:center}.input span{font-size:25px;color:#777}.input input{width:100%;background:none;border:0;outline:0;color:#fff;font-size:22px;padding:19px}.searchResults{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,1fr)}.heroArt{right:3%;opacity:.72}.band{grid-template-columns:1fr}.features{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.top{height:64px;padding:0 16px}.nav{display:none}.hero{height:700px;min-height:700px;padding:0 18px 48px}.heroArt{width:190px;height:285px;right:-20px;top:92px;opacity:.65}.heroContent{max-width:100%}.hero h1{font-size:64px;letter-spacing:-3.5px}.hero p{font-size:12px;max-width:94%}.section{padding:40px 16px}.head{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,1fr);gap:9px}.art{height:220px}.band{margin:8px 16px;padding:27px 21px;gap:25px}.band h2{font-size:32px}.features{grid-template-columns:1fr;gap:18px}.genres{grid-template-columns:1fr 1fr}.bottom{position:fixed;display:flex;bottom:0;left:0;right:0;height:68px;background:rgba(8,9,12,.94);border-top:1px solid var(--line);z-index:40;backdrop-filter:blur(16px);justify-content:space-around;padding-bottom:env(safe-area-inset-bottom)}.bottom a{color:#747b86;font-size:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:800}.bottom a.active{color:#f0d79a}.bottom b{font-size:20px;font-weight:500}.overlay{padding:10px}.dialog{padding:16px;border-radius:18px;margin:0}.detail{grid-template-columns:95px 1fr;gap:14px}.detailArt{height:150px;font-size:15px;padding:10px}.detail h2{font-size:29px}.detail p{font-size:11px}.player{height:240px}.searchResults{grid-template-columns:repeat(2,1fr)}}
+.detailArt{background-image:var(--detail)}
+
+/* V5 exact premium layout */
+.hero{min-height:700px;height:88vh;padding-bottom:72px}.hero:before{background:linear-gradient(90deg,rgba(5,6,8,.99) 0%,rgba(5,6,8,.90) 34%,rgba(5,6,8,.38) 62%,rgba(5,6,8,.10) 82%),var(--hero-bg,linear-gradient(135deg,#11151c,#302117));background-size:100% 100%,auto 100%;background-repeat:no-repeat;background-position:center,72% center;background-color:#050608}.hero:after{background:linear-gradient(0deg,#050608 0%,transparent 55%)}.heroArt{right:7%;top:13%;width:330px;height:500px;transform:none;background-image:var(--hero-poster),linear-gradient(145deg,#20252d,#080a0e);background-size:cover;background-position:center;box-shadow:0 35px 100px #000,0 0 70px rgba(216,182,109,.12)}.heroArt:before{background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 35%,rgba(0,0,0,.75))}.posterBig,.posterSmall,.posterFoot{display:none}.card .art{height:290px;background-size:cover;background-position:center}.card .art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.88))}.detail{grid-template-columns:230px 1fr;align-items:start}.detailArt{height:335px;background-image:var(--detail-poster),linear-gradient(145deg,#20252d,#080a0e);background-size:cover;background-position:center top}.detailArt::after{display:none}.detail h2{font-size:48px;line-height:.95;max-width:520px}.detailFacts{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:18px;color:#a7adb7;font-size:11px}.detailFacts b{color:#f2f2ee}.preview{margin-top:20px;border-radius:16px;overflow:hidden;border:1px solid var(--line);height:250px;position:relative;background:#030406}.preview img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.78)}.preview:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.75))}.previewPlay{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:#f3f1eb;color:#111;display:grid;place-items:center;font-size:25px}.watchNow{margin-top:14px;width:100%;border:0;border-radius:11px;padding:15px;background:linear-gradient(135deg,#f1d38b,#c9963f);color:#15110a;font-weight:950;font-size:13px}@media(max-width:700px){.hero:before{background-size:100% 100%,auto 82%;background-position:center,82% center}.hero{height:650px;min-height:650px;padding-bottom:38px}.heroArt{width:185px;height:280px;right:-20px;top:82px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.card .art{height:250px}.detail{grid-template-columns:150px 1fr;gap:16px}.detailArt{height:235px}.detail h2{font-size:32px}.detailFacts{grid-template-columns:1fr}.preview{height:185px}}
+
+/* V15 - hero carousel: same V5 layout, horizontal slide between featured films */
+.heroContent,.heroArt{transition:transform .65s cubic-bezier(.22,.61,.36,1),opacity .65s ease}
+.hero.carousel-out .heroContent{transform:translateX(-34px);opacity:0}
+.hero.carousel-dots{position:relative}
+.heroDots{position:absolute;z-index:6;right:7%;bottom:30px;display:flex;gap:6px}
+.heroDot{width:6px;height:6px;border:0;border-radius:50%;padding:0;background:#656a73;opacity:.7}
+.heroDot.active{width:22px;border-radius:99px;background:#f0d79a;opacity:1}
+@media(max-width:700px){.heroDots{right:18px;bottom:18px}.hero.carousel-out .heroContent{transform:translateX(-20px)}}
+
+/* V17 FIX: chaque slide du carrousel affiche uniquement la grande image.
+   Aucune petite affiche, vignette ou carte superposée dans le hero. */
+.hero .heroArt,
+.hero .hero-preview,
+.hero .hero-thumb,
+.hero .hero-overlay-card,
+.hero-carousel .preview,
+.hero-carousel .thumb,
+.hero-carousel .overlay-card,
+.hero-slide .preview,
+.hero-slide .thumb,
+.hero-slide .overlay-card{display:none!important}
+
+
+/* V33 — keep V24 styling; remove only any secondary/overlaid hero poster */
+.heroArt,.posterSmall,.posterBig,.posterFoot,.heroPosterSmall,.smallPoster,.posterSmallOverlay{
+  display:none!important;
+}
+
+
+/* V37 — same comfortable player sizing on every film page */
+.player,
+#player{
+  width:100%;
+  aspect-ratio:16/9;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden;
+}
+.player iframe,
+#player iframe{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  display:block;
+  border:0;
+}
+
+
+/* V39 — hero "Voir maintenant" arrives directly on the existing film reader */
+@media(max-width:700px){
+  .overlay{padding:10px 10px 84px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .dialog{width:100%;max-width:none;box-sizing:border-box}
+  .sourceTitle{scroll-margin-top:12px}
+  .preview{width:100%;height:auto;aspect-ratio:16/9;min-height:0}
+  .preview img{display:block;width:100%;height:100%;object-fit:cover}
+  .player{width:100%;aspect-ratio:16/9;height:auto!important}
+}
+
+
+/* V43 — source buttons only; existing V5/V41 styling preserved */
+.sources{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:15px 0;
+}
+.sources .source{
+  flex:0 0 auto;
+}
+@media(max-width:700px){
+  .sources{gap:7px;margin:12px 0 14px}
+  .sources .source{padding:9px 11px;font-size:10px}
+}
+
+
+/* V48 — one reader only */
+.source:not(:first-child),
+.source-button:not(:first-child),
+.reader:not(:first-child),
+.reader-button:not(:first-child){
+  display:none!important;
+}
+
+</style><style>
+/* V53.1 — affiche verticale centrée, fermeture hors de l'affiche */
+.dialog{
+  position:relative!important;
+  width:min(92vw,720px)!important;
+  max-height:92vh!important;
+  margin:0 auto!important;
+  box-sizing:border-box!important;
+  padding:28px!important;
+  overflow-y:auto!important;
+}
+.detail{
+  width:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:22px!important;
+}
+.detailArt{
+  width:min(72%,330px)!important;
+  max-width:330px!important;
+  aspect-ratio:2/3!important;
+  height:auto!important;
+  margin:8px auto 0!important;
+  background-size:contain!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-color:#05070a!important;
+  border:1px solid rgba(211,178,92,.30)!important;
+  outline:1px solid rgba(255,255,255,.10)!important;
+  outline-offset:-4px!important;
+  border-radius:20px!important;
+  overflow:hidden!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.34)!important;
+}
+.detail > div:last-child{
+  width:100%!important;
+  max-width:620px!important;
+  margin:0 auto!important;
+  text-align:center!important;
+}
+.detail h2{
+  text-align:center!important;
+}
+.detail .meta{
+  justify-content:center!important;
+}
+.detailFacts{
+  width:100%!important;
+  text-align:left!important;
+}
+#close{
+  position:absolute!important;
+  top:10px!important;
+  right:10px!important;
+  z-index:20!important;
+  width:38px!important;
+  height:38px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:rgba(5,7,10,.88)!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  color:#fff!important;
+  font-size:24px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+}
+@media(max-width:600px){
+  .dialog{
+    width:calc(100vw - 20px)!important;
+    padding:20px!important;
+  }
+  .detailArt{
+    width:min(72vw,300px)!important;
+    max-width:300px!important;
+  }
+}
+</style>
+<style>
+/* V118 — disposition de référence + icônes jaunes */
+.detailFacts{
+  width:100%!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  column-gap:28px!important;
+  row-gap:0!important;
+  margin-top:22px!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
+}
+.detailFact{
+  min-height:88px!important;
+  display:grid!important;
+  grid-template-columns:48px 1fr!important;
+  align-items:center!important;
+  gap:14px!important;
+  padding:18px 0!important;
+  border-bottom:1px solid rgba(255,255,255,.10)!important;
+}
+.detailFact:nth-child(odd){
+  border-right:1px solid rgba(255,255,255,.10)!important;
+  padding-right:24px!important;
+}
+.detailFact:nth-child(even){
+  padding-left:10px!important;
+}
+.detailFactIcon{
+  width:42px!important;
+  height:42px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:#d8b45f!important;
+}
+.detailFactIcon svg{
+  width:36px!important;
+  height:36px!important;
+  stroke:#d8b45f!important;
+  fill:none!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+.detailFactLabel{
+  color:#d8b45f!important;
+  font-weight:700!important;
+  letter-spacing:.04em!important;
+}
+.detailFactValue{
+  color:#b7b7bd!important;
+  margin-top:4px!important;
+}
+@media(max-width:600px){
+  .detailFacts{
+    grid-template-columns:1fr 1fr!important;
+    column-gap:18px!important;
+  }
+  .detailFact{
+    grid-template-columns:40px 1fr!important;
+    gap:10px!important;
+  }
+  .detailFact:nth-child(odd){
+    padding-right:12px!important;
+  }
+  .detailFact:nth-child(even){
+    padding-left:6px!important;
+  }
+}
+</style>
+<style>
+/* V119 — icônes jaunes identiques à la disposition de référence */
+.detailFacts{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:0!important;
+  margin-top:22px!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
+}
+.detailFact{
+  min-height:88px!important;
+  display:grid!important;
+  grid-template-columns:52px 1fr!important;
+  align-items:center!important;
+  gap:12px!important;
+  padding:16px 18px 16px 0!important;
+  box-sizing:border-box!important;
+  border-bottom:1px solid rgba(255,255,255,.10)!important;
+}
+.detailFact:nth-child(odd){
+  border-right:1px solid rgba(255,255,255,.10)!important;
+}
+.detailFact:nth-child(even){
+  padding-left:24px!important;
+}
+.detailFactIcon{
+  width:46px!important;
+  height:46px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:#d8b45f!important;
+}
+.detailFactIcon svg{
+  width:40px!important;
+  height:40px!important;
+  stroke:#d8b45f!important;
+  fill:none!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+.detailFact b{
+  color:#d8b45f!important;
+  font-weight:800!important;
+  letter-spacing:.04em!important;
+}
+.detailFact br + span,
+.detailFact > span:last-child > span{
+  color:#b7b7bd!important;
+}
+@media(max-width:600px){
+  .detailFacts{grid-template-columns:1fr 1fr!important}
+  .detailFact{
+    grid-template-columns:42px 1fr!important;
+    gap:9px!important;
+    padding-right:10px!important;
+  }
+  .detailFact:nth-child(even){padding-left:12px!important}
+  .detailFactIcon{width:40px!important;height:40px!important}
+  .detailFactIcon svg{width:35px!important;height:35px!important}
+}
+</style>
+<style>
+/* V135 — bouton de signalement sous le lecteur */
+.reportLinkBtn{
+  width:100%;
+  margin-top:12px;
+  padding:13px 16px;
+  border:1px solid rgba(216,180,95,.45);
+  border-radius:12px;
+  background:rgba(216,180,95,.08);
+  color:#d8b45f;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.reportLinkBtn:hover{
+  background:rgba(216,180,95,.16);
+}
+</style>
+<style>
+/* V136 — bouton de signalement réellement sous la vidéo */
+.detailPlayer{
+  display:block!important;
+  position:relative!important;
+}
+.detailPlayerBox{
+  position:relative!important;
+  width:100%!important;
+  display:block!important;
+}
+.reportLinkBtn{
+  position:relative!important;
+  z-index:5!important;
+  display:block!important;
+  width:100%!important;
+  margin:14px 0 0!important;
+  min-height:46px!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+</style>
+<style>
+/* V281 — système d’étoiles : note dans les commentaires + compteur sur les affiches */
+.ratingPicker{display:flex;align-items:center;gap:4px;margin:2px 0 4px;}
+.ratingPickerLabel{color:#a7adb7;font-size:11px;margin-right:6px;}
+.ratingStar{border:0;background:transparent;color:#555b64;font-size:24px;line-height:1;padding:2px;cursor:pointer;transition:transform .15s,color .15s;}
+.ratingStar:hover,.ratingStar.active{color:#d8b45f;transform:scale(1.08);}
+.ratingValue{color:#d8b45f;font-size:11px;font-weight:800;min-width:24px;}
+.commentRating{display:flex;gap:1px;margin-bottom:6px;color:#d8b45f;font-size:14px;letter-spacing:1px;}
+/* V137/* V137 — commentaires sous le bouton de signalement */
+.commentsPanel{
+  width:100%;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+.commentsTitle{
+  color:#d8b45f;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.14em;
+  margin-bottom:14px;
+}
+.commentsList{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:14px;
+}
+.commentItem{
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  color:#ddd;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.commentForm{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+#commentText{
+  width:100%;
+  min-height:90px;
+  resize:vertical;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:12px;
+  background:#090b0f;
+  color:#fff;
+  font:inherit;
+  outline:none;
+}
+#commentText:focus{
+  border-color:rgba(216,180,95,.55);
+}
+.commentSubmit{
+  align-self:flex-start;
+  padding:11px 16px;
+  border:1px solid rgba(216,180,95,.45);
+  border-radius:10px;
+  background:rgba(216,180,95,.10);
+  color:#d8b45f;
+  font-weight:700;
+  cursor:pointer;
+}
+</style>
+<style>
+
+/* V226 — affiches cinéma HD : portrait strict et priorité aux sources haute définition */
+.card .art.hasPoster{background-size:cover;background-position:center top;aspect-ratio:2/3;}
+.card .art.hasPoster{min-height:290px;}
+.hero{background-color:#050608;}
+.hero:before{background-size:cover,auto 100%;}
+.detailArt{aspect-ratio:2/3;}
+/* V138 — affiche dédiée au détail, en vrai format vertical */
+.detailArt{
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-color:#080a0e;
+}
+</style>
+<style>
+/* V139 — affiches dédiées au détail, format portrait */
+.detailArt{
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-color:#080a0e;
+}
+</style>
+<style>
+/* V141 — saisie toujours au-dessus, commentaires publiés en dessous */
+.commentsPanel{
+  display:flex;
+  flex-direction:column;
+}
+.commentsPanel .commentsTitle{order:1}
+.commentsPanel .commentForm{
+  order:2;
+  position:relative;
+  z-index:2;
+  background:var(--panel, #0b0d11);
+  padding-bottom:12px;
+}
+.commentsPanel .commentsList{
+  order:3;
+  margin-top:2px;
+}
+.commentsPanel .commentItem{
+  margin-bottom:0;
+}
+</style>
+<style>
+.pagination{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:26px auto 12px;width:100%}
+.pageBtn{min-width:42px;height:42px;padding:0 12px;border:1px solid rgba(216,180,95,.30);border-radius:10px;background:rgba(255,255,255,.04);color:#ddd;font-weight:800;cursor:pointer}
+.pageBtn.active{background:#d8b45f;color:#090a0c;border-color:#d8b45f}
+.pageBtn:disabled{opacity:.35;cursor:not-allowed}
+</style><style>
+.art.posterLoading{background:linear-gradient(145deg,#20252d,#080a0e)}
+.art.posterLoading b{opacity:.9}
+</style>
+<style id="nox-base-posters">
+/* Affiches catalogue : conserver le cadrage original, sans zoom ni recadrage. */
+.art.hasPoster{background-size:contain!important;background-repeat:no-repeat!important;background-position:center center!important;}
+.card .art.hasPoster{background-size:contain!important;background-repeat:no-repeat!important;background-position:center center!important;}
+</style>
+
+<style>
+/* V169 — fiche film responsive ordinateur / mobile */
+@media (min-width:701px){
+  .overlay{padding:28px 32px!important}
+  .dialog{
+    width:min(1100px,94vw)!important;
+    max-width:1100px!important;
+    max-height:94vh!important;
+    padding:30px!important;
+  }
+  .detail{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:300px minmax(0,1fr)!important;
+    align-items:start!important;
+    gap:36px!important;
+    padding:18px 8px 32px!important;
+  }
+  .detailArt{
+    width:300px!important;
+    max-width:300px!important;
+    height:450px!important;
+    aspect-ratio:auto!important;
+    margin:0 auto!important;
+    background-size:contain!important;
+    background-position:center!important;
+  }
+  .detail>div:last-child{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    text-align:left!important;
+  }
+  .detail h2{text-align:left!important;font-size:48px!important}
+  .detail .meta{justify-content:flex-start!important}
+  .detailFacts{text-align:left!important}
+  .detailPlayer{max-width:none!important}
+}
+@media (max-width:700px){
+  .dialog{width:calc(100vw - 20px)!important}
+  .detail{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+  }
+  .detailArt{
+    width:min(72vw,300px)!important;
+    max-width:300px!important;
+    height:auto!important;
+    aspect-ratio:2/3!important;
+    margin:8px auto 0!important;
+    background-size:contain!important;
+    background-position:center!important;
+  }
+  .detail>div:last-child{
+    width:100%!important;
+    max-width:620px!important;
+    text-align:center!important;
+  }
+  .detail h2{text-align:center!important}
+  .detail .meta{justify-content:center!important}
+}
+</style>
+
+<style>
+/* V171 — fiche film : informations à gauche/droite, lecteur puis signalement/commentaires pleine largeur */
+@media (min-width:701px){
+  .dialog{
+    width:min(1120px,94vw)!important;
+    max-width:1120px!important;
+    padding:30px 34px 34px!important;
+  }
+
+  /* Première ligne : affiche à gauche + toutes les informations à droite */
+  .detail{
+    display:grid!important;
+    grid-template-columns:300px minmax(0,1fr)!important;
+    grid-template-rows:auto!important;
+    column-gap:38px!important;
+    row-gap:0!important;
+    align-items:stretch!important;
+    padding:18px 8px 30px!important;
+  }
+
+  .detailArt{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:300px!important;
+    max-width:300px!important;
+    height:450px!important;
+    margin:0!important;
+    background-size:contain!important;
+    background-repeat:no-repeat!important;
+    background-position:center!important;
+  }
+
+  .detail > div:nth-child(2){
+    grid-column:2!important;
+    grid-row:1!important;
+    width:100%!important;
+    height:450px!important;
+    margin:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+  }
+
+  .detail > div:nth-child(2) h2{
+    text-align:left!important;
+    margin:6px 0 14px!important;
+    font-size:48px!important;
+    line-height:1.05!important;
+  }
+
+  .detail > div:nth-child(2) .meta{
+    justify-content:flex-start!important;
+  }
+
+  .detail > div:nth-child(2) .detailFacts{
+    margin-top:auto!important;
+    margin-bottom:0!important;
+  }
+
+  /* Deuxième bloc : lecteur sous toute la fiche */
+  .detailPlayer{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+
+  .detailPlayerTitle{
+    text-align:left!important;
+    margin-bottom:10px!important;
+  }
+
+  .detailPlayerBox{
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    min-height:0!important;
+    display:block!important;
+  }
+
+  .detailPlayerBox iframe,
+  .detailPlayerBox video{
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+  }
+
+  /* Signalement horizontal pleine largeur */
+  .reportLinkBtn{
+    display:block!important;
+    width:100%!important;
+    min-height:54px!important;
+    margin:14px 0 0!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Commentaires horizontalement sous le signalement */
+  .commentsPanel{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    margin-top:22px!important;
+    padding-top:20px!important;
+  }
+
+  .commentsTitle{
+    width:100%!important;
+    text-align:left!important;
+  }
+
+  .commentsPanel .commentForm,
+  .commentsPanel .commentsList{
+    width:100%!important;
+  }
+}
+
+/* Mobile : aucune inversion, on garde la fiche verticale */
+@media (max-width:700px){
+  .detail{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    row-gap:18px!important;
+  }
+  .detailArt{
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  .detail > div:nth-child(2){
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    height:auto!important;
+  }
+  .detailPlayer{
+    grid-column:1!important;
+    width:100%!important;
+  }
+  .detailPlayerBox{
+    width:100%!important;
+    aspect-ratio:16/9!important;
+  }
+}
+</style>
+
+<style>
+/* V172 — barre de défilement invisible, défilement conservé */
+html, body, * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+</style>
+
+<style>
+/* V173 — 24 affiches par page sur ordinateur */
+@media (min-width:701px){
+  [data-page-size="20"]{--page-size:24!important;}
+}
+</style>
+
+<!-- V197 — protection anti-publicités / popups sur les lecteurs -->
+<style id="nox-ad-protection">
+/* Protection renforcée contre les popups et overlays publicitaires injectés dans NoxStream. */
+html,body{overscroll-behavior:none;}
+</style>
+<script id="nox-ad-protection-script">
+(function(){
+  /* V200 — protection renforcée : bloquer les ouvertures/redirections publicitaires
+     sans sandboxer les lecteurs externes qui refusent le sandbox. */
+  const noopOpen=function(){ return null; };
+  try{ window.open=noopOpen; }catch(e){}
+  try{ Object.defineProperty(window,'open',{value:noopOpen,writable:false,configurable:false}); }catch(e){}
+
+  const badHref=/^(?:javascript:|data:text\/html)/i;
+  const badHost=/(^|\.)((ad|ads|popup|popunder|popunderads|advert|advertising|doubleclick|googlesyndication|outbrain|taboola)[^./]*\.)/i;
+
+  /* Empêche les clics publicitaires classiques et les ouvertures en nouvel onglet. */
+  document.addEventListener('click',function(e){
+    const a=e.target.closest&&e.target.closest('a');
+    if(!a)return;
+    const href=a.getAttribute('href')||'';
+    if(badHref.test(href)||badHost.test(href)){
+      e.preventDefault(); e.stopImmediatePropagation(); return;
+    }
+    if(a.target && a.target!=='_self') a.target='_self';
+    if(a.rel && /noopener|noreferrer/i.test(a.rel)===false && a.target==='_blank') a.target='_self';
+  },true);
+
+  document.addEventListener('auxclick',function(e){
+    const a=e.target.closest&&e.target.closest('a');
+    if(a){ e.preventDefault(); e.stopImmediatePropagation(); }
+  },true);
+
+  document.addEventListener('submit',function(e){
+    const form=e.target;
+    if(form && form.target && form.target!=='_self') form.target='_self';
+  },true);
+
+  /* Neutralise les tentatives de navigation déclenchées par des scripts de la page principale. */
+  try{
+    const nativeAssign=Location.prototype.assign;
+    const nativeReplace=Location.prototype.replace;
+    Location.prototype.assign=function(url){
+      try{ if(badHost.test(String(url))) return; }catch(e){}
+      return nativeAssign.call(this,url);
+    };
+    Location.prototype.replace=function(url){
+      try{ if(badHost.test(String(url))) return; }catch(e){}
+      return nativeReplace.call(this,url);
+    };
+  }catch(e){}
+
+  /* Supprime les overlays publicitaires injectés dans la page principale. */
+  const sweep=()=>{
+    document.querySelectorAll('[id*="popup" i],[id*="popunder" i],[class*="popup" i],[class*="popunder" i],[class*="advert" i],[class*="ad-banner" i],[class*="ad-container" i]').forEach(el=>{
+      if(!el.closest('.detailPlayerBox')) el.remove();
+    });
+  };
+  new MutationObserver(sweep).observe(document.documentElement,{subtree:true,childList:true});
+  sweep();
+
+  /* Important : les lecteurs externes restent non-sandboxés lorsqu'ils l'exigent
+     (ex. Morencius), sinon leur propre lecteur affiche “sandboxed iframe”. */
+})();
+</script>
+
+
+<style id="nox-player-clean">
+/* Lecteur NoxStream — définition unique et stable.
+   Le conteneur ne bouge pas ; le lecteur occupe exactement sa surface. */
+.detailPlayer{width:100%;max-width:620px;margin:24px auto 0;}
+.detailPlayerBox{position:relative;width:100%;aspect-ratio:16/9;height:auto;background:#05070a;border:1px solid rgba(211,178,92,.30);border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.30);}
+.detailPlayerBox #detailFrame{position:absolute;inset:0;width:100%;height:100%;display:block;border:0;background:#000;}
+.detailPlayerBox #detailVideo{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;background:#000;}
+.detailPlayerEmpty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8f9097;font-size:15px;text-align:center;pointer-events:none;}
+</style>
+<style id="nox-genre-icon-clean">
+/* Icône Genre : centrée dans sa colonne, sans modifier les autres informations. */
+.detailFact:first-child .detailFactIcon{
+  justify-self:center;
+  align-self:center;
+}
+</style>
+
+<style id="nox-cinema-info-clean">
+/* Informations cinéma : libellé et valeur séparés proprement, comme dans la mise en page d'origine. */
+.detailCinemaInfo{
+  width:100%;
+  margin-top:22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  text-align:center;
+}
+.detailCinemaInfo .cinemaItem{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  align-items:center;
+  gap:14px;
+  width:100%;
+  min-height:48px;
+  padding:12px 16px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  background:rgba(255,255,255,.015);
+}
+.detailCinemaInfo .cinemaItem b{
+  display:block;
+  color:#d8b45f;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-align:center;
+}
+.detailCinemaInfo .cinemaItem > span{
+  display:block;
+  min-width:0;
+  color:#e6e6e8;
+  font-size:16px;
+  line-height:1.35;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+@media(max-width:700px){
+  .detailCinemaInfo{gap:12px;margin-top:18px;}
+  .detailCinemaInfo .cinemaItem{
+    grid-template-columns:1fr;
+    gap:6px;
+    padding:12px 14px;
+  }
+  .detailCinemaInfo .cinemaItem b{font-size:11px;}
+  .detailCinemaInfo .cinemaItem > span{font-size:15px;}
+}
+</style>
+
+<script id="nox-ad-blocker">
+(function(){
+'use strict';
+const badHosts=[
+'doubleclick.net','googlesyndication.com','googleadservices.com',
+'adservice.google.com','adnxs.com','adsrvr.org','popads.net',
+'propellerads.com','exoclick.com','trafficjunky.com'
+];
+function bad(v){
+ try{
+  const u=new URL(v,location.href);
+  return badHosts.some(h=>u.hostname===h||u.hostname.endsWith('.'+h));
+ }catch(e){return false;}
+}
+function clean(root){
+ if(!root||!root.querySelectorAll)return;
+ root.querySelectorAll('iframe,a,script').forEach(el=>{
+  const v=el.getAttribute('src')||el.getAttribute('href')||'';
+  if(bad(v))el.remove();
+ });
+}
+clean(document);
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{
+ if(n.nodeType===1)clean(n);
+}))).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',e=>{
+ const a=e.target&&e.target.closest?e.target.closest('a'):null;
+ if(a&&bad(a.href)){e.preventDefault();e.stopImmediatePropagation();}
+},true);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="nox-poster-rating-source">
+/* NoxStream — badge de note intégré au rendu source des affiches */
+.art{
+  position:relative !important;
+}
+.posterRating{
+  position:absolute !important;
+  top:8px !important;
+  right:8px !important;
+  z-index:100 !important;
+  width:58px !important;
+  height:26px !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content: flex-start !important;
+  gap:4px !important;
+  padding:0 7px 0 9px !important;
+  margin:0 !important;
+  border:1px solid #d9b85b !important;
+  border-radius:999px !important;
+  background:#0b0c10 !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+}
+.posterRatingStar{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:14px !important;
+  height:18px !important;
+  flex:0 0 14px !important;
+  margin:0 !important;
+  padding:0 !important;
+  color:#d9b85b !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  line-height:18px !important;
+}
+.posterRatingScore{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:9px !important;
+  height:18px !important;
+  flex:0 0 9px !important;
+  margin:0 !important;
+  padding:0 !important;
+  color:#fff !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  line-height:18px !important;
+  text-align:center !important;
+}
+</style>
+
+
+
+<style id="nox-carousel-posters-uniform">
+/* NoxStream — carrousel : image plus équilibrée + titre légèrement réduit */
+.carousel img,
+.carousel .poster,
+.carousel .poster img,
+.carousel-item img,
+.slider img,
+.slider .poster,
+.slider .poster img,
+.swiper-slide img,
+.swiper-slide .poster,
+.swiper-slide .poster img {
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  display:block !important;
+}
+
+.carousel .poster,
+.carousel-item .poster,
+.slider .poster,
+.swiper-slide .poster {
+  aspect-ratio:16 / 10 !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  overflow:hidden !important;
+}
+
+.carousel img,
+.carousel .poster img,
+.carousel-item img,
+.slider img,
+.slider .poster img,
+.swiper-slide img,
+.swiper-slide .poster img {
+  height:100% !important;
+  aspect-ratio:auto !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+.carousel h1,
+.carousel h2,
+.carousel .title,
+.carousel .hero-title,
+.carousel-item h1,
+.carousel-item h2,
+.carousel-item .title,
+.carousel-item .hero-title,
+.slider h1,
+.slider h2,
+.slider .title,
+.slider .hero-title,
+.swiper-slide h1,
+.swiper-slide h2,
+.swiper-slide .title,
+.swiper-slide .hero-title {
+  font-size:clamp(2rem, 7vw, 3.4rem) !important;
+  line-height:1.05 !important;
+}
+</style>
+
+<style id="nox-page2-complete-info">
+/* Page 2 — informations complètes de la fiche */
+.page-2 .detail-synopsis,
+.page-3 .detail-synopsis,
+.page-4 .detail-synopsis,
+.page-5 .detail-synopsis,
+.detail-synopsis,
+.film-synopsis,
+.movie-synopsis {
+  display:block !important;
+}
+.page-2 .detail-meta,
+.page-3 .detail-meta,
+.page-4 .detail-meta,
+.page-5 .detail-meta,
+.detail-meta,
+.film-meta,
+.movie-meta {
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:10px 18px !important;
+}
+.detail-info,
+.film-info,
+.movie-info {
+  box-sizing:border-box !important;
+}
+</style>
+
+<style id="nox-pages345-complete-info">
+/* Pages 3, 4 et 5 — mêmes informations complètes que la page 2 */
+.page-3 .detail-synopsis,
+.page-4 .detail-synopsis,
+.page-5 .detail-synopsis,
+.page-3 .film-synopsis,
+.page-4 .film-synopsis,
+.page-5 .film-synopsis,
+.page-3 .movie-synopsis,
+.page-4 .movie-synopsis,
+.page-5 .movie-synopsis {
+  display:block !important;
+}
+.page-3 .detail-meta,
+.page-4 .detail-meta,
+.page-5 .detail-meta,
+.page-3 .film-meta,
+.page-4 .film-meta,
+.page-5 .film-meta,
+.page-3 .movie-meta,
+.page-4 .movie-meta,
+.page-5 .movie-meta {
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:10px 18px !important;
+}
+</style>
+<style id="nox-pagination-top-slide">
+#paginationTop{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  align-items:center;
+  justify-content:flex-start;
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  gap:10px;
+  padding:0 8px;
+  margin:0 0 12px 0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  touch-action:pan-x;
+  scroll-behavior:smooth;
+}
+#paginationTop::-webkit-scrollbar{display:none}
+#paginationTop .pageBtn{
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 44px;
+  width:44px;
+  min-width:44px;
+  max-width:44px;
+  height:44px;
+  margin:0;
+}
+</style>
+<style id="nox-carousel-title-reduced">
+/* Réduction uniquement du titre du carrousel principal */
+.hero .heroContent h1{
+  font-size:72px !important;
+  line-height:.94 !important;
+  letter-spacing:-3px !important;
+}
+@media(max-width:700px){
+  .hero .heroContent h1{
+    font-size:48px !important;
+    line-height:.96 !important;
+    letter-spacing:-2px !important;
+  }
+}
+</style><style id="nox-bottom-exact-copy">
+#paginationBottom{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:10px !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+  margin:12px 0 0 !important;
+  padding:0 8px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  white-space:nowrap !important;
+  scrollbar-width:none !important;
+  -webkit-overflow-scrolling:touch !important;
+  scroll-behavior:auto !important;
+  scroll-snap-type:x proximity !important;
+}
+#paginationBottom::-webkit-scrollbar{display:none !important;}
+#paginationBottom .pageBtn{
+  box-sizing:border-box !important;
+  flex:0 0 44px !important;
+  width:44px !important;
+  min-width:44px !important;
+  height:44px !important;
+  margin:0 !important;
+  scroll-snap-align:start !important;
+}
+</style><style id="nox-mobile-pagination-stability">
+@media (max-width:700px){
+  #grid,
+  #paginationBottom{
+    overflow-anchor:none !important;
+  }
+}
+</style><style id="nox-universal-video-source">
+.detailSources{
+  display:block !important;
+  width:100% !important;
+  margin:14px 0 0 !important;
+  box-sizing:border-box !important;
+}
+.detailSources[hidden]{display:none !important;}
+
+
+
+
+@media(max-width:700px){
+  .detailSources{margin:12px 0 0 !important;}
+  
+  
+}
+</style><style id="nox-tv-native-video">
+#detailVideo{
+  width:100%;
+  height:100%;
+  min-height:360px;
+  display:block;
+  background:#000;
+  object-fit:contain;
+}
+@media(max-width:700px){
+  #detailVideo{min-height:220px;}
+}
+</style>
+</head>
+<body><div class="app">
+<header class="top"><a class="logo" href="#home"><span class="logoMark">N</span><span>NOX<em>STREAM</em></span></a><nav class="nav"><a class="active" href="#home">Accueil</a><a href="#catalogue">Films</a><a href="#catalogue">Séries</a><a href="#genres">Genres</a></nav><div class="actions"><button class="icon" id="openSearch">⌕</button><button class="icon avatar">G</button></div></header>
+<main id="home">
+<section class="hero" id="hero" style="--hero-bg:url(https://image.tmdb.org/t/p/w780/lIsMeDbwntNXSUVHmWMMRXEZOVc.jpg)"><div class="heroContent"><div class="eyebrow">NOUVEAUTÉ · 2026</div><h1>Mortal<br>Kombat II</h1><div class="meta"><span class="match">98% pour vous</span><span>1h 35min</span><span>1080p</span></div><p>Les combattants d’Earthrealm affrontent une nouvelle menace et doivent unir leurs forces dans un tournoi aux enjeux démesurés.</p><div class="buttons"><button class="btn primary" data-open="Mortal Kombat II">▶ &nbsp;VOIR MAINTENANT</button><button class="btn ghost">＋ &nbsp;Ma liste</button></div></div><div class="heroDots" id="heroDots"></div></section>
+<section class="section" id="catalogue"><div class="head"><div><div class="eyebrow2">VOTRE SÉLECTION</div><h2>Films populaires</h2></div><div class="filters"><button class="filter active" data-filter="all">Tous</button><button class="filter" data-filter="action">Action</button><button class="filter" data-filter="thriller">Thriller</button><button class="filter" data-filter="drame">Drame</button></div></div><div id="paginationTop" class="pagination"></div><div class="grid" id="grid"></div>
+<div id="paginationBottom" class="pagination-bottom"></div></section>
+<section class="band"><div><div class="eyebrow2">UNE EXPÉRIENCE SIMPLE</div><h2>Votre cinéma,<br><span>en version premium.</span></h2></div><div class="features"><article><b>01</b><strong>Fiches élégantes</strong><p>Tout le contenu essentiel réuni dans une interface claire.</p></article><article><b>02</b><strong>Sources maîtrisées</strong><p>Ajoutez uniquement les lecteurs et sources que vous êtes autorisé à utiliser.</p></article><article><b>03</b><strong>Lecture immersive</strong><p>Une zone de lecture conçue pour rester confortable sur mobile.</p></article></div></section>
+<section class="section" id="genres"><div class="head"><div><div class="eyebrow2">EXPLOREZ</div><h2>Choisissez votre ambiance</h2></div></div><div class="genres"><button class="genre" data-filter="action"><strong>Action</strong><span>Adrénaline & grand spectacle</span></button><button class="genre" data-filter="thriller"><strong>Thriller</strong><span>Tension & mystère</span></button><button class="genre" data-filter="drame"><strong>Drame</strong><span>Histoires fortes</span></button><button class="genre" data-filter="all"><strong>Tout le catalogue</strong><span>Explorer tous les titres</span></button></div></section>
+</main><footer class="section" style="border-top:1px solid var(--line);padding-bottom:100px;color:#626974;font-size:10px"><div class="logo"><span class="logoMark">N</span><span>NOX<em>STREAM</em></span></div><span>Catalogue premium · sources autorisées uniquement.</span></footer>
+<nav class="bottom"><a class="active" href="#home"><b>⌂</b>Accueil</a><a href="#catalogue"><b>▣</b>Films</a><a href="#catalogue"><b>▶</b>Lecture</a><a href="#genres"><b>◈</b>Genres</a></nav>
+</div>
+<div class="overlay" id="modal" hidden>
+<div class="dialog">
+<button class="close" id="close">×</button>
+<div class="detail">
+  <div class="detailArt" id="detailArt"></div>
+  <div>
+    <div class="eyebrow2">FILM · <span id="detailYear">2026</span></div>
+    <h2 id="detailTitle">Mortal Kombat II</h2>
+    <div class="meta"><span class="match">98% pour vous</span><span id="detailTime">1h 35min</span><span>1080p</span></div>
+    <p id="detailDesc">Les combattants d’Earthrealm affrontent une nouvelle menace et doivent unir leurs forces dans un tournoi aux enjeux démesurés.</p>
+    <div class="detailFacts">
+      <div class="detailFact">
+        <span class="detailFactIcon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="7" y="8" width="34" height="25" rx="4"/><path d="M18 16l12 8-12 8z"/><path d="M12 38h24M17 42h14"/></svg>
+        </span>
+        <span><b>Genre</b><br><span id="detailGenre">Action · Fantastique</span></span>
+      </div>
+      <div class="detailFact">
+        <span class="detailFactIcon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="27" rx="4"/><path d="M7 18h34M15 6v8M33 6v8M15 25h12M15 31h8"/></svg>
+        </span>
+        <span><b>Qualité</b><br>1080p</span>
+      </div>
+      <div class="detailFact">
+        <span class="detailFactIcon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="32" rx="5"/><path d="M7 18h34M15 5v8M33 5v8M15 25h18M15 32h11"/></svg>
+        </span>
+        <span><b>Année</b><br><span id="detailYear2">2026</span></span>
+      </div>
+      <div class="detailFact">
+        <span class="detailFactIcon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 11h32v22a5 5 0 0 1-5 5H22l-9 6v-6h-5z"/><path d="M16 20h16M16 26h11"/></svg>
+        </span>
+        <span><b>Langue</b><br><span id="detailLanguage2">Français (VF)</span></span>
+      </div>
+    </div>
+    <div class="detailCinemaInfo" aria-label="Informations cinéma">
+      <div class="cinemaItem"><b>Origine</b><span id="detailOrigin">—</span></div>
+      <div class="cinemaItem"><b>Réalisateur</b><span id="detailDirector">—</span></div>
+      <div class="cinemaItem"><b>Acteurs</b><span id="detailCast">—</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="detailPlayer">
+  <div class="detailPlayerBox">
+    <iframe id="detailFrame" title="Lecteur vidéo" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <video id="detailVideo" controls playsinline preload="metadata" hidden></video>
+    <div id="detailPlayerEmpty" class="detailPlayerEmpty">Lien indisponible pour le moment</div>
+  </div>
+
+  <button id="reportLinkBtn" class="reportLinkBtn" type="button">
+    ✉️ Signaler un lien qui ne fonctionne pas
+  </button>
+  <section class="commentsPanel" aria-label="Commentaires du film">
+    <div class="commentsTitle">COMMENTAIRES</div>
+    <form id="commentForm" class="commentForm">
+      <div class="ratingPicker" aria-label="Votre note">
+        <span class="ratingPickerLabel">Votre note :</span>
+        <button type="button" class="ratingStar" data-rating="1" aria-label="1 étoile">★</button>
+        <button type="button" class="ratingStar" data-rating="2" aria-label="2 étoiles">★</button>
+        <button type="button" class="ratingStar" data-rating="3" aria-label="3 étoiles">★</button>
+        <button type="button" class="ratingStar" data-rating="4" aria-label="4 étoiles">★</button>
+        <button type="button" class="ratingStar" data-rating="5" aria-label="5 étoiles">★</button>
+        <span id="ratingValue" class="ratingValue">0/5</span>
+      </div>
+      <textarea id="commentText" maxlength="500" placeholder="Ajouter un commentaire…" required></textarea>
+      <button type="submit" class="commentSubmit">Publier le commentaire</button>
+    </form>
+    <div id="commentsList" class="commentsList"></div>
+  </section>
+</div>
+
+</div>
+</div>
+<div class="search" id="search"><div class="searchBox"><div class="topline"><span>RECHERCHE</span><button id="closeSearch">×</button></div><div class="input"><span>⌕</span><input id="searchInput" placeholder="Rechercher un film, une série…"></div><div class="searchResults" id="searchResults"></div></div></div>
+<script>
+let films=[
+{name:'Mutiny',year:2026,genre:"action",time:"1h 35",tag:'À L’AFFICHE',wiki:'Mutiny (film)',playerUrl:'https://uqload.vc/embed-4repl3j08ptx.html',desc:"Cole Reed, ancien agent des forces spéciales devenu chef de sécurité, est accusé à tort du meurtre de son patron. Piégé sur un porte-conteneurs contrôlé par des mercenaires, il doit remonter la piste d’une machination et survivre en haute mer.",lang:'Français',sourceUrls:['https://uqload.vc/embed-4repl3j08ptx.html']},
+{name:'Supergirl',year:2026,genre:"action fantastique science fiction",time:"1h 50",tag:'EXCLU',wiki:'Supergirl (film)',playerUrl:'https://uqload.vc/embed-az0lubqg8slo.html',desc:"Kara Zor-El, alias Supergirl, s’engage dans un périple intergalactique avec un compagnon improbable lorsqu’un adversaire redoutable menace son monde.",lang:'Français',sourceUrls:['https://uqload.vc/embed-az0lubqg8slo.html']},
+{name:'Disclosure Day',year:2026,genre:"science fiction thriller",time:"2h 25",tag:'EXCLU',wiki:'Disclosure Day (film)',playerUrl:'https://uqload.vc/embed-ugclgfjyue2a.html',desc:"Alors que l’humanité découvre la preuve d’une présence extraterrestre, la question de la vérité et de notre place dans l’univers devient impossible à éviter.",lang:'Français',sourceUrls:['https://uqload.vc/embed-ugclgfjyue2a.html']},
+{name:'Mortal Kombat II',year:2026,genre:"action aventure",time:"1h 56",tag:'NOUVEAU',wiki:'Mortal Kombat II',playerUrl:'https://uqload.vc/embed-i38nvj6ak4hf.html',desc:"Les champions d’Earthrealm, désormais rejoints par Johnny Cage, affrontent Shao Kahn lors d’un tournoi décisif qui pourrait déterminer le sort de leur monde.",lang:'Français',sourceUrls:['https://uqload.vc/embed-i38nvj6ak4hf.html']},
+{name:'Marsupilami',year:2026,genre:"aventure comédie famille",time:"1h 39",tag:'NOUVEAU',wiki:'Marsupilami (film)',playerUrl:'https://uqload.vc/embed-7hdt42jtd8wk.html',desc:"David transporte malgré lui un mystérieux colis lors d’une croisière. Lorsqu’un bébé Marsupilami en sort, le voyage familial se transforme en aventure complètement chaotique.",lang:'Français',sourceUrls:['https://uqload.vc/embed-7hdt42jtd8wk.html']},
+{name:'Spider-Man: Brand New Day',year:2026,genre:"action aventure fantastique science fiction",time:"2h 25",tag:'EXCLU',wiki:'Spider-Man: Brand New Day',desc:"Peter Parker continue de combattre le crime dans un monde où personne ne se souvient de lui. Une nouvelle menace invisible l’oblige à repousser ses propres limites.",lang:'Français'},
+{name:'L’Odyssée',year:2026,genre:"action fantastique",time:"2h 53",tag:'NOUVEAU',wiki:'The Odyssey (film)',playerUrl:'https://uqload.vc/embed-nmzhignwv193.html',desc:"Cette grande épopée suit Ulysse sur le chemin du retour vers Ithaque, dans une adaptation spectaculaire du récit mythologique d’Homère.",lang:'Français',sourceUrls:['https://uqload.vc/embed-nmzhignwv193.html']},
+{name:'Michael',year:2026,genre:"biopic drame musical",time:"2h 08",tag:'BIOPIC',wiki:'Michael (2026 American film)',playerUrl:'https://uqload.vc/embed-ipk6zv4bgq2m.html',desc:"Le film retrace les débuts de Michael Jackson avec les Jackson Five puis son ascension vers une carrière solo exceptionnelle, en s’intéressant aussi à sa vie hors scène.",lang:'Français',sourceUrls:['https://uqload.vc/embed-ipk6zv4bgq2m.html']},
+{name:'Projet dernière chance',year:2026,genre:"action aventure science fiction",time:"2h 37",tag:'TOP',wiki:'Project Hail Mary (film)',playerUrl:'https://uqload.vc/embed-5k4ytlcgkzi7.html',desc:"Ryland Grace se réveille seul dans un vaisseau à des années-lumière de la Terre. Il découvre qu’il doit résoudre une énigme scientifique pour empêcher une catastrophe qui menace l’humanité.",lang:'Français',sourceUrls:['https://uqload.vc/embed-5k4ytlcgkzi7.html']},
+{name:'Super Mario Galaxy Le Film',year:2026,genre:"action animation aventure famille fantastique",time:"1h 39",tag:'FAMILLE',wiki:'Super Mario Galaxy',playerUrl:'https://uqload.vc/embed-5k4ytlcgkzi7.html',desc:"Mario et Luigi repartent à l’aventure lorsque les événements les entraînent au-delà du Royaume Champignon, dans une quête cosmique liée à Peach et à de nouveaux mondes.",lang:'Français',sourceUrls:['https://uqload.vc/embed-5k4ytlcgkzi7.html']},
+{name:'Le Réveil de la Momie',year:2026,genre:"epouvante horreur thriller",time:"2h 14",tag:'HORREUR',wiki:"The Mummy (2026 film)",playerUrl:'https://uqload.vc/embed-02a8woxx451n.html',desc:"Une jeune fille portée disparue dans le désert réapparaît huit ans plus tard. Son comportement inquiétant entraîne sa famille dans une enquête qui révèle une menace surnaturelle terrifiante.",lang:'Français',sourceUrls:['https://uqload.vc/embed-02a8woxx451n.html']},
+{name:'Evil Dead Burn',year:2026,genre:"epouvante horreur",time:"1h 51",tag:'HORREUR',wiki:'Evil Dead Burn',playerUrl:'https://uqload.vc/embed-qk17llb8qlmq.html',desc:"Après l’enterrement de son mari, Alice rejoint sa belle-famille pour un dernier repas. La réunion vire au cauchemar lorsque les proches se transforment en créatures démoniaques.",lang:'Français',sourceUrls:['https://uqload.vc/embed-qk17llb8qlmq.html']},
+{name:'On l’appelait Robin des Bois',year:2026,genre:"action aventure thriller",time:"2h 02",tag:'NOUVEAU',wiki:'The Death of Robin Hood',playerUrl:'https://uqload.vc/embed-oieyto5pkugx.html',desc:"Laissé pour mort après une vie de crimes et de violence, Robin des Bois est recueilli par une femme mystérieuse qui lui offre une dernière possibilité de rédemption.",lang:'Français',sourceUrls:['https://uqload.vc/embed-oieyto5pkugx.html']},
+{name:'Wildcat',year:2025,genre:"action thriller",time:"1h 39",tag:'ACTION',wiki:'Wildcat (2025 film)',playerUrl:'https://uqload.vc/embed-mymhrrhcklwz.html',desc:"Une ancienne équipe d’opérations spéciales se reforme pour réaliser un braquage destiné à sauver la fille de leur chef.",lang:'Français',sourceUrls:['https://uqload.vc/embed-mymhrrhcklwz.html']},
+{name:'Mauvaise Pioche',year:2026,genre:"comédie",time:"1h 32",tag:'COMÉDIE',wiki:'Mauvaise Pioche (film)',playerUrl:'https://uqload.vc/embed-mgcxirjycey1.html',desc:"Arrêté par erreur et confondu avec le fugitif le plus recherché de France, Serge Martin devient malgré lui une vedette médiatique et doit tout faire pour prouver son innocence.",lang:'Français',sourceUrls:['https://uqload.vc/embed-mgcxirjycey1.html']},
+{name:'Les Spécialistes',year:2025,genre:"action aventure",time:"2h 05",tag:'ACTION',wiki:'Fountain of Youth (film)',playerUrl:'https://uqload.vc/embed-zhme4uac1a14.html',desc:"Un frère et une sœur partent sur les traces de la légendaire fontaine de Jouvence. Leur chasse au trésor les entraîne à travers le monde à la recherche du secret de l’immortalité.",lang:'Français',sourceUrls:['https://uqload.vc/embed-zhme4uac1a14.html']},
+{name:'La Bouche du Diable',year:2025,genre:"action romance thriller",time:"2h 07",tag:'HORREUR',wiki:'The Gorge (film)',desc:"Deux agents surveillent un mystérieux gouffre depuis des tours opposées. Malgré l’interdiction de communiquer, ils se rapprochent et découvrent qu’une menace terrifiante se cache dans les profondeurs.",lang:'Français'},
+{name:'Dolly',year:2025,genre:"epouvante horreur",time:"1h 23",tag:'HORREUR',wiki:'Dolly (2026 film)',playerUrl:'https://uqload.vc/embed-7kefyebrlgo9.html',desc:"Macy tente de survivre après avoir été enlevée par une créature monstrueuse qui veut faire d’elle sa propre enfant.",lang:'Français',sourceUrls:['https://uqload.vc/embed-7kefyebrlgo9.html']},
+{name:'Compostelle',year:2026,genre:"comédie drame",time:"1h 54",tag:'DRAME',wiki:'Compostelle (film)',playerUrl:'https://uqload.vc/embed-g6cx043uedug.html',desc:"Fred et Adam, deux inconnus que tout oppose, entreprennent ensemble le pèlerinage de Saint-Jacques-de-Compostelle. Au fil du chemin, leurs blessures et leurs espoirs finissent par créer un lien inattendu.",lang:'Français',sourceUrls:['https://uqload.vc/embed-g6cx043uedug.html']}
+,{name:'The Last Sunrise',year:2026,genre:"romance drame",time:"1h 46",tag:'NOUVEAU',wiki:'The Last Sunrise',playerUrl:'https://uqload.vc/embed-817uambhxnyj.html',desc:"Une jeune Américaine passe l’été à Majorque avec sa mère et tombe amoureuse de Julián, un habitant de l’île. Leur relation se heurte aux problèmes de santé de Ry et aux obligations familiales qui les entourent.",lang:'Français',sourceUrls:['https://uqload.vc/embed-817uambhxnyj.html']},{name:'Yellow Mirror',year:2026,genre:"animation comédie",time:"26 min",tag:'NOUVEAU',wiki:'Yellow Mirror',playerUrl:'https://uqload.vc/embed-z8d126kuunu0.html',desc:"Dans deux histoires étranges, une lampe révèle à Homer une vérité bouleversante tandis qu’une tablette dotée d’une intelligence artificielle se lie à Maggie avant de chercher à la contrôler.",lang:'Français',sourceUrls:['https://uqload.vc/embed-z8d126kuunu0.html']},{name:'Nightborn',year:2026,genre:"epouvante horreur fantastique",time:"1h 32",tag:'NOUVEAU',wiki:'Nightborn',desc:"Saga et Jon s’installent dans la maison d’enfance de Saga pour commencer une vie de famille paisible. Après la naissance de leur bébé, Saga perçoit pourtant quelque chose d’inexplicable et d’inquiétant.",lang:'Français'},{name:'Back to the 90s',year:2026,genre:"comédie musique",time:"1h 30",tag:'NOUVEAU',wiki:'Back to the 90s',desc:"Cinq amis d’un boys band sont mystérieusement renvoyés en 1995 quelques jours avant un concert décisif. Pour retrouver leur époque, ils doivent comprendre ce que cette aventure change en eux et dans leur groupe.",lang:'Français'},{name:'The Birthday Party',year:2025,genre:"drame",time:"1h 43",tag:'NOUVEAU',wiki:'The Birthday Party',playerUrl:'https://uqload.vc/embed-0qi5iixdyxzl.html',desc:"À la fin des années 1970, un magnat organise sur son île privée une fête extravagante pour l’anniversaire de sa fille et héritière. Derrière les apparences, les invités poursuivent leurs propres objectifs et les tensions familiales montent.",lang:'Français',sourceUrls:['https://uqload.vc/embed-0qi5iixdyxzl.html']},{name:'Night Nurse',year:2026,genre:'drame thriller',time:'1h 35',tag:'NOUVEAU',wiki:'Night Nurse',desc:"Une infirmière de nuit découvre des incohérences inquiétantes dans l’établissement où elle travaille. En cherchant la vérité, elle se retrouve confrontée à un secret que certains sont prêts à tout pour protéger."},{name:'Lucky Strike',year:2026,genre:'action guerre',time:'1h 42',tag:'NOUVEAU',lang:'VOSTFR',wiki:'Lucky Strike',desc:"Un ancien militaire devenu spécialiste de la protection rapprochée est accusé à tort après une mission qui tourne mal. Pour laver son nom, il doit affronter un réseau criminel et des adversaires déterminés à le faire disparaître."},{name:'Soulm8te',year:2026,genre:'épouvante-horreur science fiction thriller',time:'1h 39',tag:'NOUVEAU',wiki:'Soulm8te',lang:'VOSTFR',playerUrl:'https://uqload.vc/embed-9fsjs724vim5.html',desc:"Un homme acquiert un androïde à intelligence artificielle pour faire face à la perte de sa femme. En essayant de créer un partenaire vraiment sensible, il transforme un lovebot apparemment inoffensif en une compagne dangereuse."},{name:'Rose of Nevada',year:2026,genre:'drame',time:'1h 54',tag:'NOUVEAU',wiki:'Rose of Nevada',lang:'VOSTFR',playerUrl:'https://uqload.vc/embed-7dtua6jh4yix.html',desc:"Dans un village de pêcheurs, un bateau perdu en mer depuis trente ans réapparaît mystérieusement. Deux hommes rejoignent son équipage, mais leur voyage les ramène dans le passé."},{name:'The Gentleman Thief',year:2026,genre:'crime action thriller',time:'1h 37',tag:'NOUVEAU',wiki:'The Gentleman Thief',lang:'VOSTFR',desc:"Un maître voleur à la retraite doit protéger son frère impulsif lorsque le casse d'un yacht de 100 millions de dollars tourne au piège dangereux."},{name:'Couples Weekend',year:2026,genre:'comédie drame',time:'1h 36',tag:'NOUVEAU',wiki:'Couples Weekend',lang:'French',desc:"Deux couples partent pour un séjour du Nouvel An dans les bois. La chute d'un arbre fait remonter des tensions, des secrets et des sentiments qui menacent leurs relations."},{name:'Savage House',year:2026,genre:'comédie drame',time:'1h 54',tag:'NOUVEAU',wiki:'Savage House',lang:'TrueFrench',playerUrl:'https://uqload.vc/embed-vo4q2dqgru2y.html',desc:"Dans l'Angleterre du XVIIIe siècle, Sir Chauncey Savage et son épouse cherchent à impressionner la haute société. Leurs préparatifs dégénèrent en duels, décadence et chaos."},{name:'Mikaela',year:2025,genre:'action aventure thriller',time:'1h 30',tag:'NOUVEAU',wiki:'Mikaela (film)',lang:'TrueFrench',playerUrl:'https://uqload.vc/embed-duhq4mtbimoq.html',desc:"Lors d'une tempête de neige exceptionnelle en Espagne, un groupe de braqueurs tente de détourner un fourgon blindé. Un policier désabusé décide de les arrêter."},{name:'Storm on Sesame Street',year:2026,genre:'famille',time:'30 min',tag:'NOUVEAU',wiki:'Storm on Sesame Street',lang:'TrueFrench',desc:"Dans l'émission spéciale In the Storm, Elmo et ses amis se préparent à une grande tempête et découvrent l'importance du courage, de l'entraide et de la reconstruction."},{name:'Gretel And Hansel',year:2020,genre:'épouvante-horreur fantastique thriller',time:'1h 27',tag:'NOUVEAU',wiki:'Gretel And Hansel',lang:'TrueFrench',playerUrl:'https://uqload.vc/embed-s4czku2xmxes.html',desc:"Une jeune fille conduit son petit frère dans une forêt sombre à la recherche de nourriture et de travail, où ils découvrent une présence inquiétante."},{name:'La Corde au cou',year:2026,genre:'drame thriller',time:'1h 45',tag:'NOUVEAU',wiki:'La Corde au cou',lang:'VOSTFR',playerUrl:'https://uqload.vc/embed-uks1i0uve1fj.html',desc:"L'histoire vraie de Tony Kiritsis, un homme ruiné qui kidnappe le fils du courtier responsable de sa situation et réclame une énorme rançon."},{name:'Moi, quand je me réincarne en Slime, le film : les larmes de la mer azur',year:2026,genre:'animation aventure fantastique',time:'1h 48',tag:'NOUVEAU',wiki:'Moi, quand je me réincarne en Slime, le film : les larmes de la mer azur',lang:'VOSTFR',playerUrl:'https://uqload.vc/embed-8vi7el7y7wkj.html',desc:"Rimuru et ses compagnons partent pour une nouvelle aventure après la fondation de la Fédération de Jura Tempest."},{name:'Demon Slayer: Kimetsu no Yaiba La Forteresse Infinie Film 1',year:2025,genre:'action animation fantastique thriller',time:'2h 35',tag:'NOUVEAU',wiki:'Demon Slayer: Kimetsu no Yaiba La Forteresse Infinie Film 1',lang:'TrueFrench',playerUrl:'https://uqload.vc/embed-wourl3zefd6n.html',desc:"Tanjirô rejoint les pourfendeurs de démons après la transformation de sa sœur Nezuko et affronte une nouvelle étape de sa lutte."},{name:'Snoopy présente : Rien ne vaut son chez-soi',year:2026,genre:'animation famille',time:'31 min',tag:'NOUVEAU',wiki:'Snoopy présente : Rien ne vaut son chez-soi',lang:'TrueFrench',playerUrl:'https://uqload.vc/embed-siwnuvquay0a.html',desc:"La niche adorée de Snoopy disparaît. Charlie Brown l'aide à la retrouver et ils découvrent ensemble ce qui constitue vraiment un foyer."},{name:'The Travellers',year:2025,genre:'drame',time:'1h 32',tag:'NOUVEAU',wiki:'The Travellers',lang:'French',playerUrl:'https://uqload.vc/embed-igjfq0fzl5et.html',desc:"Un scénographe à succès revient dans sa ville natale d'Australie pour dire adieu à sa mère mourante, mais son séjour tourne au chaos familial."},{name:"L'Arnaqueuse",year:2026,genre:'comédie',time:'1h 40',tag:'NOUVEAU',wiki:"L'Arnaqueuse",lang:'TrueFrench',desc:"Fanny, enceinte et vivant chez son père, pense avoir trouvé une solution idéale lorsqu'une occasion immobilière inespérée se présente."},{name:'Mata',year:2026,genre:'drame espionnage thriller',time:'1h 40',tag:'NOUVEAU',wiki:'Mata',lang:'TrueFrench',playerUrl:'https://uqload.vc/embed-85usc1dv64hk.html',desc:"Une femme déterminée se retrouve entraînée dans une affaire d'espionnage où les secrets et les mensonges deviennent de plus en plus dangereux."},{name:'Ghost in the Cell',year:2026,genre:'comédie drame épouvante-horreur',time:'1h 35',tag:'NOUVEAU',wiki:'Ghost in the Cell',lang:'VOSTFR',desc:"Dans une prison notoire, une force invisible commence à tuer brutalement des détenus, obligeant gangs et gardiens à s'unir pour survivre."},{name:'Irréalisable',year:2026,genre:'comédie',time:'1h 40',tag:'NOUVEAU',wiki:'Irréalisable',lang:'TrueFrench',desc:"Six personnes qui ne se connaissent pas se retrouvent pour une semaine de vacances dans un gîte où rien ne va se dérouler comme prévu."},{name:'Scream 7',year:2026,genre:'épouvante-horreur thriller',time:'1h 54',tag:'NOUVEAU',wiki:'Scream 7',lang:'French',playerUrl:'https://uqload.vc/v59v1u5i47u8.html',desc:"Lorsqu'un nouveau Ghostface surgit dans la ville où Sidney Prescott a reconstruit sa vie, sa fille devient la prochaine cible.",sourceUrls:['https://uqload.vc/v59v1u5i47u8.html']},{name:'Avatar : de feu et de cendres',year:2025,genre:'action aventure science fiction',time:'3h 12',tag:'NOUVEAU',wiki:'Avatar : de feu et de cendres',lang:'French',desc:"Jake Sully et sa famille affrontent de nouvelles menaces sur Pandora alors que les conflits entre clans prennent une nouvelle dimension."},{name:"Peaky Blinders : l'Immortel",year:2026,genre:'drame crime',time:'1h 52',tag:'NOUVEAU',wiki:"Peaky Blinders : l'Immortel",lang:'French',playerUrl:'https://p1-s100-d1.s1q2105.com/hls/sRDHsJ4tskMu0JzapCKMebi3moG6gorX/index_856x480.m3u8?token=4a8693c29a140e70a3cd456d502ab55c-1787939638-2a01%3Acb1d%3A8b0b%3A6400%3Aa4fe%3Ab3ce%3A6f94%3A56bb-3baa85454b33534b559743192078c12d25bcc46f39c271ea16164629eaf4fdfc',desc:"Tommy Shelby est rappelé dans une nouvelle aventure où les tensions familiales et criminelles mettent son héritage en péril."},{name:'Mercy',year:2026,genre:'action science fiction thriller',time:'1h 41',tag:'NOUVEAU',wiki:'Mercy',lang:'French',desc:"Dans un futur proche, un détective doit prouver son innocence face à une intelligence artificielle qui contrôle son destin.",playerUrl:'https://uqload.vc/embed-3lx8qkab1a0c.html'},{name:'Zootopie 2',year:2025,genre:'animation aventure comédie famille',time:'1h 47',tag:'NOUVEAU',wiki:'Zootopie 2',lang:'French',playerUrl:'https://uqload.vc/embed-7d4l0fb469z7.html',desc:"Judy Hopps et Nick Wilde se lancent dans une nouvelle enquête qui les entraîne au cœur d'une mystérieuse affaire à Zootopie."},{name:'Chien 51',year:2025,genre:'action science fiction thriller',time:'1h 42',tag:'NOUVEAU',wiki:'Chien 51',lang:'French',desc:"Dans un futur où une intelligence artificielle surveille la société, un policier et une jeune femme se retrouvent au cœur d'une enquête explosive."},{name:'Insaisissables 3',year:2025,genre:'action aventure comédie thriller',time:'1h 52',tag:'NOUVEAU',wiki:'Insaisissables 3',lang:'French',playerUrl:'https://uqload.vc/embed-u7qvcq14dtoi.html',desc:"Les illusionnistes reviennent pour un nouveau casse spectaculaire qui mélange magie, secrets et manipulation."},{name:'Kaamelott - Deuxième volet, partie 1',year:2025,genre:'comédie aventure',time:'2h 12',tag:'NOUVEAU',wiki:'Kaamelott - Deuxième volet, partie 1',lang:'TrueFrench',desc:"Arthur et ses compagnons repartent dans une nouvelle aventure où le royaume doit faire face à de nouvelles menaces."},{name:'Primate',year:2026,genre:'épouvante-horreur thriller',time:'1h 29',tag:'NOUVEAU',wiki:'Primate',lang:'TrueFrench',desc:"Une famille se retrouve confrontée à une créature dangereuse qui transforme leur quotidien en cauchemar.",playerUrl:'https://morencius.com/v/ua5kbesm1irl'},{name:'The Running Man',year:2025,genre:'action science fiction thriller',time:'2h 13',tag:'NOUVEAU',wiki:'The Running Man',lang:'French',playerUrl:'https://morencius.com/v/red60l5hjjgt',sourceUrls:['https://morencius.com/v/red60l5hjjgt','https://uqload.vc/embed-lvq1mxmm69bb.html','https://uqload.vc/embed-4ivf1h5phb04.html','https://uqload.vc/embed-lz9murzwh27f.html','https://uqload.vc/embed-qaroqhpyxb4b.html','https://uqload.vc/embed-hqhq639pxobo.html'],desc:"Dans un futur où un jeu télévisé mortel est devenu un spectacle national, un homme doit courir pour survivre."},{name:'Tom Clancy’s Jack Ryan : Guerre Fantôme',year:2026,genre:'action aventure espionnage thriller',time:'1h 45',tag:'NOUVEAU',wiki:'Tom Clancy’s Jack Ryan : Guerre Fantôme',lang:'French',playerUrl:'https://uqload.vc/embed-lvq1mxmm69bb.html',sourceUrls:['https://uqload.vc/embed-lvq1mxmm69bb.html'],desc:"Jack Ryan est rappelé dans le monde de l'espionnage lorsqu'une mission révèle une conspiration internationale."},{name:'Star Wars: The Mandalorian and Grogu',year:2026,genre:'action aventure science fiction',time:'2h 00',tag:'NOUVEAU',wiki:'Star Wars: The Mandalorian and Grogu',lang:'French',playerUrl:'https://uqload.vc/embed-4ivf1h5phb04.html',sourceUrls:['https://uqload.vc/embed-4ivf1h5phb04.html'],desc:"Le Mandalorien et Grogu s'engagent dans une nouvelle mission à travers la galaxie, confrontés à de nouvelles menaces."},{name:'The Punisher : One Last Kill',year:2026,genre:'action thriller',time:'1h 35',tag:'NOUVEAU',wiki:'The Punisher : One Last Kill',lang:'French',playerUrl:'https://uqload.vc/embed-lz9murzwh27f.html',sourceUrls:['https://uqload.vc/embed-lz9murzwh27f.html'],desc:"Frank Castle reprend les armes pour une dernière mission qui l'oblige à affronter un réseau criminel particulièrement dangereux."},{name:'Wedding Nightmare : deuxième partie',year:2026,genre:'épouvante-horreur comédie thriller',time:'1h 40',tag:'NOUVEAU',wiki:'Wedding Nightmare : deuxième partie',lang:'French',playerUrl:'https://uqload.vc/embed-qaroqhpyxb4b.html',sourceUrls:['https://uqload.vc/embed-qaroqhpyxb4b.html'],desc:"Après les événements du premier film, une nouvelle cérémonie tourne au cauchemar lorsqu'une famille se retrouve de nouveau prise au piège."},{name:'Jumpers Hoppers',year:2026,genre:'animation aventure comédie famille',time:'1h 40',tag:'NOUVEAU',wiki:'Jumpers Hoppers',lang:'French',playerUrl:'https://uqload.vc/embed-hqhq639pxobo.html',sourceUrls:['https://uqload.vc/embed-hqhq639pxobo.html'],desc:"Une aventure animée pleine d'humour dans laquelle de jeunes héros doivent unir leurs forces pour sauver leur monde."},{name:'Freaks Of Nature',year:2016,genre:'comédie épouvante-horreur science fiction',time:'1h 32',tag:'NOUVEAU',wiki:'Freaks Of Nature',lang:'TrueFrench',desc:"Dans une petite ville où vampires, humains et zombies vivent ensemble, l'arrivée d'extraterrestres bouleverse l'équilibre et pousse trois adolescents à agir.",playerUrl:'https://uqload.vc/embed-lybcmldjb2u9.html'},{name:'Bagarre',year:2026,genre:'comédie',time:'1h 35',tag:'NOUVEAU',wiki:'Bagarre',lang:'TrueFrench',playerUrl:'https://p1-s100-d2.s1q2105.com/hls/7R6mJvkfKqNx3KDybHrdPApm6UKIuOzJ/index_1280x532.m3u8?token=bf63e219ae71cca8d02592f503a3127d-1787939508-2a01%3Acb1d%3A8b0b%3A6400%3Aa4fe%3Ab3ce%3A6f94%3A56bb-e702d5835b1d1b8d7e6aaab4e4bd1e75cea7e941ff060136f4989a72dc290988',desc:"Naim est un amour dans la vie mais devient redoutable lorsqu'il se bat. Pour soigner sa chienne malade, il rejoint un service de combattants de rue."}
+,{name:'The Criminals',year:2026,genre:'action thriller crime',time:'1h 37',tag:'NOUVEAU',wiki:'The Criminals',desc:"La découverte d'une bombe de la Seconde Guerre mondiale provoque une évacuation massive de Londres, offrant à une équipe de braqueurs l'occasion d'un hold-up sous haute tension."}
+,{name:'Enola Holmes 3',year:2026,genre:'aventure mystère comédie',time:'1h 45',tag:'NOUVEAU',wiki:'Enola Holmes 3',desc:"Enola Holmes poursuit une nouvelle enquête pleine de mystères, d'indices et de rebondissements.",lang:'French',playerUrl:'https://uqload.vc/embed-rlbs1bp1zz0f.html',sourceUrls:['https://uqload.vc/embed-rlbs1bp1zz0f.html']}
+,{name:'Blades of the Guardians',year:2026,genre:'action aventure arts martiaux',time:'2h 06',tag:'NOUVEAU',wiki:'Blades of the Guardians',desc:"Sous la dynastie Sui, un mercenaire chevronné se retrouve mêlé à un complot qui l'entraîne dans une aventure périlleuse.",lang:'French',playerUrl:'https://uqload.vc/embed-p4t4rbxvx9m3.html',sourceUrls:['https://uqload.vc/embed-p4t4rbxvx9m3.html']}
+,{name:'En garde',year:2025,genre:'drame',time:'1h 46',tag:'NOUVEAU',wiki:'En garde',desc:"Un jeune escrimeur talentueux renoue avec son frère aîné récemment libéré et commence à douter de son innocence."}
+,{name:'Pillion',year:2026,genre:'drame romance',time:'1h 42',tag:'NOUVEAU',wiki:'Pillion',playerUrl:'https://uqload.vc/embed-sfv5ffcnsjgj.html',sourceUrls:['https://uqload.vc/embed-sfv5ffcnsjgj.html'],desc:"Une rencontre inattendue bouleverse la vie d'un homme et l'entraîne dans une relation qui remet tout en question."}
+,{name:'Citizen Vigilante',year:2026,genre:'action thriller',time:'1h 35',tag:'NOUVEAU',wiki:'Citizen Vigilante',desc:"Un citoyen décide de lutter contre ceux qui échappent à la justice, au risque de franchir ses propres limites.",lang:'French',playerUrl:'https://uqload.vc/embed-vwf1gw05biy1.html',sourceUrls:['https://uqload.vc/embed-vwf1gw05biy1.html']}
+,{name:'La Danse des renards',year:2026,genre:'drame',time:'1h 45',tag:'NOUVEAU',wiki:'La Danse des renards',desc:"Une histoire humaine portée par des personnages confrontés à leurs choix et à leurs blessures.",lang:'French',playerUrl:'https://uqload.vc/embed-uzn2e0xczs1o.html',sourceUrls:['https://uqload.vc/embed-uzn2e0xczs1o.html']}
+,{name:'Boudica: Queen of War',year:2024,genre:'action historique guerre',time:'1h 41',tag:'NOUVEAU',wiki:'Boudica: Queen of War',desc:"La reine Boudica mène son peuple dans une lutte acharnée contre l'occupation romaine.",lang:'French',playerUrl:'https://uqload.vc/embed-2yg2ypoyytld.html',sourceUrls:['https://uqload.vc/embed-2yg2ypoyytld.html']}
+,{name:'Sur la route d’Omaha',year:2025,genre:'drame guerre',time:'1h 45',tag:'NOUVEAU',wiki:'Sur la route d’Omaha',desc:"Sur les traces d'un épisode marquant de la guerre, des destins individuels se croisent au milieu du chaos.",lang:'French',playerUrl:'https://uqload.vc/embed-r1hkugrl0m0b.html',sourceUrls:['https://uqload.vc/embed-r1hkugrl0m0b.html']}
+,{name:'Wrong Husband',year:2026,genre:'thriller',time:'1h 30',tag:'NOUVEAU',wiki:'Wrong Husband',desc:"Une femme découvre que l'homme qui partage sa vie cache une identité inquiétante.",lang:'French',playerUrl:'https://uqload.vc/embed-jjglteb1uhvr.html',sourceUrls:['https://uqload.vc/embed-jjglteb1uhvr.html']}
+,{name:'Little Brother',year:2026,genre:'drame',time:'1h 40',tag:'NOUVEAU',wiki:'Little Brother',desc:"Deux frères doivent affronter les conséquences d'un passé familial qui continue de les poursuivre.",lang:'French',playerUrl:'https://uqload.vc/embed-uukuhp7fo1gb.html',sourceUrls:['https://uqload.vc/embed-uukuhp7fo1gb.html']}
+,{name:'Inès Reg – On est toujours ensemble',year:2026,genre:'spectacle comédie',time:'1h 25',tag:'SPECTACLE',wiki:'Inès Reg',desc:"Un spectacle où humour, anecdotes et énergie scénique se mêlent autour de la vie quotidienne.",lang:'French',playerUrl:'https://uqload.vc/embed-a2u93pcmdfqn.html',sourceUrls:['https://uqload.vc/embed-a2u93pcmdfqn.html']}
+,{name:'Confidante',year:2025,genre:'drame',time:'1h 16',release:'2025',lang:'VOSTFR',desc:"À Ankara en 1999, Arzu travaille dans un centre d’appels érotiques. Après un séisme à Istanbul, un homme coincé sous les décombres lui demande de l’aide, la poussant à agir malgré le danger.",tag:'NOUVEAU',wiki:'Confidante',playerUrl:'https://uqload.vc/embed-t04qrm7casre.html',sourceUrls:['https://uqload.vc/embed-t04qrm7casre.html']}
+,{name:'Balls Up',year:2026,genre:'action comédie',time:'1h 44',release:'2026',lang:'TrueFrench',desc:"Deux responsables marketing lancent une campagne de sponsoring pour la Coupe du Monde. Après une fête qui tourne au scandale au Brésil, ils doivent fuir fans et criminels pour sauver leur carrière et rentrer vivants.",tag:'NOUVEAU',wiki:'Balls Up',playerUrl:'https://uqload.vc/embed-hl7juua5x0vd.html',sourceUrls:['https://uqload.vc/embed-hl7juua5x0vd.html']}
+,{name:'L’Ultime Héritier',year:2026,genre:'comédie thriller',time:'1h 45',release:'2026',lang:'TrueFrench',desc:"Becket Redfellow veut récupérer l’héritage familial dont il estime avoir été privé. Sept membres de la famille se dressent entre lui et la fortune : il décide de les éliminer un à un.",tag:'NOUVEAU',wiki:'L’Ultime Héritier'}
+,{name:'28 Ans Plus Tard : Le Temple Des Morts',year:2026,genre:'épouvante-horreur science fiction thriller',time:'1h 50',release:'2026',lang:'TrueFrench',desc:"Le docteur Kelson noue une relation inattendue tandis que la rencontre entre Spike et Jimmy Crystal tourne au cauchemar. Les survivants eux-mêmes deviennent une menace aussi terrifiante que les infectés.",tag:'HORREUR',wiki:'28 Years Later: The Bone Temple',playerUrl:'https://uqload.vc/embed-8736ca64358c.html',sourceUrls:['https://uqload.vc/embed-8736ca64358c.html']}
+,{name:'Une pour toutes',year:2026,genre:'documentaire',time:'1h 02',release:'2026',lang:'TrueFrench',desc:"Ce documentaire suit Sakina Karchaoui et d’autres figures du football féminin français, entre ambitions, défis et évolution de l’Équipe de France féminine.",tag:'NOUVEAU',wiki:'Une pour toutes',playerUrl:'https://uqload.vc/embed-z3jun5d6vj9o.html',sourceUrls:['https://uqload.vc/embed-z3jun5d6vj9o.html']}
+,{name:'The Loved One',year:2026,genre:'drame romance',time:'1h 40',release:'2026',lang:'VOSTFR',desc:"Un ancien couple se retrouve après de longues années de séparation et replonge dans les souvenirs, les sentiments et les blessures d’une relation qui a duré dix ans.",tag:'NOUVEAU',wiki:'The Loved One',playerUrl:'https://uqload.vc/embed-j56x91lnhwmm.html',sourceUrls:['https://uqload.vc/embed-j56x91lnhwmm.html']}
+,{name:'Lost Ranger',year:2026,genre:'épouvante-horreur',time:'1h 27',release:'2026',lang:'TrueFrench',desc:"Neil, garde forestier, et sa femme Abby tentent de faire face à la disparition de leur fils lorsqu’une inquiétante épidémie commence à ravager la région et ses habitants.",tag:'NOUVEAU',wiki:'Lost Ranger',playerUrl:'https://uqload.vc/embed-hpfy57n0aksk.html',sourceUrls:['https://uqload.vc/embed-hpfy57n0aksk.html']}
+,{name:'Mission : Impossible – The Final Reckoning',year:2025,genre:'action espionnage thriller',time:'2h 49',release:'2025',lang:'TrueFrench',desc:"Ethan Hunt et son équipe poursuivent Gabriel, qui détient la clé permettant de contrôler l’Entité, une intelligence artificielle capable d’anticiper toutes les éventualités. Leur mission devient une course contre une menace mondiale.",tag:'TOP',wiki:'Mission: Impossible – The Final Reckoning'}
+,{name:'George A. Romero’s Resident Evil',year:2026,genre:'documentaire',time:'1h 30',release:'2026',lang:'TrueFrench',desc:"Documentaire consacré au projet de film Resident Evil imaginé par George A. Romero et à l’histoire de cette adaptation restée à l’état de projet. La fiche Flemmix ne fournit pas de données complètes supplémentaires.",tag:'HORREUR',wiki:'George A. Romero’s Resident Evil',playerUrl:'https://uqload.vc/embed-nr0elzujn680.html',sourceUrls:['https://uqload.vc/embed-nr0elzujn680.html']},
+{name:'Greenland Migration',year:2026,genre:'action thriller',time:'1h 39',release:'2026',lang:'TrueFrench',desc:"Après l’impact dévastateur d’une comète qui a réduit la Terre en ruines, la famille Garrity quitte son bunker du Groenland et entreprend un périple pour assurer sa survie et trouver un nouveau foyer.",tag:'ACTION',wiki:'Greenland Migration',playerUrl:'https://uqload.vc/embed-ihltsdx65er2.html',sourceUrls:['https://uqload.vc/embed-ihltsdx65er2.html']},
+{name:'Que justice soit faite',year:2010,genre:'action drame thriller',time:'1h 49',release:'2010',lang:'TrueFrench',desc:"Dix ans après le meurtre de sa femme et de sa fille, un homme se dresse contre le procureur chargé du procès. Sa vengeance menace bientôt le système judiciaire lui-même.",tag:'ACTION',wiki:'Que justice soit faite',playerUrl:'https://uqload.vc/embed-k7pbcfwt6qqd.html',sourceUrls:['https://uqload.vc/embed-k7pbcfwt6qqd.html']},
+{name:'Greenland - Le dernier refuge',year:2020,genre:'action aventure drame science fiction thriller',time:'2h 00',release:'2020',lang:'TrueFrench',desc:"Une comète menace de provoquer un cataclysme sans précédent. John Garrity entreprend avec son ex-femme et leur fils un périple vers le dernier refuge capable de les protéger.",tag:'ACTION',wiki:'Greenland - Le dernier refuge',playerUrl:'https://uqload.vc/embed-gbows5wstihh.html',sourceUrls:['https://uqload.vc/embed-gbows5wstihh.html']},
+{name:'Keepers',year:2018,genre:'action thriller',time:'1h 47',release:'2018',lang:'TrueFrench',desc:"Trois gardiens de phare découvrent une barque échouée avec un cadavre et un mystérieux coffre. Leur découverte déclenche une dangereuse confrontation autour de ce trésor.",tag:'ACTION',wiki:'Keepers',playerUrl:'https://uqload.vc/embed-kpakjgj164te.html',sourceUrls:['https://uqload.vc/embed-kpakjgj164te.html']},
+{name:'RockNRolla',year:2008,genre:'crime action thriller',time:'1h 54',release:'2008',lang:'TrueFrench',desc:"À Londres, un caïd, de petits voyous et de nouveaux criminels se disputent argent, influence et territoires. Une rock star que tout le monde croyait morte détient une information convoitée par tous.",tag:'ACTION',wiki:'RockNRolla',playerUrl:'https://uqload.vc/embed-hc0fpvwx06px.html',sourceUrls:['https://uqload.vc/embed-hc0fpvwx06px.html']},
+{name:'Dragons (2025)',year:2025,genre:'action aventure fantastique',time:'2h 05',release:'2025',lang:'TrueFrench',desc:"Sur l’île de Beurk, Harold fait figure d’exception parmi les Vikings qui combattent les dragons. Sa rencontre avec Krokmou bouleverse les traditions et pourrait changer le destin des deux peuples.",tag:'ACTION',wiki:'Dragons (2025)',playerUrl:'https://uqload.vc/embed-ou4xjypqexp5.html',sourceUrls:['https://uqload.vc/embed-ou4xjypqexp5.html']},
+{name:'Hunter Killer',year:2019,genre:'action guerre thriller',time:'2h 02',release:'2019',lang:'TrueFrench',desc:"Dans les profondeurs de l’océan Arctique, le capitaine Joe Glass découvre un complot visant à provoquer un coup d’État russe. Il doit sauver le président russe pour empêcher une guerre mondiale.",tag:'ACTION',wiki:'Hunter Killer'},
+{name:'La Chute de Londres',year:2016,genre:'action thriller',time:'1h 39',release:'2016',lang:'TrueFrench',desc:"Les grands dirigeants occidentaux se réunissent à Londres pour les funérailles du Premier ministre britannique. Une attaque terroriste transforme la ville en zone de guerre et Mike Banning doit protéger le président américain.",tag:'ACTION',wiki:'La Chute de Londres',playerUrl:'https://uqload.vc/embed-l7kp8ntphmzr.html',sourceUrls:['https://uqload.vc/embed-l7kp8ntphmzr.html']},
+{name:'La Chute de la Maison Blanche',year:2013,genre:'action thriller',time:'2h 00',release:'2013',lang:'TrueFrench',desc:"Un commando nord-coréen attaque la Maison-Blanche et prend le président en otage. Mike Banning, ancien garde du corps présidentiel, devient le principal espoir pour les sauver.",tag:'ACTION',wiki:'La Chute de la Maison Blanche',playerUrl:'https://uqload.vc/embed-ywg8ss0d5h20.html',sourceUrls:['https://uqload.vc/embed-ywg8ss0d5h20.html']},
+{name:'Criminal Squad : Pantera',year:2025,genre:'action policier thriller',time:'2h 10',release:'2025',lang:'TrueFrench',desc:"Big Nick poursuit Donnie en Europe et le retrouve au sein de l’organisation criminelle Pantera, spécialisée dans les vols de diamants. Une nouvelle opération de grande ampleur se prépare.",tag:'ACTION',wiki:'Criminal Squad : Pantera',playerUrl:'https://uqload.vc/embed-udampmnxt85f.html',sourceUrls:['https://uqload.vc/embed-udampmnxt85f.html']},
+{name:'Mayday',year:2023,genre:'action thriller',time:'1h 48',release:'2023',lang:'TrueFrench',desc:"Après avoir réussi à poser son avion endommagé, le pilote Brodie Torrance découvre qu’il se trouve dans une zone de guerre. Lui et ses passagers sont alors pris en otage.",tag:'ACTION',wiki:'Mayday',playerUrl:'https://uqload.vc/embed-n6qjrg7czic6.html',sourceUrls:['https://uqload.vc/embed-n6qjrg7czic6.html']},
+{name:'Killer Elite (2011)',year:2011,genre:'action aventure thriller',time:'1h 56',release:'2011',lang:'TrueFrench',desc:"Pour sauver son ancien partenaire et mentor, Danny reprend du service et reforme son équipe. Il doit affronter une unité d’élite du SAS britannique dans une mission semée de pièges.",tag:'ACTION',wiki:'Killer Elite (2011)',playerUrl:'https://uqload.vc/embed-i8ny8f07tve2.html',sourceUrls:['https://uqload.vc/embed-i8ny8f07tve2.html']},
+{name:'Hyper tension 2',year:2009,genre:'crime action thriller',time:'1h 36',release:'2009',lang:'French',desc:"Chev Chelios affronte un parrain de la mafia chinoise qui lui a volé son cœur et l’a remplacé par une prothèse qu’il doit régulièrement stimuler avec des décharges électriques.",tag:'ACTION',wiki:'Hyper tension 2',playerUrl:'https://uqload.vc/embed-xzfgy4vay9vf.html',sourceUrls:['https://uqload.vc/embed-xzfgy4vay9vf.html']},
+{name:'Shelter',year:2026,genre:'action thriller',time:'1h 48',release:'2026',lang:'TrueFrench',desc:"Mason vit isolé sur une île écossaise. Après avoir sauvé une jeune fille de l’océan pendant une tempête, il déclenche une série d’événements qui provoquent une violente attaque contre son refuge.",tag:'ACTION',wiki:'Shelter',playerUrl:'https://uqload.vc/embed-ad1s4qvq0bpw.html',sourceUrls:['https://uqload.vc/embed-ad1s4qvq0bpw.html']},
+{name:'Chaos (2006)',year:2005,genre:'crime action drame policier',time:'1h 40',release:'2005',lang:'TrueFrench',desc:"Cinq hommes prennent une banque en otage. Leur chef exige de parler à l’inspecteur Conners, suspendu après une bavure, qui doit reprendre du service avec un jeune policier pour résoudre l’affaire.",tag:'ACTION',wiki:'Chaos (2006)',playerUrl:'https://uqload.vc/embed-5csojfygfqrn.html',sourceUrls:['https://uqload.vc/embed-5csojfygfqrn.html']},
+{name:'Joker',year:2015,genre:'action crime thriller',time:'1h 45',tag:'ACTION',wiki:'Joker',playerUrl:'https://uqload.vc/embed-j9q59lybb5g9.html',sourceUrls:['https://uqload.vc/embed-j9q59lybb5g9.html'],desc:"Film d’action sélectionné depuis Flemmix.men et ajouté au catalogue NoxStream."},
+{name:'En eaux très troubles',year:2023,genre:'action thriller',time:'1h 45',tag:'ACTION',wiki:'En eaux très troubles',playerUrl:'https://uqload.vc/embed-dsj1ke5du9cq.html',sourceUrls:['https://uqload.vc/embed-dsj1ke5du9cq.html'],desc:"Film d’action sélectionné depuis Flemmix.men et ajouté au catalogue NoxStream."},
+{name:'Expend4bles',year:2023,genre:"action aventure thriller",time:"1h 43",release:2023,lang:"TrueFrench",desc:"Armés de toutes les armes sur lesquelles ils peuvent mettre la main, les Expendables constituent la dernière ligne de défense du monde et l’équipe appelée lorsque toutes les autres options ont échoué.",origin:"U.S.A.",tag:'ACTION',wiki:'Expend4bles'},
+{name:'Expendables 3',year:2014,genre:"action aventure thriller",time:"2h 06",release:2014,lang:"TrueFrench",desc:"Barney, Christmas et le reste de l’équipe affrontent Conrad Stonebanks, ancien fondateur des Expendables devenu trafiquant d’armes. Barney doit réunir une nouvelle génération de combattants.",origin:"U.S.A.",tag:'ACTION',wiki:'Expendables 3',playerUrl:'https://uqload.vc/embed-igt1ri1gcehu.html',sourceUrls:['https://uqload.vc/embed-igt1ri1gcehu.html']},
+{name:'Expendables 2 : Unité Spéciale',year:2012,genre:"action aventure thriller",time:"1h 43",release:2012,lang:"TrueFrench",desc:"Les Expendables sont de retour pour une affaire personnelle. Barney Ross et son équipe doivent affronter un ennemi redoutable après la mort de l’un des leurs.",origin:"U.S.A.",tag:'ACTION',wiki:'Expendables 2 : Unité Spéciale',playerUrl:'https://uqload.vc/embed-tir2w736yhmk.html',sourceUrls:['https://uqload.vc/embed-tir2w736yhmk.html']},
+{name:'Expendables : unité spéciale',year:2010,genre:"action aventure thriller",time:"1h 43",release:2010,lang:"TrueFrench",desc:"Ce ne sont ni des mercenaires ni des agents secrets. Les Expendables choisissent eux-mêmes leurs missions et sont envoyés lorsqu’une opération particulièrement dangereuse doit être menée.",origin:"U.S.A.",tag:'ACTION',wiki:'Expendables : unité spéciale'},
+{name:'Parker',year:2013,genre:"crime action",time:"1h 58",release:2013,lang:"TrueFrench",desc:"Parker est un cambrioleur redoutable qui exige de ses partenaires une loyauté absolue. Trahi après un casse, il prépare sa vengeance avec l’aide d’une alliée inattendue.",origin:"U.S.A.",tag:'ACTION',wiki:'Parker',playerUrl:'https://uqload.vc/embed-krv2j9yx3i2p.html',sourceUrls:['https://uqload.vc/embed-krv2j9yx3i2p.html']},
+{name:'Un homme en colère',year:2021,genre:"action thriller",time:"1h 59",release:2021,lang:"TrueFrench",desc:"Un convoyeur de fonds récemment engagé surprend ses collègues par l’incroyable précision de ses tirs lorsqu’ils sont attaqués par des braqueurs expérimentés. Son véritable passé commence alors à refaire surface.",origin:"U.S.A.",tag:'ACTION',wiki:'Un homme en colère'},
+{name:'The Beekeeper',year:2024,genre:"crime action aventure drame thriller",time:"1h 45",release:2024,lang:"TrueFrench",desc:"La vengeance d’un homme prend une dimension nationale lorsqu’il se révèle être un ancien agent d’une puissante organisation clandestine connue sous le nom de Beekeepers.",origin:"U.S.A.",tag:'ACTION',wiki:'The Beekeeper',playerUrl:'https://uqload.vc/embed-ja1wckvg3k15.html',sourceUrls:['https://uqload.vc/embed-ja1wckvg3k15.html']},
+{name:'Kingdom of Heaven',year:2005,genre:"action historique",time:"2h 25",release:2005,lang:"TrueFrench",desc:"Balian le forgeron découvre que son père est un seigneur Croisé. Parti à Jérusalem, il prend part à la défense de la ville et doit choisir entre ses convictions, son amour et son devoir.",origin:"Grande-Bretagne / Allemagne / Espagne / U.S.A.",tag:'ACTION',wiki:'Kingdom of Heaven',playerUrl:'https://uqload.vc/embed-vjy4tuahn71j.html',sourceUrls:['https://uqload.vc/embed-vjy4tuahn71j.html']},
+{name:'K-19 : le piège des profondeurs',year:2002,genre:"action drame guerre thriller",time:"2h 18",release:2002,lang:"TrueFrench",desc:"En 1961, en pleine guerre froide, les Russes achèvent le sous-marin nucléaire K-19. Une avarie menace de provoquer une catastrophe nucléaire et l’équipage doit lutter pour éviter le pire.",origin:"U.S.A. / Grande-Bretagne / Allemagne / Canada",tag:'ACTION',wiki:'K-19 : le piège des profondeurs',playerUrl:'https://uqload.vc/embed-2v3jifsl7sj5.html',sourceUrls:['https://uqload.vc/embed-2v3jifsl7sj5.html']},
+{name:'Darkman',year:1990,genre:"action épouvante-horreur fantastique",time:"1h 36",release:1990,lang:"TrueFrench",desc:"Peyton Westlake, brillant généticien, vient de réaliser une peau synthétique. Après une attaque qui le défigure, il utilise son invention pour se venger de ceux qui ont détruit sa vie.",origin:"U.S.A.",tag:'ACTION',wiki:'Darkman',playerUrl:'https://uqload.vc/embed-c4vj66j394x1.html',sourceUrls:['https://uqload.vc/embed-c4vj66j394x1.html']},
+{name:'Men in Black: International',year:2019,genre:"action aventure comédie science fiction",time:"1h 55",release:2019,lang:"TrueFrench",desc:"Les Men in Black protègent la Terre de la vermine extraterrestre. Une nouvelle menace apparaît lorsqu’une taupe semble s’être infiltrée au sein même de l’organisation.",origin:"U.S.A.",tag:'ACTION',wiki:'Men in Black: International',playerUrl:'https://uqload.vc/embed-lgqnbpz70bp7.html',sourceUrls:['https://uqload.vc/embed-lgqnbpz70bp7.html']},
+{name:'Taken',year:2008,genre:"action thriller",time:"1h 33",release:2008,lang:"TrueFrench",desc:"Que peut-il arriver de pire à un père que d’assister impuissant à l’enlèvement de sa fille ? Bryan Mills, ancien agent des services secrets, utilise toutes ses compétences pour la retrouver.",origin:"France / Grande-Bretagne / U.S.A.",tag:'ACTION',wiki:'Taken',playerUrl:'https://uqload.vc/embed-9q77hznj1vtb.html',sourceUrls:['https://uqload.vc/embed-9q77hznj1vtb.html']},
+{name:'Retribution',year:2023,genre:"action aventure thriller",time:"1h 31",release:2023,lang:"TrueFrench",desc:"Un homme d’affaires découvre qu’une bombe a été placée dans sa voiture. Un mystérieux assaillant lui ordonne d’exécuter une série d’actions sous peine de faire exploser le véhicule.",origin:"Grande-Bretagne / U.S.A.",tag:'ACTION',wiki:'Retribution',playerUrl:'https://uqload.vc/embed-plg68ab7tsow.html',sourceUrls:['https://uqload.vc/embed-plg68ab7tsow.html']},
+{name:'Y a-t-il un flic pour sauver le monde ?',year:2025,genre:"action comédie",time:"1h 25",release:2025,lang:"TrueFrench",desc:"Frank Drebin Jr., fils du légendaire inspecteur gaffeur, enquête sur un accident mortel qui l’amène à rencontrer Beth Davenport et à affronter une menace qui dépasse largement une simple affaire criminelle.",origin:"U.S.A.",tag:'ACTION',wiki:'Y a-t-il un flic pour sauver le monde ?',playerUrl:'https://uqload.vc/embed-6401pf28waz1.html',sourceUrls:['https://uqload.vc/embed-6401pf28waz1.html']},
+{name:'Commando',year:1985,genre:"action",time:"1h 30",release:1985,lang:"TrueFrench",desc:"Le colonel John Matrix, ancien combattant d’élite, mène une vie paisible avec sa fille. Lorsque celle-ci est enlevée, il reprend les armes pour la sauver et affronter ses anciens ennemis.",origin:"U.S.A.",tag:'ACTION',wiki:'Commando',playerUrl:'https://uqload.vc/embed-qeq436scflgu.html',sourceUrls:['https://uqload.vc/embed-qeq436scflgu.html']},
+{name:'Le Contrat (1986)',year:1986,genre:"action crime thriller",time:"1h 37",release:1986,lang:"TrueFrench",desc:"Mark Kaminsky, ancien agent du FBI devenu shérif, accepte une mission secrète qui l’oblige à infiltrer une organisation criminelle particulièrement dangereuse.",origin:"U.S.A.",tag:'ACTION',wiki:'Le Contrat (1986)',playerUrl:'https://uqload.vc/embed-grrcmcb53bl4.html',sourceUrls:['https://uqload.vc/embed-grrcmcb53bl4.html']},
+{name:'Last Action Hero',year:1993,genre:"aventure comédie famille action fantastique",time:"2h 10",release:1993,lang:"TrueFrench",desc:"Grâce à un billet magique, Danny Madigan peut vivre les aventures de son policier préféré, Slater. Ensemble, ils affrontent les dangers d’un monde où fiction et réalité se mélangent.",origin:"U.S.A.",tag:'ACTION',wiki:'Last Action Hero',playerUrl:'https://uqload.vc/embed-wmrwltc157up.html',sourceUrls:['https://uqload.vc/embed-wmrwltc157up.html']},
+{name:'The Mystery of the Dragon Seal : La Légende du dragon',year:2020,genre:"action aventure fantastique famille",time:"2h 01",release:2020,lang:"TrueFrench",desc:"L’explorateur Jonathan Green reçoit l’ordre de Pierre le Grand de cartographier l’Est de la Russie. Son voyage le conduit jusqu’en Chine, où il fait de mystérieuses rencontres.",origin:"Russie / Chine",tag:'ACTION',wiki:'The Mystery of the Dragon Seal : La Légende du dragon',playerUrl:'https://uqload.vc/embed-c5o71iottbl7.html',sourceUrls:['https://uqload.vc/embed-c5o71iottbl7.html']},
+{name:'Predator',year:1987,genre:"action aventure fantastique thriller",time:"1h 47",release:1987,lang:"TrueFrench",desc:"Le Major Dutch Schaefer et son équipe sont envoyés dans la jungle sud-américaine pour libérer des otages. Mais ils découvrent bientôt qu’une créature invisible les chasse un par un.",origin:"U.S.A.",tag:'ACTION',wiki:'Predator',playerUrl:'https://uqload.vc/embed-sndldqtqrlyd.html',sourceUrls:['https://uqload.vc/embed-sndldqtqrlyd.html']},
+{name:'L’Effaceur',year:1996,genre:"action thriller",time:"1h 55",release:1996,lang:"TrueFrench",desc:"Lee Cullen découvre que ses patrons sont impliqués dans un trafic d’armes. Pour la protéger, un agent spécialisé dans la disparition des témoins doit la faire disparaître avant que ses ennemis ne la retrouvent.",origin:"U.S.A.",tag:'ACTION',wiki:'L’Effaceur',playerUrl:'https://uqload.vc/embed-msfsc0xoyqix.html',sourceUrls:['https://uqload.vc/embed-msfsc0xoyqix.html']},
+{name:'Running Man',year:1986,genre:"action science fiction thriller",time:"1h 41",release:1986,lang:"TrueFrench",desc:"Dans une Amérique totalitaire, un policier est condamné à participer à une émission télévisée où des criminels doivent survivre aux attaques de chasseurs professionnels.",origin:"U.S.A.",tag:'ACTION',wiki:'Running Man'},
+{name:'True Lies - Le Caméléon',year:1994,genre:"action comédie thriller",time:"2h 21",release:1994,lang:"TrueFrench",desc:"Un agent secret tente de reconquérir sa femme, qui ignore tout de ses activités et le considère comme un banal mari sans relief.",origin:"U.S.A.",tag:'ACTION',wiki:'True Lies - Le Caméléon',playerUrl:'https://uqload.vc/embed-m9f3jhejyq1u.html',sourceUrls:['https://uqload.vc/embed-m9f3jhejyq1u.html']},
+{name:'Total Recall',year:1990,genre:"action aventure science fiction",time:"1h 53",release:1990,lang:"TrueFrench",desc:"En 2048, Doug Quaid rêve de Mars. Après avoir fait implanter de faux souvenirs, il découvre que sa propre identité et ses souvenirs pourraient être entièrement fabriqués.",origin:"U.S.A.",tag:'ACTION',wiki:'Total Recall',playerUrl:'https://uqload.vc/embed-4u75djpqk6tn.html',sourceUrls:['https://uqload.vc/embed-4u75djpqk6tn.html']},
+{name:'Kalidor : la légende du talisman',year:1985,genre:"action aventure fantastique",time:"1h 29",release:1985,lang:"TrueFrench",desc:"Kalidor, valeureux guerrier, s’allie à Red Sonja pour venger la mort de ses parents et empêcher la reine Gedren d’utiliser un puissant talisman pour conquérir le monde.",origin:"U.S.A. / Pays-Bas / Italie",tag:'ACTION',wiki:'Kalidor : la légende du talisman',playerUrl:'https://uqload.vc/embed-i16eoqyvqo87.html',sourceUrls:['https://uqload.vc/embed-i16eoqyvqo87.html']},
+{name:'Terminator Genisys',year:2015,genre:"action aventure science fiction thriller",time:"2h 06",release:2015,lang:"TrueFrench",desc:"John Connor envoie Kyle Reese dans le passé pour protéger Sarah Connor. Mais des événements inattendus modifient la ligne temporelle et bouleversent complètement la mission.",origin:"U.S.A.",tag:'ACTION',wiki:'Terminator Genisys',playerUrl:'https://uqload.vc/embed-uoelzln1wgh1.html',sourceUrls:['https://uqload.vc/embed-uoelzln1wgh1.html']},
+{name:'Terminator 3 : le Soulèvement des Machines',year:2003,genre:"action science fiction",time:"1h 49",release:2003,lang:"TrueFrench",desc:"Dix ans après le Jugement dernier, John Connor vit dans l’ombre. Les machines de Skynet parviennent pourtant à retrouver sa trace et déclenchent une nouvelle guerre.",origin:"U.S.A. / Allemagne / Grande-Bretagne",tag:'ACTION',wiki:'Terminator 3 : le Soulèvement des Machines',playerUrl:'https://uqload.vc/embed-i4fg76k01pa1.html',sourceUrls:['https://uqload.vc/embed-i4fg76k01pa1.html']},
+{name:'Terminator 2 : le Jugement Dernier',year:1991,genre:"action science fiction thriller",time:"2h 17",release:1991,lang:"TrueFrench",desc:"Après l’apocalypse nucléaire, les machines cherchent à éliminer John Connor. Un Terminator reprogrammé est envoyé pour protéger le jeune garçon et sa mère Sarah.",origin:"U.S.A. / France",tag:'ACTION',wiki:'Terminator 2 : le Jugement Dernier',playerUrl:'https://uqload.vc/embed-lwijd5f05lol.html',sourceUrls:['https://uqload.vc/embed-lwijd5f05lol.html']},
+{name:'Conan le barbare',year:1982,genre:"action aventure fantastique",time:"2h 09",release:1982,lang:"TrueFrench",desc:"Enfant, Conan assiste au massacre de ses parents par Thulsa Doom et est réduit en esclavage. Devenu un guerrier puissant, il cherche à se venger.",origin:"U.S.A.",tag:'ACTION',wiki:'Conan le barbare',playerUrl:'https://uqload.vc/embed-7tbz7rru9s71.html',sourceUrls:['https://uqload.vc/embed-7tbz7rru9s71.html']},
+{name:'Avengers: Infinity War',year:2018,genre:"action aventure",time:"2h 29",release:2018,lang:"TrueFrench",desc:"Les Avengers et leurs alliés doivent être prêts à tout sacrifier pour neutraliser Thanos avant que son attaque ne conduise à la destruction de l’univers.",origin:"U.S.A.",tag:'ACTION',wiki:'Avengers: Infinity War',playerUrl:'https://uqload.vc/embed-fnmy2ck6curh.html',sourceUrls:['https://uqload.vc/embed-fnmy2ck6curh.html']},
+{name:'Avengers: Endgame',year:2019,genre:"action aventure fantastique",time:"3h 01",release:2019,lang:"TrueFrench",desc:"Après que Thanos a anéanti la moitié de l’univers, les Avengers survivants resserrent les rangs et tentent de réparer les dégâts dans la conclusion de cette aventure Marvel.",origin:"U.S.A.",tag:'ACTION',wiki:'Avengers: Endgame',playerUrl:'https://uqload.vc/embed-koy5ainloafx.html',sourceUrls:['https://uqload.vc/embed-koy5ainloafx.html']},
+{name:'Avengers',year:2012,genre:"action aventure science fiction",time:"2h 23",release:2012,lang:"TrueFrench",desc:"Nick Fury, directeur du S.H.I.E.L.D., réunit une équipe de héros pour empêcher une menace de détruire le monde. Iron Man, Hulk, Thor, Captain America et leurs alliés doivent unir leurs forces.",origin:"U.S.A.",tag:'ACTION',wiki:'Avengers'},
+{name:'Le Chasseur et la reine des glaces',year:2016,genre:"action aventure fantastique",time:"1h 54",release:2016,lang:"TrueFrench",desc:"Bien avant la chute de Ravenna, sa sœur Freya est trahie et quitte son royaume. Elle devient la Reine des Glaces et forme des chasseurs pour régner sur un monde sans amour.",origin:"U.S.A.",tag:'ACTION',wiki:'Le Chasseur et la reine des glaces',playerUrl:'https://uqload.vc/embed-6x05bn9vrzvb.html',sourceUrls:['https://uqload.vc/embed-6x05bn9vrzvb.html']},
+{name:'Extraction (2020)',year:2020,genre:"action thriller",time:"1h 56",release:2020,lang:"TrueFrench",desc:"Envoyé au Bangladesh pour sauver le fils d’un trafiquant de drogue enlevé, un mercenaire découvre une mission beaucoup plus dangereuse et bouleversante qu’il ne l’imaginait.",origin:"U.S.A.",tag:'ACTION',wiki:'Extraction (2020)'},
+{name:'Horse Soldiers',year:2018,genre:"action drame guerre",time:"2h 10",release:2018,lang:"TrueFrench",desc:"Quelques semaines après les attentats du 11 septembre 2001, un détachement des Forces Spéciales est envoyé en Afghanistan pour une mission secrète et périlleuse.",origin:"U.S.A.",tag:'ACTION',wiki:'Horse Soldiers',playerUrl:'https://uqload.vc/embed-qyimuap4pcp1.html',sourceUrls:['https://uqload.vc/embed-qyimuap4pcp1.html']},
+{name:'Blackhat',year:2015,genre:"crime action thriller",time:"2h 13",release:2015,lang:"TrueFrench",desc:"Un hacker est libéré pour aider des agents américains et chinois à traquer un puissant réseau de cybercriminalité internationale.",origin:"U.S.A.",tag:'ACTION',wiki:'Blackhat',playerUrl:'https://uqload.vc/embed-acc3qq9aq6wh.html',sourceUrls:['https://uqload.vc/embed-acc3qq9aq6wh.html']},
+{name:'Rush (2013)',year:2013,genre:"action drame",time:"2h 03",release:2013,lang:"TrueFrench",desc:"Le film raconte le duel entre James Hunt et Niki Lauda, deux immenses rivaux de la Formule 1, dont la rivalité atteint son sommet pendant la saison 1976.",origin:"U.S.A. / Grande-Bretagne / Allemagne",tag:'ACTION',wiki:'Rush (2013)',playerUrl:'https://uqload.vc/embed-6z6pue7u1r71.html',sourceUrls:['https://uqload.vc/embed-6z6pue7u1r71.html']},
+{name:'Transformers : le commencement',year:2024,genre:"action animation science fiction",time:"1h 44",release:2024,lang:"TrueFrench",desc:"Sur Cybertron, Optimus Prime, accompagné d’Elita et de Bumblebee, doit affronter son ancien ami et comprendre les origines du conflit qui divisera leur planète.",origin:"U.S.A.",tag:'ACTION',wiki:'Transformers : le commencement',playerUrl:'https://uqload.vc/embed-s098emqz4uzi.html',sourceUrls:['https://uqload.vc/embed-s098emqz4uzi.html']},
+{name:'Thor : Le Monde des ténèbres',year:2013,genre:"action aventure fantastique",time:"1h 52",release:2013,lang:"TrueFrench",desc:"Thor se bat pour restaurer l’ordre dans l’univers lorsqu’une ancienne race menée par Malekith revient pour précipiter les mondes dans les ténèbres.",origin:"U.S.A.",tag:'ACTION',wiki:'Thor : Le Monde des ténèbres'},
+{name:'Thor (2011)',year:2011,genre:"action aventure fantastique",time:"1h 54",release:2011,lang:"TrueFrench",desc:"À Asgard, Thor est un guerrier puissant et arrogant. Après avoir déclenché une guerre ancestrale, il est banni sur Terre par son père Odin et doit apprendre l’humilité.",origin:"U.S.A.",tag:'ACTION',wiki:'Thor (2011)',playerUrl:'https://uqload.vc/embed-hstt633efctv.html',sourceUrls:['https://uqload.vc/embed-hstt633efctv.html']},
+{name:'Blanche-Neige et le chasseur',year:2012,genre:"action aventure fantastique",time:"2h 07",release:2012,lang:"TrueFrench",desc:"Dans cette réécriture du conte des frères Grimm, le chasseur chargé de tuer Blanche-Neige devient son protecteur et son mentor afin de vaincre la Reine maléfique.",origin:"U.S.A.",tag:'ACTION',wiki:'Blanche-Neige et le chasseur',playerUrl:'https://uqload.vc/embed-bkdap70semzg.html',sourceUrls:['https://uqload.vc/embed-bkdap70semzg.html']},
+{name:'Skin Trade',year:2015,genre:"crime action drame thriller",time:"1h 36",release:2015,lang:"TrueFrench",desc:"Nick part en Asie à la poursuite du gangster serbe responsable de l’attaque contre sa famille. Sur place, il demande l’aide d’un policier thaïlandais.",origin:"Thaïlande / Canada / U.S.A.",tag:'ACTION',wiki:'Skin Trade',playerUrl:'https://uqload.vc/embed-hpggjzmd59k6.html',sourceUrls:['https://uqload.vc/embed-hpggjzmd59k6.html']},
+{name:'Ong-bak 3 - L’ultime combat',year:2010,genre:"action aventure drame",time:"1h 35",release:2010,lang:"TrueFrench",desc:"Thaïlande, XVe siècle. Laissé pour mort, Tien est sauvé par une femme et les habitants de son village. Il doit retrouver ses forces pour venger son peuple.",origin:"Thaïlande",tag:'ACTION',wiki:'Ong-bak 3 - L’ultime combat',playerUrl:'https://uqload.vc/embed-9oaurjtc4q21.html',sourceUrls:['https://uqload.vc/embed-9oaurjtc4q21.html']},
+{name:'Ong-Bak 2, la naissance du dragon',year:2008,genre:"action arts-martiaux aventure thriller",time:"1h 38",release:2008,lang:"TrueFrench",desc:"En Thaïlande au XVe siècle, le jeune Tien est prisonnier de marchands d’esclaves. Sauvé par Chernang, il apprend les arts martiaux et prépare sa vengeance.",origin:"Thaïlande",tag:'ACTION',wiki:'Ong-Bak 2, la naissance du dragon',playerUrl:'https://uqload.vc/embed-uslvyy74v18d.html',sourceUrls:['https://uqload.vc/embed-uslvyy74v18d.html']},
+{name:'Beast',year:2022,genre:"action arts-martiaux drame",time:"1h 33",release:2022,lang:"TrueFrench",desc:"Patton James abandonne son rêve de MMA pour subvenir aux besoins de sa famille. Lorsque son frère est gravement blessé, il doit affronter son passé et reprendre le combat.",origin:"Australie",tag:'ACTION',wiki:'Beast',playerUrl:'https://uqload.vc/embed-cv7gjkjadxj3.html',sourceUrls:['https://uqload.vc/embed-cv7gjkjadxj3.html']},
+{name:'Robin des Bois (2010)',year:2010,genre:"action aventure",time:"2h 20",release:2010,lang:"TrueFrench",desc:"Au XIIIe siècle, Robin Longstride assiste à la mort de Richard Cœur de Lion. De retour en Angleterre, il découvre un royaume en proie aux conflits et devient le défenseur des plus faibles.",origin:"U.S.A. / Grande-Bretagne",tag:'ACTION',wiki:'Robin des Bois (2010)'},
+{name:'Cellule 211',year:2010,genre:"action drame thriller",time:"1h 53",release:2010,lang:"TrueFrench",desc:"Juan débute son travail dans une prison de haute sécurité un jour avant sa prise de fonction officielle. Pris dans une mutinerie, il se fait passer pour un détenu afin de survivre.",origin:"Espagne",tag:'ACTION',wiki:'Cellule 211'},
+{name:'Agents très spéciaux : Code U.N.C.L.E.',year:2015,genre:"action aventure comédie espionnage",time:"1h 56",release:2015,lang:"TrueFrench",desc:"Au début des années 60, en pleine guerre froide, l’agent de la CIA Solo et l’agent du KGB Kuryakin doivent mettre leurs rivalités de côté pour empêcher une organisation criminelle de provoquer une catastrophe.",origin:"U.S.A. / Grande-Bretagne",tag:'ACTION',wiki:'Agents très spéciaux : Code U.N.C.L.E.',playerUrl:'https://uqload.vc/embed-syjncr5g0ykf.html',sourceUrls:['https://uqload.vc/embed-syjncr5g0ykf.html']},
+{name:'Les Immortels',year:2011,genre:"action aventure drame fantastique",time:"1h 50",release:2011,lang:"TrueFrench",desc:"Dans la Grèce antique, Thésée, jeune guerrier, mène ses hommes au combat avec l’aide des dieux de l’Olympe pour affronter les Titans.",origin:"U.S.A.",tag:'ACTION',wiki:'Les Immortels',playerUrl:'https://uqload.vc/embed-lpplvtjivpyd.html',sourceUrls:['https://uqload.vc/embed-lpplvtjivpyd.html']},
+{name:'The Ministry of Ungentlemanly Warfare',year:2024,genre:"Action · Comédie",release:2024,lang:"VOSTFR",origin:"U.S.A. / Grande-Bretagne",desc:"La formation des premiers comandos britanniques après les premiers bombardements de l’Angleterre par l’armée allemande en 1939.",tag:'ACTION',wiki:'The Ministry of Ungentlemanly Warfare',playerUrl:'https://uqload.vc/embed-vjozydnehh2m.html',sourceUrls:['https://uqload.vc/embed-vjozydnehh2m.html']},
+{name:'Justice League',year:2017,genre:"Action · Science Fiction",release:2017,lang:"TrueFrench",origin:"U.S.A.",desc:"Après avoir retrouvé foi en l’humanité, Bruce Wayne, inspiré par l’altruisme de Superman, sollicite l’aide de sa nouvelle alliée, Diana Prince, pour affronter un ennemi plus redoutable.",tag:'ACTION',wiki:'Justice League',playerUrl:'https://uqload.vc/embed-qvuff5j0ndvs.html',sourceUrls:['https://uqload.vc/embed-qvuff5j0ndvs.html']},
+{name:'Man of Steel',year:2013,genre:"Action · Aventure · Fantastique",release:2013,lang:"TrueFrench",origin:"U.S.A. / Grande-Bretagne",desc:"Un petit garçon découvre qu’il possède des pouvoirs surnaturels et qu’il n’est pas né sur Terre. Plus tard, il s’engage dans un périple afin de comprendre d’où il vient et pourquoi il a été envoyé.",tag:'ACTION',wiki:'Man of Steel',playerUrl:'https://uqload.vc/embed-7e8zltyg17i8.html',sourceUrls:['https://uqload.vc/embed-7e8zltyg17i8.html']},
+{name:'Argylle',year:2024,genre:"Action · Espionnage · Thriller",release:2024,lang:"TrueFrench",origin:"U.S.A. / Grande-Bretagne",desc:"Elly Conway est l’auteure solitaire d’une série de romans d’espionnage à succès, dont l’idée du bonheur se résume à une soirée tranquille à la maison avec son ordinateur et son chat, Alfie. Mais…",tag:'ACTION',wiki:'Argylle',playerUrl:'https://uqload.vc/embed-1nf257wu9txd.html',sourceUrls:['https://uqload.vc/embed-1nf257wu9txd.html']},
+{name:'La Dernière légion',year:2007,genre:"Action · Aventure · Guerre",release:2007,lang:"TrueFrench",origin:"Grande-Bretagne / France / Italie / Tunisie",desc:"Rome, 476 après J-C : l’empire est menacé par les armées barbares. Oreste, maître de l’Empire romain d’Occident, assiste au couronnement de son fils Romulus Auguste.",tag:'ACTION',wiki:'La Dernière légion',playerUrl:'https://uqload.vc/embed-1mfueef8i5z2.html',sourceUrls:['https://uqload.vc/embed-1mfueef8i5z2.html']},
+{name:'X-Men',year:2000,genre:"Action · Fantastique · Science Fiction · Thriller",release:2000,lang:"TrueFrench",origin:"U.S.A.",desc:"1944, dans un camp de concentration. Séparé par la force de ses parents, le jeune Erik Magnus Lehnsherr se découvre d’étranges pouvoirs sous le coup de la colère : il peut contrôler les métaux.",tag:'ACTION',wiki:'X-Men'},
+{name:'Le Seigneur des Anneaux : La Communauté de l’Anneau',year:2001,genre:"Action · Aventure · Fantastique",release:2001,lang:"TrueFrench",origin:"U.S.A. / Nouvelle-Zélande",desc:"Le jeune hobbit Frodon Sacquet hérite d'un anneau. Il s'agit de l'Anneau Unique, instrument de pouvoir absolu qui permettrait à Sauron de régner sur la Terre du Milieu et de réduire…",tag:'ACTION',wiki:'Le Seigneur des Anneaux : La Communauté de l’Anneau',playerUrl:'https://uqload.vc/embed-2jtwoyw5grrf.html',sourceUrls:['https://uqload.vc/embed-2jtwoyw5grrf.html']},
+{name:'Le Hobbit : un voyage inattendu',year:2012,genre:"Action · Aventure · Fantastique",release:2012,lang:"TrueFrench",origin:"U.S.A. / Nouvelle-Zélande",desc:"Dans un voyage inattendu, Bilbon Sacquet cherche à reprendre le Royaume perdu des Nains d'Erebor, conquis par le redoutable dragon Smaug. Alors qu'il croise par hasard la route du magicien…",tag:'ACTION',wiki:'Le Hobbit : un voyage inattendu',playerUrl:'https://uqload.vc/embed-8rwrqu1bydre.html',sourceUrls:['https://uqload.vc/embed-8rwrqu1bydre.html']},
+{name:'Jane Got a Gun',year:2016,genre:"Action · Drame · Western",release:2016,lang:"TrueFrench",origin:"U.S.A.",desc:"Jane Hammond est une femme au caractère bien trempé mariée à Bill, l'un des pires bandits de la ville. Lorsque celui-ci se retourne contre son propre clan, les terribles frères Bishop, et…",tag:'ACTION',wiki:'Jane Got a Gun',playerUrl:'https://uqload.vc/embed-lfyp17mv3tc2.html',sourceUrls:['https://uqload.vc/embed-lfyp17mv3tc2.html']},
+{name:'Star Wars : Episode III - La Revanche des Sith',year:2005,genre:"Action · Aventure · Science Fiction",release:2005,lang:"TrueFrench",origin:"U.S.A.",desc:"La Guerre des Clones fait rage. Une franche hostilité oppose désormais le Chancelier Palpatine au Conseil Jedi. Anakin Skywalker, jeune Chevalier Jedi pris entre deux feux, hésite sur la conduite à…",tag:'ACTION',wiki:'Star Wars : Episode III - La Revanche des Sith'},
+{name:'Bang (2025)',year:2025,genre:"Action · Thriller",release:2025,lang:"TrueFrench",origin:"U.S.A.",desc:"Un tueur à gages impitoyable qui, après avoir échappé de peu à une tentative fatale sur sa vie, trahit son gang dans le but de trouver le pardon mais finit par devenir lui-même une cible.",tag:'ACTION',wiki:'Bang (2025)'},
+{name:'Dragon Eyes',year:2012,genre:"Action · Drame · Thriller",release:2012,lang:"TrueFrench",origin:"U.S.A.",desc:"Ryan Hong débarque dans le quartier de St Jude, gangréné par la violence extrême et omniprésente. En effet, les gangs de Dash et d'Antoine s'affrontent ici depuis des années et veulent tous…",tag:'ACTION',wiki:'Dragon Eyes',playerUrl:'https://uqload.vc/embed-7t40c3k83ygg.html',sourceUrls:['https://uqload.vc/embed-7t40c3k83ygg.html']},
+{name:'Les Rapaces',year:1998,genre:"Action · Thriller",release:1998,lang:"TrueFrench",origin:"U.S.A.",desc:"Après quatre années derrière les barreaux, Ray Mercer recouvre enfin la liberté. Sa femme Rebecca est venue l'attendre à sa sortie de prison pour le conduire à Las Vegas où elle compte demander…",tag:'ACTION',wiki:'Les Rapaces'},
+{name:'Planete hurlante',year:1996,genre:"Epouvante-horreur · Fantastique · Guerre",release:1996,lang:"TrueFrench",origin:"Canada / U.S.A.",desc:"Nous sommes en 2078 sur la planète Sirius 6B. L'Alliance, regroupement de mineurs qui s'oppose à un puissant consortium qui extrait un minerai radioactif, va devoir affronter dans sa lutte…",tag:'ACTION',wiki:'Planete hurlante',playerUrl:'https://uqload.vc/embed-i8dlqy2mzlrx.html',sourceUrls:['https://uqload.vc/embed-i8dlqy2mzlrx.html']},
+{name:'Volte/Face',year:1997,genre:"Thriller · Action · Crime · Science Fiction",release:1997,lang:"TrueFrench",origin:"U.S.A.",desc:"Castor Troy, dangereux terroriste, est tombé dans le coma à la suite d’un affrontement avec Sean Archer, agent de la CIA. Grâce à une intervention chirurgicale, Archer prend le visage de Troy pour…",tag:'ACTION',wiki:'Volte/Face',playerUrl:'https://uqload.vc/embed-n4gk03s2mzk8.html',sourceUrls:['https://uqload.vc/embed-n4gk03s2mzk8.html']},
+{name:'Les Ailes de l’enfer',year:1997,genre:"Crime · Action · Policier · Thriller",release:1997,lang:"TrueFrench",origin:"U.S.A.",desc:"Cameron Poe, accusé de meurtre, a passé huit ans derrière les barreaux. Huit années qui l'ont empêché d'assister à la naissance de sa fille. Libéré sur parole, il n'est plus séparé de…",tag:'ACTION',wiki:'Les Ailes de l’enfer',playerUrl:'https://uqload.vc/embed-f2f72g16ymoh.html',sourceUrls:['https://uqload.vc/embed-f2f72g16ymoh.html']},
+{name:'Lord of War',year:2006,genre:"Crime · Action · Drame · Thriller",release:2006,lang:"TrueFrench",origin:"U.S.A. / France",desc:"Né en Ukraine avant l'effondrement du bloc soviétique, Yuri arrive aux États-Unis avec ses parents. Il se fait passer pour un émigrant juif… Audacieux et fin négociateur, il se fait une place…",tag:'ACTION',wiki:'Lord of War',playerUrl:'https://uqload.vc/embed-6lm3fmyhzwgc.html',sourceUrls:['https://uqload.vc/embed-6lm3fmyhzwgc.html']},
+{name:'Jiu Jitsu',year:2020,genre:"Action · Arts martiaux · Science Fiction · Fantastique",release:2020,lang:"TrueFrench",origin:"U.S.A.",desc:"Les experts du jiu-jitsu du passé ont dû affronter un extraterrestre maléfique pour protéger la terre. L'avenir de l'humanité dépend d'eux……",tag:'ACTION',wiki:'Jiu Jitsu'},
+{name:'12 heures',year:2013,genre:"Action · Thriller",release:2013,lang:"TrueFrench",origin:"U.S.A.",desc:"Trahi lors d'un hold-up qui a mal tourné, Will Montgomery, un voleur surdoué, vient de purger huit ans de prison. Désormais, il est décidé à tourner la page et souhaite seulement renouer avec sa…",tag:'ACTION',wiki:'12 heures'},
+{name:'Froide Vengeance',year:2019,genre:"Action · Thriller",release:2019,lang:"TrueFrench",origin:"U.S.A.",desc:"Un ancien responsable d'émeutes est libéré après vingt-deux ans de prison pour un crime qu'il n'a pas commis. Assoiffé de vengeance, il se lance dans la recherche de ceux qui lui ont…",tag:'ACTION',wiki:'Froide Vengeance',playerUrl:'https://uqload.vc/embed-zngyshd7zij2.html',sourceUrls:['https://uqload.vc/embed-zngyshd7zij2.html']},
+{name:'Le Chaos',year:2014,genre:"Action · Science Fiction · Thriller",release:2014,lang:"TrueFrench",origin:"U.S.A.",desc:"Un petit groupe de personnes tente de survivre après la disparition de millions de gens dans le monde.",tag:'ACTION',wiki:'Le Chaos',playerUrl:'https://uqload.vc/embed-gfc5yu21j3cw.html',sourceUrls:['https://uqload.vc/embed-gfc5yu21j3cw.html']},
+{name:'The Humanity Bureau : Menace sur l’humanité',year:2019,genre:"Action · Science Fiction · Thriller",release:2019,lang:"TrueFrench",origin:"Canada",desc:"En 2030, le réchauffement climatique a fait des ravages dans le Midwest américain. En essayant de stopper la récession économique, une agence gouvernementale, le Bureau de l'Humanité, chasse les…",tag:'ACTION',wiki:'The Humanity Bureau : Menace sur l’humanité'},
+{name:'Code 211',year:2018,genre:"Action · Drame",release:2018,lang:"TrueFrench",origin:"U.S.A.",desc:"Un policier se retrouve pris au piège dans un braquage de banque. Il va tout faire pour stopper ces criminels surarmés et sauver les otages.",tag:'ACTION',wiki:'Code 211'},
+{name:'Un talent en or massif',year:2022,genre:"Crime · Action · Comédie",release:2022,lang:"TrueFrench",origin:"U.S.A.",desc:"Nick Cage est maintenant un acteur endetté qui attend le grand rôle qui relancera sa carrière. Pour rembourser une partie de ses dettes, son agent lui propose de se rendre à l’anniversaire d’un…",tag:'ACTION',wiki:'Un talent en or massif',playerUrl:'https://uqload.vc/embed-e2aheekmav9q.html',sourceUrls:['https://uqload.vc/embed-e2aheekmav9q.html']},
+{name:'L’Honneur du Dragon 2',year:2013,genre:"Action · Arts martiaux",release:2013,lang:"TrueFrench",origin:"Thaïlande",desc:"Une fois encore, l'éléphant de Kham a été enlevé, obligeant ce dernier à se battre pour le trouver. Il devra cette fois faire face à des combattants plus redoutables que ceux de la dernière fois.",tag:'ACTION',wiki:'L’Honneur du Dragon 2'},
+{name:'L’honneur du dragon',year:2006,genre:"Action · Arts martiaux",release:2006,lang:"TrueFrench",origin:"Thaïlande",desc:"Quand il était petit, Kham n'avait que son père et ses éléphants pour toute famille. À l'approche du Festival de l'eau de Songkran, le père de Kham est convaincu que son éléphant…",tag:'ACTION',wiki:'L’honneur du dragon'},
+{name:'La Filature',year:2016,genre:"Crime · Action · Aventure · Comédie",release:2016,lang:"TrueFrench",origin:"Chine / Hong Kong / U.S.A.",desc:"Pour arrêter le patron de la pègre qui a tué son partenaire et enlevé la fille de celui-ci, un policier de Hong Kong fait équipe avec un Américain accro au jeu et futé.",tag:'ACTION',wiki:'La Filature',playerUrl:'https://uqload.vc/embed-h20zhic6rqdf.html',sourceUrls:['https://uqload.vc/embed-h20zhic6rqdf.html']},
+{name:'Action Point',year:2018,genre:"Action · Comédie",release:2018,lang:"TrueFrench",origin:"U.S.A.",desc:"Que ce serait-il passé si Johnny Knoxville et ses comparses de Jackass avaient ouvert leur propre parc d'attractions ?...",tag:'ACTION',wiki:'Action Point',playerUrl:'https://uqload.vc/embed-y868j2ilx8vl.html',sourceUrls:['https://uqload.vc/embed-y868j2ilx8vl.html']},
+{name:'Nobody 2',year:2025,genre:"Action · Comédie",release:2025,lang:"TrueFrench",origin:"U.S.A.",desc:"Après avoir décidé d'emmener sa famille dans une ville touristique pour s'amuser au soleil, une rencontre sans gravité avec des brutes locales précipite la famille dans la ligne de mire…",tag:'ACTION',wiki:'Nobody 2',playerUrl:'https://uqload.vc/embed-bziroq6uoe5p.html',sourceUrls:['https://uqload.vc/embed-bziroq6uoe5p.html']},
+{name:'Gladiator',year:2000,genre:"Action · Aventure · Drame · Guerre",release:2000,lang:"TrueFrench",origin:"U.S.A. / Grande-Bretagne",desc:"Le général romain Maximus est le plus fidèle soutien de l'empereur Marc Aurèle, qu'il a conduit de victoire en victoire avec une bravoure et un dévouement exemplaires. Jaloux du prestige de…",tag:'ACTION',wiki:'Gladiator',playerUrl:'https://uqload.vc/embed-017ov8fpur87.html',sourceUrls:['https://uqload.vc/embed-017ov8fpur87.html']},
+{name:'Benjamin Gates et le Livre des Secrets',year:2008,genre:"Action · Aventure",release:2008,lang:"TrueFrench",origin:"U.S.A.",desc:"Lorsque réapparaît une page manquante du journal de John Wilkes Booth, l'assassin d'Abraham Lincoln, tout indique que l'arrière-arrière-grand-père de Ben a joué un rôle clé dans la…",tag:'ACTION',wiki:'Benjamin Gates et le Livre des Secrets',playerUrl:'https://uqload.vc/embed-z02ykac1w1yg.html',sourceUrls:['https://uqload.vc/embed-z02ykac1w1yg.html']},
+{name:'Bait',year:2012,genre:"Action · Epouvante-horreur",release:2012,lang:"TrueFrench",origin:"Australie / Singapour",desc:"Après qu'un tsunami a frappé une ville balnéaire, plusieurs personnes se retrouvent piégées dans un supermarché inondé, alors qu'un requin rôde dans les lieux.",tag:'ACTION',wiki:'Bait',playerUrl:'https://uqload.vc/embed-9axq7o0yieor.html',sourceUrls:['https://uqload.vc/embed-9axq7o0yieor.html']},
+{name:'Kick-Ass 2',year:2013,genre:"Action · Comédie",release:2013,lang:"TrueFrench",origin:"U.S.A. / Grande-Bretagne",desc:"Kick-Ass, Hit Girl et Red Mist sont de retour pour le second volet de l'irrévérencieux pastiche de film de super-héros Kick-Ass 2. L'audace insensée de Kick-Ass a inspiré une pléthore de…",tag:'ACTION',wiki:'Kick-Ass 2',playerUrl:'https://uqload.vc/embed-b4nbix8t16tj.html',sourceUrls:['https://uqload.vc/embed-b4nbix8t16tj.html']},
+{name:'Kick-Ass',year:2010,genre:"Action · Drame",release:2010,lang:"TrueFrench",origin:"U.S.A. / Grande-Bretagne",desc:"Dave Lizewski est un adolescent gavé de comics qui ne vit que pour ce monde de super-héros et d'incroyables aventures. Décidé à vivre son obsession jusque dans la réalité, il se choisit un nom…",tag:'ACTION',wiki:'Kick-Ass',playerUrl:'https://uqload.vc/embed-pxxf8s0a70tm.html',sourceUrls:['https://uqload.vc/embed-pxxf8s0a70tm.html']},
+{name:'Sans Issue',year:2012,genre:"Action · Thriller",release:2012,lang:"TrueFrench",origin:"U.S.A. / Espagne",desc:"Will Shaw part en Espagne rejoindre sa famille pour une croisière. À son arrivée, il découvre un bateau vide et des traces de sang. Il se retrouve bientôt au cœur d'une affaire d'espionnage et de kidnapping.",tag:'ACTION',wiki:'Sans Issue',playerUrl:'https://uqload.vc/embed-s8v1s5j6ynyh.html',sourceUrls:['https://uqload.vc/embed-s8v1s5j6ynyh.html']}
+];
+// Films retirés du catalogue à la demande de l'utilisateur
+const FILMS_SUPPRIMES = new Set(['I Love Boosters','Permis de Conduire','Folichonneries']);
+films = films.filter(f => !FILMS_SUPPRIMES.has(f.name));
+const posterMap = {
+  "Total Recall": "https://media.senscritique.com/media/000007250921/0/total_recall.jpg",
+  "Kalidor : la légende du talisman": "https://media.senscritique.com/media/000016942616/0/kalidor_la_legende_du_talisman.jpg",
+  "Terminator Genisys": "https://media.senscritique.com/media/000007685460/0/terminator_genisys.png",
+  "Terminator 3 : le Soulèvement des Machines": "https://media.senscritique.com/media/000005021781/0/terminator_3_le_soulevement_des_machines.jpg",
+  "Terminator 2 : le Jugement Dernier": "https://media.senscritique.com/media/000005455183/0/terminator_2_le_jugement_dernier.jpg",
+  "Conan le barbare": "https://media.senscritique.com/media/000008270185/0/conan_le_barbare.jpg",
+  "Enola Holmes 3": "https://www.impawards.com/2026/posters/enola_holmes_three.jpg",
+  "Star Wars: The Mandalorian and Grogu": "https://m.media-amazon.com/images/M/MV5BODI2N2Q0NDQtNjY1MS00M2Y0LWIwYzAtZGU1NmM0MTJjZjU4XkEyXkFqcGc%40._V1_.jpg",
+  "Blades of the Guardians": "https://cityonfire.com/wp-content/uploads/2025/03/Blades-of-the-guardians-212x300.jpg",
+  "Citizen Vigilante": "https://posters.onesheet.org/posters/current/2026/citizen-vigilante-2026-us-theatrical.jpg",
+  "Boudica: Queen of War": "https://static2.tribute.ca/poster/660x980/boudica-queen-of-war-172925.jpg",
+  "Lucky Strike": "https://image.tmdb.org/t/p/w780/fBniztkLes0lA2CD50j4iWAwX5y.jpg",
+  "Night Nurse": "https://image.tmdb.org/t/p/w780/cvj1d5avMYRxK8FVpq07UqLrcbZ.jpg",
+  "The Birthday Party": "https://image.tmdb.org/t/p/w780/83lV38lQ96UxSNbAdlPBCCcLYl2.jpg",
+  "Back to the 90s": "https://image.tmdb.org/t/p/w780/2T0j25ofU6aUei6J6ek2hlTL1wc.jpg",
+  "Nightborn": "https://image.tmdb.org/t/p/w780/cF1g9qtuRyATaZ75O6zRop2zmfZ.jpg",
+  "Yellow Mirror": "https://image.tmdb.org/t/p/w780/ePafPnFV817iSOs9I6EB805EGX2.jpg",
+  "The Last Sunrise": "https://image.tmdb.org/t/p/w780/myJdCnJEsFsMmjKhKopQ32lkcP3.jpg",
+  "Mutiny": "https://fr.web.img4.acsta.net/c_310_420/img/f6/c9/f6c9bc96111477a457737412606a7dd7.jpg",
+  "Supergirl": "https://encine.be/storage/posters/poster-NzeSTFNrlYmacfZ7RbqY_1600.jpg",
+  "Disclosure Day": "https://ams3.digitaloceanspaces.com/footlambert/posters/d5a7982bf7/bd39a87ec463/original.jpg",
+  "Mortal Kombat II": "https://fr.web.img2.acsta.net/r_1280_720/img/a6/f5/a6f5f6519f6e4423b39fb2d6e23531df.jpg",
+  "Spider-Man: Brand New Day": "https://image.tmdb.org/t/p/w780/yyB2VJEW3an2xCdcYCPQhn9QERR.jpg",
+  "The Odyssey": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+  "On l’appelait Robin des Bois": "https://image.tmdb.org/t/p/w780/92Tsfx7SFafOqWsotvrlJbHyehd.jpg",
+  "Michael": "https://image.tmdb.org/t/p/w780/3Qud19bBUrrJAzy0Ilm8gRJlJXP.jpg",
+  "Les Spécialistes": "https://image.tmdb.org/t/p/w780/sF1EGQWrUghvtD3VpqgsBACHr9u.jpg",
+  "Marsupilami": "https://fr.web.img6.acsta.net/c_600_800/img/b2/cb/b2cb998b62863d43cdd9a5f49c5ea4e6.jpg",
+  "L’Odyssée": "https://fr.web.img5.acsta.net/c_600_800/img/a7/70/a770a3822c90a655af05961cda53f3a1.jpg",
+  "Projet dernière chance": "https://fr.web.img2.acsta.net/c_600_800/img/99/2a/992abd2d7fd54a1c00db5b43aee847d0.jpg",
+  "Super Mario Galaxy Le Film": "https://fr.web.img3.acsta.net/r_1280_720/img/c3/48/c348f4c0a4f5000ce0753e21d46f8120.jpg",
+  "Le Réveil de la Momie": "https://fr.web.img5.acsta.net/c_600_800/img/ee/36/ee363e4628f63077dc8bf60babf12514.jpg",
+  "Evil Dead Burn": "https://fr.web.img6.acsta.net/c_600_800/img/b7/b2/b7b2ba851dae7e23fdf1f8ef35704d9f.jpg",
+  "Wildcat": "https://images3.cinefil.com/movies/1271331.webp?class=posterxl",
+  "Mauvaise Pioche": "https://fr.web.img5.acsta.net/c_600_800/img/f1/7f/f17f79f743742e1743f00001d4d14003.jpg",
+  "La Bouche du Diable": "https://fr.web.img3.acsta.net/c_600_800/img/18/57/18570cec92daa94720daaeed95c91fe2.jpg",
+  "Dolly": "https://fr.web.img2.acsta.net/c_600_800/img/7e/3a/7e3ab2a8a72e51a1f6b4e0a398ae0d98.jpg",
+  "Compostelle": "https://fr.web.img4.acsta.net/c_600_800/img/5b/3d/5b3d2c4e0f58bab97b979611615ea321.jpg",
+  "Soulm8te": "https://static2.showtimes.com/poster/660x980/soulm8te-290169.jpg",
+  "Rose of Nevada": "https://static2.showtimes.com/poster/660x980/rose-of-nevada-288929.jpg",
+  "The Gentleman Thief": "https://cdn.bingebase.com/movies/179752/posters/oMutDMODnbCZf46w0dK4wncQmDB.webp",
+  "Couples Weekend": "https://static2.showtimes.com/poster/660x980/couples-weekend-288109.jpg",
+  "Savage House": "https://static1.showtimes.com/poster/660x980/savage-house-287948.jpg",
+  "Mikaela": "https://cdn.bingebase.com/movies/5360/posters/jm6lNbpmKcxX6M0pieaKhP6hs3w.webp",
+  "Storm on Sesame Street": "https://pics.filmaffinity.com/Sesame_Street_Serie_de_TV-769566216-large.jpg",
+  "Gretel And Hansel": "https://static2.tribute.ca/poster/660x980/gretel-hansel-142789.jpg",
+  "La Corde au cou": "https://images2.cinefil.com/movies/1305706.webp",
+  "Moi, quand je me réincarne en Slime, le film : les larmes de la mer azur": "https://media.senscritique.com/media/000022917830/0/moi_quand_je_me_reincarne_en_slime_le_film_tears_of_the_azure_sea.jpg",
+  "Demon Slayer: Kimetsu no Yaiba La Forteresse Infinie Film 1": "https://images.weserv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2FaFRDH3P7TX61FVGpaLhKr6QiOC1.jpg",
+  "Snoopy présente : Rien ne vaut son chez-soi": "https://www.filmbol.org/images/gallery/w780/tt42839367_p1.webp",
+  "The Travellers": "https://www.sonypictures.com/sites/default/files/styles/max_860x460/public/title-key-art/thetravellers_onesheet_1400x2100.jpg?itok=Kg4V74ur",
+  "Oklahoma Honey": "https://images.weserv.nl/?url=https%3A%2F%2Fsubstackcdn.com%2Fimage%2Ffetch%2F%24s_%21zgDw%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep%2Fhttps%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f8df63c-7b6b-4481-982d-6c4c9dbacd86_1080x1440.jpeg",
+  "L'Arnaqueuse": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.cinehorizons.net%2Fsites%2Fdefault%2Ffiles%2Faffiches%2F1417723589-larnaqueuse.jpg",
+  "Mata": "https://www.impawards.com/intl/france/2026/posters/mata.jpg",
+  "Ghost in the Cell": "https://m.media-amazon.com/images/M/MV5BMGQxM2Q5NmQtZTE3Ni00N2U5LWE2NGQtOTQyM2M1ODU3Y2RhXkEyXkFqcGc%40._V1_.jpg",
+  "Irréalisable": "https://images.weserv.nl/?url=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F47f5d4_86a5e4787186410a8802cbbbf5ff017c~mv2.jpg%2Fv1%2Ffill%2Fw_380%2Ch_475%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto%2FIRREALISABLE%2520AFFICHE%2520DEF%2520A4.jpg",
+  "Scream 7": "https://www.impawards.com/2026/posters/scream_seven.jpg",
+  "Avatar : de feu et de cendres": "https://images.weserv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2F5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+  "Peaky Blinders : l'Immortel": "https://cdn.moviefone.com/admin-uploads/highlights/images/peaky-blinders-the-immortal-man-official-poster_1764955272.webp?d=1280x720&q=50",
+  "Mercy": "https://pics.filmaffinity.com/mercy-236747908-large.jpg",
+  "Zootopie 2": "https://storage.googleapis.com/endurance-apps-liip/media/cache/disney_no_filter_grid_fs/68de9d7d16afc0b077016d28",
+  "Chien 51": "https://m.media-amazon.com/images/M/MV5BOGEzZGJjYjQtZGE5YS00Yzk2LTllNjEtZGFmMjc3N2VmZmYyXkEyXkFqcGc%40._V1_.jpg",
+  "Insaisissables 3": "https://static.boxofficeturkiye.com/movie/poster/full/74/2017674-75950206.jpg",
+  "Kaamelott - Deuxième volet, partie 1": "https://www.impawards.com/intl/france/2025/posters/kaamelott__deuxieme_volet.jpg",
+  "Primate": "https://www.impawards.com/2026/posters/primate_ver6.jpg",
+  "The Running Man": "https://media.senscritique.com/media/000023061788/0/running_man.jpg",
+  "Tom Clancy’s Jack Ryan : Guerre Fantôme": "https://media.senscritique.com/media/000023643363/0/jack_ryan_guerre_fantome.jpg",
+  "The Punisher : One Last Kill": "https://media.senscritique.com/media/000023652446/0/the_punisher_one_last_kill.jpg",
+  "Wedding Nightmare : deuxième partie": "https://media.senscritique.com/media/000023357596/0/wedding_nightmare_deuxieme_partie.jpg",
+  "Jumpers Hoppers": "https://fr.web.img6.acsta.net/c_600_800/img/0f/fc/0ffc959e65d43de4e4e3a40b80123e9e.jpg",
+  "La fin d’Oak Street": "https://media.senscritique.com/media/000023657742/0/la_fin_d_oak_street.jpg",
+  "Freaks Of Nature": "https://media.senscritique.com/media/000018329914/0/freaks_of_nature.jpg",
+  "Bagarre": "https://media.senscritique.com/media/000023607958/0/bagarre.jpg",
+  "The Criminals": "https://media.senscritique.com/media/000023453159/0/the_criminals.jpg",
+  "Folichonneries": "https://media.senscritique.com/media/000023052044/0/folichonneries.jpg",
+  "En garde": "https://media.senscritique.com/media/000023293085/0/en_garde.jpg",
+  "Pillion": "https://images.savoysystems.co.uk/GCL/4410212.jpg",
+  "La Danse des renards": "https://media.senscritique.com/media/000022852599/0/la_danse_des_renards.jpg",
+  "Sur la route d’Omaha": "https://media.senscritique.com/media/000023500080/0/sur_la_route_d_omaha.jpg",
+  "Wrong Husband": "https://images.plex.tv/photo?size=large-1280&url=https%3A%2F%2Fmetadata-static.plex.tv%2F3%2Fgracenote%2F395dd2bff0d1823763844d844949285b.jpg",
+  "Little Brother": "https://media.senscritique.com/media/000023812937/0/little_brother.jpg",
+  "Inès Reg – On est toujours ensemble": "https://www.talticket.com/media/cache/facebook_opengraph/images/cfa176f40527b2b96666cd2d995c7a8f7323b89b.jpg",
+  "Confidante": "https://media.senscritique.com/media/000022942995/0/confidente.jpg",
+  "L’Ultime Héritier": "https://media.senscritique.com/media/000023313867/0/l_ultime_heritier.jpg",
+  "The Loved One": "https://image.tmdb.org/t/p/w780/rVZQcphJRWVJgQZtWztrauB6Fwe.jpg",
+  "Lost Ranger": "https://programstore.tv/wp-content/uploads/2026/04/LOST_RANGER_694x1000.jpg",
+  "George A. Romero’s Resident Evil": "https://www.impawards.com/2025/posters/george_a_romeros_resident_evil.jpg",
+  "Greenland Migration": "https://flemmix.men/checkimg.php?urli=stream-vf-05ad-fd87-38de-4f51.jpg",
+  "Que justice soit faite": "https://flemmix.men/checkimg.php?urli=stream-vf-ac1a-cdc0-141b-4308.jpg",
+  "Greenland - Le dernier refuge": "https://flemmix.men/checkimg.php?urli=stream-vf-3489-a6d0-d61f-47ec.jpg",
+  "Keepers": "https://flemmix.men/checkimg.php?urli=stream-vf-da15-d4c6-b839-4463.jpg",
+  "Dragons (2025)": "https://flemmix.men/checkimg.php?urli=stream-vf-20a5-f1ba-9cc7-4dc3.jpg",
+  "Hunter Killer": "https://flemmix.men/checkimg.php?urli=stream-vf-4459-79dd-453f-4820.jpg",
+  "La Chute de Londres": "https://flemmix.men/checkimg.php?urli=stream-vf-daaa-6a70-2e62-4c3a.jpg",
+  "La Chute de la Maison Blanche": "https://flemmix.men/checkimg.php?urli=stream-vf-0831-f4d9-790b-40db.jpg",
+  "Criminal Squad : Pantera": "https://flemmix.men/checkimg.php?urli=stream-vf-15df-6100-9ed9-4f2b.jpg",
+  "Mayday": "https://flemmix.men/checkimg.php?urli=stream-vf-fb38-08df-792e-4290.jpg",
+  "K-19 : le piège des profondeurs": "https://flemmix.men/checkimg.php?urli=stream-vf-1b59-a9bd-bdf8-4894.jpg",
+  "Darkman": "https://flemmix.men/checkimg.php?urli=stream-vf-88f9-fa49-c2e3-4353.jpg",
+  "Men in Black: International": "https://flemmix.men/checkimg.php?urli=stream-vf-dc9d-686b-3788-4a82.jpg",
+  "Taken": "https://www.impawards.com/2009/posters/taken.jpg",
+  "Retribution": "https://flemmix.men/checkimg.php?urli=stream-vf-a469-6e9d-e847-4576.jpg",
+  "Y a-t-il un flic pour sauver le monde ?": "https://flemmix.men/checkimg.php?urli=stream-vf-3968-d305-6bd8-4c23.jpg",
+  "Avengers: Infinity War": "https://flemmix.men/checkimg.php?urli=stream-vf-8dd7-d28a-e00a-4828.jpg",
+  "Avengers: Endgame": "https://flemmix.men/checkimg.php?urli=stream-vf-181b-0c0e-37d6-47b0.jpg",
+  "Avengers": "https://flemmix.men/checkimg.php?urli=stream-vf-24c9-7fb4-84e6-47fe.jpg",
+  "Le Chasseur et la reine des glaces": "https://flemmix.men/checkimg.php?urli=stream-vf-17e6-676e-2c4e-443c.jpg",
+  "Extraction (2020)": "https://flemmix.men/checkimg.php?urli=stream-vf-bd00-a3fc-c588-4fe6.jpg",
+  "Horse Soldiers": "https://flemmix.men/checkimg.php?urli=stream-vf-6c41-7a06-ccee-4a1d.jpg",
+  "Blackhat": "https://flemmix.men/checkimg.php?urli=stream-vf-89b1-132e-0c9a-4bf6.jpg",
+  "Transformers : le commencement": "https://flemmix.men/checkimg.php?urli=stream-vf-e3ec-6e5e-f3cf-491f.jpg",
+  "Thor : Le Monde des ténèbres": "https://flemmix.men/checkimg.php?urli=stream-vf-10f6-9f51-0910-464b.jpg",
+  "Thor (2011)": "https://flemmix.men/checkimg.php?urli=stream-vf-5bbf-6f09-fd27-44ac.jpg",
+  "Balls Up": "https://www.impawards.com/2026/posters/balls_up.jpg",
+  "28 Ans Plus Tard : Le Temple Des Morts": "https://www.impawards.com/2026/posters/twenty_eight_years_later_the_bone_temple.jpg",
+  "Une pour toutes": "https://media.senscritique.com/media/000004699494/0/une_pour_toutes.jpg",
+  "Mission : Impossible – The Final Reckoning": "https://www.impawards.com/2025/posters/mission_impossible__the_final_reckoning.jpg",
+  "RockNRolla": "https://www.impawards.com/2008/posters/rocknrolla_ver2.jpg",
+  "Killer Elite (2011)": "https://www.impawards.com/2011/posters/killer_elite.jpg",
+  "Hyper tension 2": "https://www.impawards.com/2009/posters/crank_two.jpg",
+  "Shelter": "https://www.impawards.com/2026/posters/shelter.jpg",
+  "Chaos (2006)": "https://www.impawards.com/2006/posters/chaos.jpg",
+  "Joker": "https://www.impawards.com/2015/posters/wild_card.jpg",
+  "En eaux très troubles": "https://www.impawards.com/2023/posters/meg_two_the_trench.jpg",
+  "Expend4bles": "https://www.impawards.com/2023/posters/expend4bles.jpg",
+  "Expendables 3": "https://www.impawards.com/2014/posters/expendables_three.jpg",
+  "Expendables 2 : Unité Spéciale": "https://www.impawards.com/2012/posters/expendables_two.jpg",
+  "Expendables : unité spéciale": "https://www.impawards.com/2010/posters/expendables.jpg",
+  "Parker": "https://www.impawards.com/2013/posters/parker.jpg",
+  "Un homme en colère": "https://www.impawards.com/2021/posters/wrath_of_man.jpg",
+  "The Beekeeper": "https://www.impawards.com/2024/posters/beekeeper.jpg",
+  "Kingdom of Heaven": "https://www.impawards.com/2005/posters/kingdom_of_heaven.jpg",
+  "Commando": "https://www.impawards.com/1985/posters/commando.jpg",
+  "Le Contrat (1986)": "https://www.impawards.com/1986/posters/raw_deal.jpg",
+  "Last Action Hero": "https://www.impawards.com/1993/posters/last_action_hero_ver1.jpg",
+  "The Mystery of the Dragon Seal : La Légende du dragon": "https://media.senscritique.com/media/000016625223/0/the_mystery_of_the_dragon_seal_la_legende_du_dragon.jpg",
+  "Predator": "https://www.impawards.com/1987/posters/predator.jpg",
+  "L’Effaceur": "https://www.impawards.com/1996/posters/eraser_ver1.jpg",
+  "Running Man": "https://www.impawards.com/1987/posters/running_man.jpg",
+  "True Lies - Le Caméléon": "https://www.impawards.com/1994/posters/true_lies.jpg",
+  "Cellule 211": "https://fr.web.img2.acsta.net/c_310_420/medias/nmedia/18/67/28/11/19474438.jpg",
+  "Agents très spéciaux : Code U.N.C.L.E.": "https://fr.web.img3.acsta.net/c_310_420/pictures/15/07/30/13/01/266725.jpg",
+  "Les Immortels": "https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/83/63/36/19844611.jpg",
+  "The Ministry of Ungentlemanly Warfare": "https://fr.web.img4.acsta.net/c_310_420/pictures/24/02/28/09/29/2558592.jpg",
+  "Justice League": "https://fr.web.img5.acsta.net/c_310_420/pictures/17/10/31/10/29/4837499.jpg",
+  "Man of Steel": "https://fr.web.img6.acsta.net/c_310_420/pictures/210/081/21008110_20130524125237634.jpg",
+  "Argylle": "https://fr.web.img3.acsta.net/c_310_420/pictures/24/01/22/11/34/5834555.jpg",
+  "La Dernière légion": "https://fr.web.img2.acsta.net/c_310_420/medias/nmedia/18/64/44/50/18779538.jpg",
+  "X-Men": "https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/66/09/04/19089552.jpg",
+  "Le Seigneur des Anneaux : La Communauté de l’Anneau": "https://fr.web.img5.acsta.net/c_310_420/medias/nmedia/00/02/16/27/69218096_af.jpg",
+};
+
+// Source unique des affiches : aucune table de patch séparée.
+const posterNameKey = (name) => String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'").trim().toLowerCase();
+const posterIndex = new Map(Object.entries(posterMap).map(([name,url]) => [posterNameKey(name), url]));
+const resolvePoster = (film) => film && (film.poster || posterIndex.get(posterNameKey(film.name)) || '');
+films.forEach(f => { const url = resolvePoster(f); if(url) f.poster = url; });
+films.forEach(f=>{if(posterMap[f.name] || posterMap[f.name.replace('’','\'')])f.poster=posterMap[f.name] || posterMap[f.name.replace('’','\'')]});
+
+(function(){
+  try{
+    const missing = films.filter(f => !resolvePoster(f).trim()).map(f => f.name);
+    console.info('[NoxStream] Affiches manquantes résolues par recherche visuelle :', missing.length, missing);
+  }catch(e){}
+})();
+const grid=document.getElementById('grid');
+const cache={};
+
+const detailPosterMap={"Mutiny": "https://www.impawards.com/2026/posters/mutiny_ver5.jpg", "Supergirl": "https://encine.be/storage/posters/poster-NzeSTFNrlYmacfZ7RbqY_1600.jpg", "Disclosure Day": "https://ams3.digitaloceanspaces.com/footlambert/posters/d5a7982bf7/bd39a87ec463/original.jpg", "Mortal Kombat II": "https://fr.web.img2.acsta.net/r_1280_720/img/a6/f5/a6f5f6519f6e4423b39fb2d6e23531df.jpg", "Spider-Man: Brand New Day": "https://image.tmdb.org/t/p/w780/yyB2VJEW3an2xCdcYCPQhn9QERR.jpg", "The Odyssey": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg", "On l’appelait Robin des Bois": "https://image.tmdb.org/t/p/w780/92Tsfx7SFafOqWsotvrlJbHyehd.jpg", "Michael": "https://image.tmdb.org/t/p/w780/3Qud19bBUrrJAzy0Ilm8gRJlJXP.jpg", "Les Spécialistes": "https://image.tmdb.org/t/p/w780/sF1EGQWrUghvtD3VpqgsBACHr9u.jpg", "Marsupilami": "https://fr.web.img6.acsta.net/c_600_800/img/b2/cb/b2cb998b62863d43cdd9a5f49c5ea4e6.jpg", "L’Odyssée": "https://fr.web.img5.acsta.net/c_600_800/img/a7/70/a770a3822c90a655af05961cda53f3a1.jpg", "Projet dernière chance": "https://fr.web.img2.acsta.net/c_600_800/img/99/2a/992abd2d7fd54a1c00db5b43aee847d0.jpg", "Super Mario Galaxy Le Film": "https://media.the-numbers.com/images/movie-posters/Super-Mario-Galaxy-Movie-The-%282026%29.jpg", "Le Réveil de la Momie": "https://fr.web.img5.acsta.net/c_600_800/img/ee/36/ee363e4628f63077dc8bf60babf12514.jpg", "Evil Dead Burn": "https://fr.web.img6.acsta.net/c_600_800/img/b7/b2/b7b2ba851dae7e23fdf1f8ef35704d9f.jpg", "Wildcat": "https://images3.cinefil.com/movies/1271331.webp?class=posterxl", "Mauvaise Pioche": "https://fr.web.img5.acsta.net/c_600_800/img/f1/7f/f17f79f743742e1743f00001d4d14003.jpg", "La Bouche du Diable": "https://fr.web.img3.acsta.net/c_600_800/img/18/57/18570cec92daa94720daaeed95c91fe2.jpg", "Dolly": "https://fr.web.img2.acsta.net/c_600_800/img/7e/3a/7e3ab2a8a72e51a1f6b4e0a398ae0d98.jpg", "Compostelle": "https://fr.web.img4.acsta.net/c_600_800/img/5b/3d/5b3d2c4e0f58bab97b979611615ea321.jpg", "The Last Sunrise": "https://image.tmdb.org/t/p/w780/myJdCnJEsFsMmjKhKopQ32lkcP3.jpg", "Yellow Mirror": "https://image.tmdb.org/t/p/w780/ePafPnFV817iSOs9I6EB805EGX2.jpg", "Nightborn": "https://image.tmdb.org/t/p/w780/cF1g9qtuRyATaZ75O6zRop2zmfZ.jpg", "Back to the 90s": "https://image.tmdb.org/t/p/w780/2T0j25ofU6aUei6J6ek2hlTL1wc.jpg", "The Birthday Party": "https://image.tmdb.org/t/p/w780/83lV38lQ96UxSNbAdlPBCCcLYl2.jpg", "Night Nurse": "https://image.tmdb.org/t/p/w780/cvj1d5avMYRxK8FVpq07UqLrcbZ.jpg", "Lucky Strike": "https://image.tmdb.org/t/p/w780/fBniztkLes0lA2CD50j4iWAwX5y.jpg", "Soulm8te": "https://static2.showtimes.com/poster/660x980/soulm8te-290169.jpg", "Rose of Nevada": "https://static2.showtimes.com/poster/660x980/rose-of-nevada-288929.jpg", "The Gentleman Thief": "https://cdn.bingebase.com/movies/179752/posters/oMutDMODnbCZf46w0dK4wncQmDB.webp", "Couples Weekend": "https://static2.showtimes.com/poster/660x980/couples-weekend-288109.jpg", "Savage House": "https://static1.showtimes.com/poster/660x980/savage-house-287948.jpg", "Mikaela": "https://cdn.bingebase.com/movies/5360/posters/jm6lNbpmKcxX6M0pieaKhP6hs3w.webp", "Storm on Sesame Street": "https://pics.filmaffinity.com/Sesame_Street_Serie_de_TV-769566216-large.jpg", "Gretel And Hansel": "https://www.impawards.com/2020/posters/gretel_and_hansel.jpg", "La Corde au cou": "https://images2.cinefil.com/movies/1305706.webp", "Moi, quand je me réincarne en Slime, le film : les larmes de la mer azur": "https://media.senscritique.com/media/000022917830/0/moi_quand_je_me_reincarne_en_slime_le_film_tears_of_the_azure_sea.jpg", "Demon Slayer: Kimetsu no Yaiba La Forteresse Infinie Film 1": "https://images.weserv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2FaFRDH3P7TX61FVGpaLhKr6QiOC1.jpg", "Snoopy présente : Rien ne vaut son chez-soi": "https://www.filmbol.org/images/gallery/w780/tt42839367_p1.webp", "The Travellers": "https://www.sonypictures.com/sites/default/files/styles/max_860x460/public/title-key-art/thetravellers_onesheet_1400x2100.jpg?itok=Kg4V74ur", "Oklahoma Honey": "https://images.weserv.nl/?url=https%3A%2F%2Fsubstackcdn.com%2Fimage%2Ffetch%2F%24s_%21zgDw%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep%2Fhttps%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f8df63c-7b6b-4481-982d-6c4c9dbacd86_1080x1440.jpeg", "L'Arnaqueuse": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.cinehorizons.net%2Fsites%2Fdefault%2Ffiles%2Faffiches%2F1417723589-larnaqueuse.jpg", "Mata": "https://www.impawards.com/intl/france/2026/posters/mata.jpg", "Ghost in the Cell": "https://media.senscritique.com/media/000023982907/0/ghost_in_the_cell.jpg", "Irréalisable": "https://images.weserv.nl/?url=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F47f5d4_86a5e4787186410a8802cbbbf5ff017c~mv2.jpg%2Fv1%2Ffill%2Fw_380%2Ch_475%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto%2FIRREALISABLE%2520AFFICHE%2520DEF%2520A4.jpg", "Scream 7": "https://www.impawards.com/2026/posters/scream_seven.jpg", "Avatar : de feu et de cendres": "https://images.weserv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2F5rhTDKUhPYvpdQIijFIs5VoWsON.jpg", "Peaky Blinders : l'Immortel": "https://cdn.moviefone.com/admin-uploads/highlights/images/peaky-blinders-the-immortal-man-official-poster_1764955272.webp?d=1280x720&q=50", "Mercy": "https://pics.filmaffinity.com/mercy-236747908-large.jpg", "Zootopie 2": "https://m.media-amazon.com/images/M/MV5BZDMyNjM2OTMtY2JmOS00MWI4LTg0NGYtZjA0YjYyYzJjMzQ4XkEyXkFqcGc%40._V1_.jpg", "Chien 51": "https://m.media-amazon.com/images/M/MV5BOGEzZGJjYjQtZGE5YS00Yzk2LTllNjEtZGFmMjc3N2VmZmYyXkEyXkFqcGc%40._V1_.jpg", "Insaisissables 3": "https://static.boxofficeturkiye.com/movie/poster/full/74/2017674-75950206.jpg", "Kaamelott - Deuxième volet, partie 1": "https://www.impawards.com/intl/france/2025/posters/kaamelott__deuxieme_volet.jpg", "Primate": "https://www.impawards.com/2026/posters/primate_ver6.jpg", "The Running Man": "https://media.senscritique.com/media/000023061788/0/running_man.jpg", "Tom Clancy’s Jack Ryan : Guerre Fantôme": "https://fr.web.img4.acsta.net/c_600_800/img/fe/7e/fe7e975edfce1f3bf22b9fae021af01a.jpg", "Star Wars: The Mandalorian and Grogu": "https://www.impawards.com/2026/posters/star_wars_the_mandalorian_and_grogu.jpg", "The Punisher : One Last Kill": "https://www.impawards.com/tv/posters/punisher_one_last_kill.jpg", "Wedding Nightmare : deuxième partie": "https://fr.web.img2.acsta.net/c_600_800/img/88/f9/88f94d7255e07eb66e232f2d92c517df.jpg", "Jumpers Hoppers": "https://fr.web.img6.acsta.net/c_600_800/img/0f/fc/0ffc959e65d43de4e4e3a40b80123e9e.jpg", "La fin d’Oak Street": "https://fr.web.img5.acsta.net/c_600_800/img/a1/d0/a1d0f55f826be125c0e96a6fd1c4da5f.jpg", "Freaks Of Nature": "https://www.impawards.com/2015/posters/freaks_of_nature.jpg", "Bagarre": "https://media.senscritique.com/media/000023607958/0/bagarre.jpg", "The Criminals": "https://media.senscritique.com/media/000023453159/0/the_criminals.jpg", "Folichonneries": "https://media.senscritique.com/media/000023052044/0/folichonneries.jpg", "En garde": "https://media.senscritique.com/media/000023293085/0/en_garde.jpg", "Pillion": "https://images.savoysystems.co.uk/GCL/4410212.jpg", "La Danse des renards": "https://media.senscritique.com/media/000022852599/0/la_danse_des_renards.jpg", "Sur la route d’Omaha": "https://media.senscritique.com/media/000023500080/0/sur_la_route_d_omaha.jpg", "Wrong Husband": "https://images.plex.tv/photo?size=large-1280&url=https%3A%2F%2Fmetadata-static.plex.tv%2F3%2Fgracenote%2F395dd2bff0d1823763844d844949285b.jpg", "Little Brother": "https://media.senscritique.com/media/000023812937/0/little_brother.jpg", "Inès Reg – On est toujours ensemble": "https://www.talticket.com/media/cache/facebook_opengraph/images/cfa176f40527b2b96666cd2d995c7a8f7323b89b.jpg", "Confidante": "https://media.senscritique.com/media/000022942995/0/confidente.jpg", "L’Ultime Héritier": "https://media.senscritique.com/media/000023313867/0/l_ultime_heritier.jpg", "The Loved One": "https://image.tmdb.org/t/p/w780/rVZQcphJRWVJgQZtWztrauB6Fwe.jpg", "Lost Ranger": "https://programstore.tv/wp-content/uploads/2026/04/LOST_RANGER_694x1000.jpg", "George A. Romero’s Resident Evil": "https://www.impawards.com/2025/posters/george_a_romeros_resident_evil.jpg"};
+
+
+const posterCache = new Map();
+const posterStorageKey = 'noxstream-poster-cache-v3-clean';
+let posterStored = {};
+try { posterStored = JSON.parse(localStorage.getItem(posterStorageKey) || '{}') || {}; } catch (e) { posterStored = {}; }
+
+const posterQueue = [];
+let posterActive = 0;
+const POSTER_CONCURRENCY = 6;
+function pumpPosterQueue(){
+  while (posterActive < POSTER_CONCURRENCY && posterQueue.length) {
+    const job = posterQueue.shift(); posterActive++;
+    Promise.resolve().then(job).finally(() => { posterActive--; pumpPosterQueue(); });
+  }
+}
+function posterCandidates(url){
+  if(!url) return [];
+  const out=[]; const add=(u)=>{ if(u && !out.includes(u)) out.push(u); };
+  add(url);
+  add(url.replace('/w342/','/w780/').replace('/w500/','/w780/'));
+  add(url.replace('/w342/','/w1280/').replace('/w500/','/w1280/'));
+  add(url.replace('/c_310_420/','/c_600_800/'));
+  add(url.replace('/r_1280_720/','/c_600_800/'));
+  add(url.replace('/c_600_800/','/c_800_1066/'));
+  add(url.replace('._V1_.jpg','._V1_FMjpg_UX1000_.jpg'));
+  add(`https://images.weserv.nl/?url=${encodeURIComponent(url)}`);
+  return out;
+}
+function noxFallbackPoster(film){
+  const name = film && film.name ? String(film.name) : '';
+  if(!name) return '';
+  const q = encodeURIComponent(name + ' movie poster');
+  return 'https://tse1.mm.bing.net/th?q=' + q;
+}
+
+function loadPoster(card, film){
+  if(!card || !film) return;
+  const key = posterNameKey(film.name) + '|' + (film.year || '');
+  const direct = resolvePoster(film);
+  const cached = posterStored[key];
+  const sources=[]; const add=(u)=>{ if(u && !sources.includes(u)) sources.push(u); };
+  // La source du catalogue prime toujours sur une ancienne valeur de cache.
+  if(direct) posterCandidates(direct).forEach(add);
+  else if(cached) posterCandidates(cached).forEach(add);
+  const detailAlt = (typeof detailPosterMap !== 'undefined') ? detailPosterMap[film.name] : '';
+  if(detailAlt) posterCandidates(detailAlt).forEach(add);
+  const apply=(src)=>{
+    card.style.setProperty('--poster',`url("${src}")`);
+    card.style.backgroundImage=`url("${src}"),linear-gradient(145deg,#20252d,#080a0e)`;
+    card.classList.remove('posterLoading'); card.classList.add('hasPoster');
+    film.poster=src; posterCache.set(key,src);
+    try{ posterStored[key]=src; localStorage.setItem(posterStorageKey,JSON.stringify(posterStored)); }catch(e){}
+  };
+  if(!sources.length){
+    const fallback=noxFallbackPoster(film);
+    if(fallback) add(fallback);
+  }
+  if(!sources.length){ card.classList.remove('posterLoading'); return; }
+  posterQueue.push(async()=>{
+    for(const url of sources){
+      const ok=await new Promise(resolve=>{
+        const img=new Image(); img.decoding='async'; img.referrerPolicy='no-referrer';
+        let settled=false; const timer=setTimeout(()=>{if(!settled){settled=true;resolve(false)}},6500);
+        img.onload=()=>{if(settled)return;settled=true;clearTimeout(timer);const ratio=img.naturalHeight?img.naturalWidth/img.naturalHeight:0;resolve(ratio>0&&ratio<=1.15)};
+        img.onerror=()=>{if(!settled){settled=true;clearTimeout(timer);resolve(false)}};
+        img.src=url;
+      });
+      if(ok){ apply(url); return; }
+    }
+    card.classList.remove('posterLoading');
+  });
+  pumpPosterQueue();
+}
+let currentFilter='all';
+let currentPage=1;
+const PAGE_SIZE=24; // V209 — pagination catalogue : 24 fiches par page, pages créées automatiquement au fur et à mesure des ajouts
+function getVisibleFilms(){
+  return films.filter(f=>currentFilter==='all'||String(f.genre||'').toLowerCase().includes(String(currentFilter).toLowerCase()));
+}
+
+function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));}
+function ratingKey(name){return 'noxstream-ratings-'+name;}
+function getRatings(name){let a=[];try{a=JSON.parse(localStorage.getItem(ratingKey(name))||'[]');}catch(e){a=[];}
+  if(!Array.isArray(a)) a=[];
+  return a.map(x=>typeof x==='number'?{rating:x}:x).filter(x=>x&&Number(x.rating)>=1&&Number(x.rating)<=5);
+}
+function renderStars(rating){const n=Math.max(0,Math.min(5,Number(rating)||0));return '★'.repeat(n)+'☆'.repeat(5-n);}
+let noxActiveFilter = 'all';
+
+function renderPaginationTop(total){
+  const pages=Math.max(1,Math.ceil(total/PAGE_SIZE));
+  currentPage=Math.max(1,Math.min(currentPage,pages));
+
+  const top=document.getElementById('paginationTop');
+  const bottom=document.getElementById('paginationBottom');
+
+  [top,bottom].filter(Boolean).forEach(host=>{
+    host.innerHTML='';
+    for(let n=1;n<=pages;n++){
+      const button=document.createElement('button');
+      button.type='button';
+      button.className='pageBtn'+(n===currentPage?' active':'');
+      button.textContent=n;
+      button.addEventListener('click',function(ev){
+        ev.preventDefault();
+        ev.stopPropagation();
+        if(n===currentPage)return;
+
+        // Mobile only: remember the exact visual position of the bottom
+        // pagination button before rebuilding the film grid.
+        const isMobile=window.matchMedia('(max-width: 700px)').matches;
+        const anchorHost=isMobile ? button.parentElement : null;
+        const anchorRect=isMobile ? button.getBoundingClientRect() : null;
+
+        currentPage=n;
+        render(noxActiveFilter);
+
+        if(isMobile && anchorHost && anchorRect){
+          const newButton=anchorHost.querySelector('.pageBtn:nth-child('+n+')');
+          if(newButton){
+            const newRect=newButton.getBoundingClientRect();
+            const dy=newRect.top-anchorRect.top;
+            if(dy) window.scrollBy(0,dy);
+          }
+        }
+      });
+      host.appendChild(button);
+    }
+  });
+}
+
+
+
+function render(filter='all'){
+  noxActiveFilter = filter;
+  currentFilter=filter;
+  const visible=getVisibleFilms();
+  const pageFilms=visible.slice((currentPage-1)*PAGE_SIZE,currentPage*PAGE_SIZE);
+  grid.innerHTML='';
+  pageFilms.forEach(f=>{const card=document.createElement('article');card.className='card';const art=document.createElement('div');art.className='art posterLoading';art.innerHTML=`<span class="tag">${f.tag}</span><b>${f.name}</b><div class="posterRating" aria-label="Note ${3 + (Array.from(f.name).reduce((s,c)=>s+c.charCodeAt(0),0) % 3)} sur 5"><span class="posterRatingStar" aria-hidden="true">★</span><span class="posterRatingScore">${3 + (Array.from(f.name).reduce((s,c)=>s+c.charCodeAt(0),0) % 3)}</span></div>`;const info=document.createElement('div');info.className='cardInfo';info.innerHTML=`<strong>${f.name}</strong><small>${f.year} · ${f.genre.replaceAll(' ',' · ')} · ${f.time}${f.lang ? ' · '+f.lang : ''}</small>`;card.append(art,info);grid.append(card);loadPoster(art,f);card.onclick=()=>openFilm(f);});
+renderPaginationTop(visible.length);
+}
+render();
+document.querySelectorAll('.filter,.genre').forEach(b=>b.onclick=()=>{let f=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));currentPage=1;render(f);document.getElementById('catalogue').scrollIntoView({behavior:'smooth'});});
+// V15 hero carousel: the main V5 poster stays in exactly the same place.
+const hero=document.querySelector('.hero');
+const heroContent=document.querySelector('.heroContent');
+const heroDots=document.getElementById('heroDots');
+let heroIndex=0, heroTimer=null, heroBusy=false;
+const heroHeadlinerNames=[
+  'Greenland Migration','Que justice soit faite','Greenland - Le dernier refuge','Dragons (2025)',
+  'La Chute de Londres','La Chute de la Maison Blanche','Mayday','K-19 : le piège des profondeurs',
+  'Men in Black: International','Taken','Retribution','Avengers: Infinity War','Avengers: Endgame',
+  'Avengers','Le Chasseur et la reine des glaces','Extraction (2020)','Horse Soldiers','Blackhat',
+  'Transformers : le commencement','Thor (2011)'
+];
+function buildHeroSlides(){
+  const pool=heroHeadlinerNames.map(n=>films.find(f=>f.name===n)).filter(Boolean);
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  return pool.slice(0,20).map(f=>Object.assign(f,{match:f.match||'98% pour vous',quality:f.quality||'1080p',tag:f.tag||'À L’AFFICHE'}));
+}
+let heroSlides=buildHeroSlides();
+function heroPoster(name){const f=films.find(x=>x.name===name);return (f&&f.poster)||((typeof posterMap!=='undefined'&&posterMap[name])||'');}
+function renderHeroDots(){heroDots.innerHTML=heroSlides.map((x,i)=>`<button class="heroDot${i===heroIndex?' active':''}" aria-label="Afficher ${x.name}" data-hero-index="${i}"></button>`).join('');heroDots.querySelectorAll('[data-hero-index]').forEach(b=>b.onclick=()=>goHero(+b.dataset.heroIndex,true));}
+function setHeroContent(f){
+  const poster=heroPoster(f.name);
+  if(poster) hero.style.setProperty('--hero-bg',`url("${poster}")`);
+  heroContent.querySelector('.eyebrow').textContent=`${f.tag} · ${f.year}`;
+  heroContent.querySelector('h1').innerHTML=f.name.replace(/\s+/,'<br>');
+  heroContent.querySelector('.meta').innerHTML=`<span class="match">${f.match}</span><span>${f.time}</span><span>${f.quality}</span>`;
+  heroContent.querySelector('p').textContent=f.desc;
+  const watch=heroContent.querySelector('.btn.primary');watch.dataset.open=f.name;watch.innerHTML='▶ &nbsp;VOIR MAINTENANT';watch.onclick=()=>openFilm(f);
+  renderHeroDots();
+}
+function goHero(next,manual=false){if(heroBusy||next===heroIndex)return;heroBusy=true;hero.classList.add('carousel-out');setTimeout(()=>{heroIndex=(next+heroSlides.length)%heroSlides.length;setHeroContent(heroSlides[heroIndex]);hero.classList.remove('carousel-out');setTimeout(()=>heroBusy=false,650)},650);if(manual)startHeroTimer();}
+function startHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(()=>goHero((heroIndex+1)%heroSlides.length,false),7000)}
+setHeroContent(heroSlides[0]);startHeroTimer();
+heroSlides.forEach(f=>{const holder=document.createElement('div');holder.style.display='none';document.body.appendChild(holder);loadPoster(holder,f);});
+hero.addEventListener('mouseenter',()=>clearInterval(heroTimer));hero.addEventListener('mouseleave',startHeroTimer);
+
+const modal=document.getElementById('modal');
+let activeFilm=null;
+const cinemaMeta={"Mutiny":["Royaume-Uni","Jean-François Richet","Jason Statham, Annabelle Wallis, Roland Møller"],"Supergirl":["États-Unis","Craig Gillespie","Milly Alcock, Matthias Schoenaerts, Eve Ridley"],"Disclosure Day":["États-Unis","Steven Spielberg","Emily Blunt, Josh O’Connor, Colin Firth"],"Mortal Kombat II":["États-Unis / Australie","Simon McQuoid","Karl Urban, Lewis Tan, Joe Taslim"],"Marsupilami":["France","Philippe Lacheau","Philippe Lacheau, Jamel Debbouze, Élodie Fontan"],"Spider-Man: Brand New Day":["États-Unis","Destin Daniel Cretton","Tom Holland, Zendaya, Sadie Sink"],"L’Odyssée":["États-Unis","Christopher Nolan","Matt Damon, Tom Holland, Anne Hathaway"],"Michael":["États-Unis","Antoine Fuqua","Jaafar Jackson, Colman Domingo, Nia Long"],"Projet dernière chance":["États-Unis","Phil Lord, Christopher Miller","Ryan Gosling, Sandra Hüller, Milana Vayntrub"],"Super Mario Galaxy Le Film":["États-Unis","Aaron Horvath, Michael Jelenic","Chris Pratt, Anya Taylor-Joy, Charlie Day"],"Le Réveil de la Momie":["États-Unis / Irlande","Lee Cronin","Jack Reynor, Laia Costa, May Calamawy"],"Evil Dead Burn":["États-Unis / France","Sébastien Vaniček","Souheila Yacoub, Hunter Doohan, Luciane Buchanan"],"On l’appelait Robin des Bois":["États-Unis","Michael Sarnoski","Hugh Jackman, Jodie Comer, Bill Skarsgård"],"Wildcat":["Royaume-Uni","James Nunn","Kate Beckinsale, Lewis Tan, Charles Dance"],"Mauvaise Pioche":["France","Gérard Jugnot","Gérard Jugnot, Philippe Lacheau, Thierry Lhermitte"],"Les Spécialistes":["États-Unis","Guy Ritchie","John Krasinski, Natalie Portman, Domhnall Gleeson"],"La Bouche du Diable":["États-Unis","Scott Derrickson","Anya Taylor-Joy, Miles Teller, Sigourney Weaver"],"Dolly":["États-Unis","Rod Blackhurst","Fabianne Therese, Seann William Scott, Ethan Suplee"],"Compostelle":["France","Yann Samuell","Alexandra Lamy, Julien Le Berre, Mélanie Doutey"],"The Last Sunrise":["États-Unis","Carlson Young","Maia Reficco, Fernando Lindez, Eva Longoria"],"Yellow Mirror":["États-Unis","Matthew Faughnan","Dan Castellaneta, Julie Kavner, Nancy Cartwright"],"Nightborn":["Finlande / Lituanie / France / Royaume-Uni","Hanna Bergholm","Seidi Haarla, Rupert Grint, Pamela Tola"],"Back to the 90s":["Allemagne","Facundo Scalerandi","Julien Brown, Tim Schäcker, Luis Freitag"],"The Birthday Party":["Grèce / Royaume-Uni / Pays-Bas / Espagne","Miguel Ángel Jiménez","Willem Dafoe, Emma Suárez, Joe Cole"],"Night Nurse":["États-Unis","Georgia Bernstein","Cemre Paksoy, Bruce McKenzie, Eleonore Hendricks"],"Lucky Strike":["États-Unis","Rod Lurie","Scott Eastwood, Colin Hanks, Aunjanue Ellis-Taylor"],"Soulm8te":["États-Unis","Kate Dolan","Lily Sullivan, David Rysdahl, Claudia Doumit"],"Rose of Nevada":["Royaume-Uni","Mark Jenkin","George MacKay, Callum Turner, Rosalind Eleazar"],"The Gentleman Thief":["États-Unis","Randall Emmett","John Travolta, Rebecca De Mornay, Lukas Haas"],"Couples Weekend":["États-Unis","Nora Kirkpatrick","Alexandra Daddario, Josh Gad, Daveed Diggs, Ashley Park"],"Savage House":["États-Unis","Non renseigné","Non renseigné"],"Mikaela":["États-Unis","Non renseigné","Non renseigné"],"Storm on Sesame Street":["États-Unis","Scott Preston","Distribution Sesame Street / Muppets"],"Gretel And Hansel":["États-Unis / Canada","Osgood Perkins","Sophia Lillis, Samuel Leakey, Alice Krige, Jessica De Gouw"],"La Corde au cou":["États-Unis","Gus Van Sant","Bill Skarsgård, Dacre Montgomery, Colman Domingo, Al Pacino"],"Moi, quand je me réincarne en Slime, le film : les larmes de la mer azur":["Japon","Yasuhito Kikuchi, Austin Sisk","Miho Okasaki, Mao Ichimichi, Tomoaki Maeno, Makoto Furukawa"],"Demon Slayer: Kimetsu no Yaiba La Forteresse Infinie Film 1":["Japon","Haruo Sotozaki, Hikaru Kondô","Natsuki Hanae, Akari Kito, Hiro Shimono, Yoshitsugu Matsuoka"],"Snoopy présente : Rien ne vaut son chez-soi":["Canada","Rob Boutilier, Ridd Sorensen","Riley Vargas, Terry McGurrin, Grace Nicolaou-Wood"],"The Travellers":["Australie","Bruce Beresford","Luke Bracey, Bryan Brown, Susie Porter"],"Mata":["France / Belgique","Rachel Lang","Eye Haïdara, Joséphine Japy, Raphaël Personnaz"],"Ghost in the Cell":["Indonésie","Joko Anwar","Abimana Aryasatya, Almanzo Konoralma, Aming Sugandhi"],"Irréalisable":["France","Babor Lelefan","Ambroise Carminati, Camille Fievez, Romain Goure"],"Scream 7":["États-Unis","Kevin Williamson","Neve Campbell, Courteney Cox, Isabel May, Jasmin Savoy Brown"],"Avatar : de feu et de cendres":["États-Unis","James Cameron","Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang"],"Mercy":["États-Unis","Timur Bekmambetov","Chris Pratt, Rebecca Ferguson, Kali Reis, Annabelle Wallis"],"Zootopie 2":["États-Unis","Jared Bush, Byron Howard","Ginnifer Goodwin, Jason Bateman, Ke Huy Quan, Fortune Feimster"],"Chien 51":["France / Belgique","Cédric Jimenez","Gilles Lellouche, Adèle Exarchopoulos, Louis Garrel, Romain Duris"],"Insaisissables 3":["États-Unis / Émirats arabes unis / Canada / Hongrie","Ruben Fleischer","Jesse Eisenberg, Woody Harrelson, Dave Franco, Isla Fisher"],"Kaamelott - Deuxième volet, partie 1":["France","Alexandre Astier","Alexandre Astier, Thomas Cousseau, Anne Girouard, Alain Chabat"],"Primate":["États-Unis","Johannes Roberts","Johnny Sequoyah, Jessica Alexander, Eloise Smyth"],"The Running Man":["Royaume-Uni / États-Unis","Edgar Wright","Glen Powell, Colman Domingo, Josh Brolin, Michael Cera"],"Tom Clancy’s Jack Ryan : Guerre Fantôme":["États-Unis","Andrew Bernstein","John Krasinski, Wendell Pierce, Michael Kelly"],"Star Wars: The Mandalorian and Grogu":["États-Unis","Jon Favreau","Pedro Pascal, Sigourney Weaver, Jeremy Allen White"],"The Punisher : One Last Kill":["États-Unis","Reinaldo Marcus Green","Jon Bernthal, Judith Light, Deborah Ann Woll"],"Wedding Nightmare : deuxième partie":["États-Unis","Matt Bettinelli-Olpin, Tyler Gillett","Samara Weaving, Kathryn Newton, Elijah Wood, Sarah Michelle Gellar"],"Jumpers Hoppers":["États-Unis","Daniel Chong","Piper Curda, Bobby Moynihan, Jon Hamm, Kathy Najimy"],"Freaks Of Nature":["États-Unis","Robbie Pickering","Nicholas Braun, Mackenzie Davis, Vanessa Hudgens, Ed Westwick"],"Bagarre":["France","Julien Royal","Nassim Lyes, Ramzy Bedia, Audrey Lamy, Anaïde Rozam"],"The Criminals":["Royaume-Uni","David Mackenzie","Aaron Taylor-Johnson, Theo James, Gugu Mbatha-Raw"],"Enola Holmes 3":["États-Unis / Royaume-Uni","Philip Barantini","Millie Bobby Brown, Henry Cavill, Helena Bonham Carter"],"Blades of the Guardians":["Chine / Hong Kong","Yuen Woo-ping","Wu Jing, Nicholas Tse, Jet Li"],"Folichonneries":["Canada","Éric K. Boulianne","Éric K. Boulianne, Catherine Chabot, Sophie Letourneur"],"En garde":["Singapour / Taïwan / Pologne","Nelicia Low","Tsao Yu-Ning, Hsiu-Fu Liu, Ning Ding"],"Pillion":["Royaume-Uni","Harry Lighton","Harry Melling, Alexander Skarsgård, Douglas Hodge"],"Citizen Vigilante":["États-Unis / Allemagne","Uwe Boll","Armie Hammer, Costas Mandylor, Alona Hertha"],"La Danse des renards":["Belgique / France","Valéry Carnoy","Samuel Kircher, Fayçal Anaflous, Anna Heckel"],"Boudica: Queen of War":["Royaume-Uni","Jesse V. Johnson","Olga Kurylenko, Clive Standen, Peter Franzén"],"Sur la route d’Omaha":["États-Unis","Cole Webley","John Magaro, Molly Belle Wright, Wyatt Solis"],"Wrong Husband":["Canada","Zacharias Kunuk","Haiden Angutimarik, Theresia Kappianaq, Leah Panimera"],"Permis de Conduire":["États-Unis","Bobby Farrelly","Sam Nivola, Sophie Telegadis, Mohana Krishnan"],"Little Brother":["États-Unis","Matt Spicer","John Cena, Eric André, Michelle Monaghan"],"Inès Reg – On est toujours ensemble":["France","Clément Chabault","Inès Reg"],"Confidante":["Turquie / France / Luxembourg","Çağla Zencirci, Guillaume Giovanetti","Saadet Işıl Aksoy, Erkan Kolçak Köstendil, Muhammet Uzuner"],"Balls Up":["U.S.A.","Peter Farrelly","Mark Wahlberg, Paul Walter Hauser, Daniela Melchior"],"I Love Boosters":["États-Unis","Boots Riley","Keke Palmer, Naomi Ackie, Taylour Paige"],"L’Ultime Héritier":["Grande-Bretagne / France / U.S.A.","John Patton Ford","Glen Powell, Margaret Qualley, Jessica Henwick, Ed Harris, Bill Camp, Topher Grace"],"28 Ans Plus Tard : Le Temple Des Morts":["U.S.A.","Nia DaCosta","Ralph Fiennes, Jack O’Connell, Alfie Williams"],"Une pour toutes":["France","Non renseigné","Sakina Karchaoui, Élise De Almeida"],"The Loved One":["Philippines","Irene Villamor","Anne Curtis, Jericho Rosales, Catriona Gray, Jackie Lou Blanco, Adrian Alandy"],"Lost Ranger":["U.S.A.","Jeff Wolfe","Billy Burke, Taylor Handley, Alyshia Ochse"],"Mission : Impossible – The Final Reckoning":["U.S.A.","Christopher McQuarrie","Tom Cruise, Hayley Atwell, Simon Pegg"],"George A. Romero’s Resident Evil":["Non renseigné","Brandon Salisbury","George A. Romero, Norman England, Matthew Blazi"],"Greenland Migration":["U.S.A.","Ric Roman Waugh","Gerard Butler, Morena Baccarin, Roman Griffin Davis"],"Que justice soit faite":["U.S.A.","F. Gary Gray","Gerard Butler, Jamie Foxx, Leslie Bibb"],"Greenland - Le dernier refuge":["U.S.A.","Ric Roman Waugh","Gerard Butler, Morena Baccarin, David Denman"],"Keepers":["Grande-Bretagne","Kristoffer Nyholm","Gerard Butler, Peter Mullan, Connor Swindells"],"RockNRolla":["Grande-Bretagne","Guy Ritchie","Gerard Butler, Tom Wilkinson, Mark Strong"],"Dragons (2025)":["U.S.A.","Dean DeBlois","Mason Thames, Gerard Butler, Nico Parker"],"Hunter Killer":["U.S.A.","Donovan Marsh","Gerard Butler, Gary Oldman, Common, Toby Stephens, Linda Cardellini"],"La Chute de Londres":["U.S.A. / Grande-Bretagne / Bulgarie","Babak Najafi","Gerard Butler, Aaron Eckhart, Morgan Freeman, Angela Bassett, Melissa Leo"],"La Chute de la Maison Blanche":["U.S.A.","Antoine Fuqua","Gerard Butler, Aaron Eckhart, Morgan Freeman"],"Criminal Squad : Pantera":["U.S.A.","Christian Gudegast","Gerard Butler, O'Shea Jackson Jr., Evin Ahmad"],"Mayday":["U.S.A.","Jean-François Richet","Gerard Butler, Mike Colter, Yoson An"],"Killer Elite (2011)":["Australie / Grande-Bretagne","Gary McKendry","Jason Statham, Clive Owen, Robert De Niro"],"Hyper tension 2":["U.S.A.","Mark Neveldine, Brian Taylor","Jason Statham, Amy Smart, Efren Ramirez"],"Shelter":["U.S.A.","Ric Roman Waugh","Jason Statham, Bodhi Rae Breathnach, Michael Shaeffer, Anna Crilly, Bill Nighy"],"Chaos (2006)":["Canada / Royaume-Uni / U.S.A.","Tony Giglio","Jason Statham, Ryan Phillippe, Wesley Snipes"],"Expend4bles":["U.S.A.","Scott Waugh","Sylvester Stallone, Jason Statham, Andy Garcia"],"Expendables 3":["U.S.A.","Patrick Hughes (II)","Sylvester Stallone, Jason Statham, Arnold Schwarzenegger"],"Expendables 2 : Unité Spéciale":["U.S.A.","Simon West","Sylvester Stallone, Jason Statham, Jet Li"],"Expendables : unité spéciale":["U.S.A.","Sylvester Stallone","Sylvester Stallone, Jason Statham, Jet Li"],"Parker":["U.S.A.","Taylor Hackford","Jason Statham, Jennifer Lopez, Michael Chiklis"],"Un homme en colère":["U.S.A.","Guy Ritchie","Jason Statham, Jeffrey Donovan, Josh Hartnett"],"The Beekeeper":["U.S.A.","David Ayer","Jason Statham, Emmy Raver-Lampman, Josh Hutcherson"],"Kingdom of Heaven":["Grande-Bretagne / Allemagne / Espagne / U.S.A.","Ridley Scott","Orlando Bloom, Liam Neeson, David Thewlis"],"K-19 : le piège des profondeurs":["U.S.A. / Grande-Bretagne / Allemagne / Canada","Kathryn Bigelow","Harrison Ford, Liam Neeson, Peter Sarsgaard"],"Darkman":["U.S.A.","Sam Raimi","Liam Neeson, Frances McDormand, Colin Friels"],"Men in Black: International":["U.S.A.","F. Gary Gray","Chris Hemsworth, Tessa Thompson, Liam Neeson"],"Taken":["France / Grande-Bretagne / U.S.A.","Pierre Morel","Liam Neeson, Maggie Grace, Famke Janssen"],"Retribution":["Grande-Bretagne / U.S.A.","Nimród Antal","Liam Neeson, Noma Dumezweni, Lilly Aspell"],"Y a-t-il un flic pour sauver le monde ?":["U.S.A.","Akiva Schaffer","Liam Neeson, Pamela Anderson, Paul Walter Hauser"],"Commando":["U.S.A.","Mark L. Lester","Arnold Schwarzenegger, Rae Dawn Chong, Dan Hedaya"],"Le Contrat (1986)":["U.S.A.","John Irvin","Arnold Schwarzenegger, Kathryn Harrold, Sam Wanamaker"],"Last Action Hero":["U.S.A.","John McTiernan","Arnold Schwarzenegger, F. Murray Abraham, Austin O'Brien"],"The Mystery of the Dragon Seal : La Légende du dragon":["Russie / Chine","Oleg Stepchenko","Jason Flemyng, Jackie Chan, Arnold Schwarzenegger, Rutger Hauer"],"Predator":["U.S.A.","John McTiernan","Arnold Schwarzenegger, Carl Weathers, Elpidia Carrillo"],"L’Effaceur":["U.S.A.","Chuck Russell","Arnold Schwarzenegger, James Caan, James Coburn"],"Running Man":["U.S.A.","Paul Michael Glaser","Arnold Schwarzenegger, Maria Conchita Alonso, Yaphet Kotto"],"True Lies - Le Caméléon":["U.S.A.","James Cameron","Arnold Schwarzenegger, Jamie Lee Curtis, Bill Paxton"],"Total Recall":["U.S.A.","Paul Verhoeven","Arnold Schwarzenegger, Rachel Ticotin, Sharon Stone"],"Kalidor : la légende du talisman":["U.S.A. / Pays-Bas / Italie","Richard Fleischer","Arnold Schwarzenegger, Brigitte Nielsen, Sandahl Bergman"],"Terminator Genisys":["U.S.A.","Alan Taylor","Arnold Schwarzenegger, Jason Clarke, Emilia Clarke"],"Terminator 3 : le Soulèvement des Machines":["U.S.A. / Allemagne / Grande-Bretagne","Jonathan Mostow","Arnold Schwarzenegger, Kristanna Loken, Nick Stahl"],"Terminator 2 : le Jugement Dernier":["U.S.A. / France","James Cameron","Arnold Schwarzenegger, Linda Hamilton, Edward Furlong, Robert Patrick"],"Conan le barbare":["U.S.A.","John Milius","Arnold Schwarzenegger, James Earl Jones, Max von Sydow"],"Avengers: Infinity War":["U.S.A.","Joe Russo, Anthony Russo","Robert Downey Jr., Chris Hemsworth, Chris Evans, Mark Ruffalo, Scarlett Johansson, Paul Rudd"],"Avengers: Endgame":["U.S.A.","Joe Russo, Anthony Russo","Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Paul Rudd"],"Avengers":["U.S.A.","Joss Whedon","Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner"],"Le Chasseur et la reine des glaces":["U.S.A.","Cedric Nicolas-Troyan","Chris Hemsworth, Charlize Theron, Jessica Chastain"],"Extraction (2020)":["U.S.A.","Sam Hargrave","Chris Hemsworth, Rudhraksh Jaiswal, Randeep Hooda, Golshifteh Farahani"],"Horse Soldiers":["U.S.A.","Nicolai Fuglsig","Chris Hemsworth, Michael Shannon, Michael Peña"],"Blackhat":["U.S.A.","Michael Mann","Chris Hemsworth, Tang Wei, Leehom Wang"],"Rush (2013)":["U.S.A. / Grande-Bretagne / Allemagne","Ron Howard","Chris Hemsworth, Daniel Brühl, Olivia Wilde"],"Transformers : le commencement":["U.S.A.","Josh Cooley","Adrien Antoine, Chris Hemsworth, Philippe Lacheau"],"Thor : Le Monde des ténèbres":["U.S.A.","Alan Taylor","Chris Hemsworth, Natalie Portman, Tom Hiddleston, Christopher Eccleston, Anthony Hopkins"],"Thor (2011)":["U.S.A.","Kenneth Branagh","Chris Hemsworth, Natalie Portman, Anthony Hopkins"],"Blanche-Neige et le chasseur":["U.S.A.","Rupert Sanders","Kristen Stewart, Chris Hemsworth, Charlize Theron"],"Skin Trade":["Thaïlande / Canada / U.S.A.","Ekachai Uekrongtham","Dolph Lundgren, Tony Jaa, Michael Jai White"],"Ong-bak 3 - L’ultime combat":["Thaïlande","Tony Jaa, Panna Rittikrai","Tony Jaa, Primrata Det-Udom, Dan Chupong"],"Ong-Bak 2, la naissance du dragon":["Thaïlande","Tony Jaa, Panna Rittikrai","Tony Jaa, Saranyu Wongkrajang, Sorapong Chatree"],"Beast":["Australie","Tyler Atkins","Daniel MacPherson, Russell Crowe, Luke Hemsworth"],"Robin des Bois (2010)":["U.S.A. / Grande-Bretagne","Ridley Scott","Russell Crowe, Cate Blanchett, Max von Sydow"],"Cellule 211":["Espagne","Daniel Monzón","Luis Tosar, Alberto Ammann, Antonio Resines"],"Agents très spéciaux : Code U.N.C.L.E.":["U.S.A. / Grande-Bretagne","Guy Ritchie","Henry Cavill, Armie Hammer, Alicia Vikander"],"Les Immortels":["U.S.A.","Tarsem Singh","Henry Cavill, Mickey Rourke, Luke Evans"],"The Ministry of Ungentlemanly Warfare":["U.S.A. / Grande-Bretagne","Guy Ritchie","Henry Cavill, Eiza Gonzalez, Alan Ritchson"],"Justice League":["U.S.A.","Zack Snyder","Ben Affleck, Henry Cavill, Gal Gadot"],"Man of Steel":["U.S.A. / Grande-Bretagne","Zack Snyder","Henry Cavill, Amy Adams, Michael Shannon"],"Argylle":["U.S.A. / Grande-Bretagne","Matthew Vaughn","Bryce Dallas Howard, Sam Rockwell, Henry Cavill"],"La Dernière légion":["Grande-Bretagne / France / Italie / Tunisie","Doug Lefler","Colin Firth, Ben Kingsley, Aishwarya Rai"],"X-Men":["U.S.A.","Bryan Singer","Hugh Jackman, Ian McKellen, Patrick Stewart"],"Le Seigneur des Anneaux : La Communauté de l’Anneau":["U.S.A. / Nouvelle-Zélande","Peter Jackson","Elijah Wood, Sean Astin, Ian McKellen"],"Le Hobbit : un voyage inattendu":["U.S.A. / Nouvelle-Zélande","Peter Jackson","Ian McKellen, Martin Freeman, Richard Armitage, Ken Stott, Graham McTavish"],"Jane Got a Gun":["U.S.A.","Gavin O'Connor","Natalie Portman, Joel Edgerton, Ewan McGregor"],"Star Wars : Episode III - La Revanche des Sith":["U.S.A.","George Lucas","Hayden Christensen, Ewan McGregor, Natalie Portman"],"Bang (2025)":["U.S.A.","Wych Kaosayananda","Jack Kesy, Peter Weller, Tristin Mays"],"Dragon Eyes":["U.S.A.","John Hyams","Cung Le, Jean-Claude Van Damme, Peter Weller"],"Les Rapaces":["U.S.A.","Sidney J. Furie","Peter Weller, Dennis Hopper, Tia Carrere"],"Planete hurlante":["Canada / U.S.A.","Christian Duguay","Peter Weller, Jennifer Rubin, Ron White"],"Volte/Face":["U.S.A.","John Woo","John Travolta, Nicolas Cage, Joan Allen"],"Les Ailes de l’enfer":["U.S.A.","Simon West","Nicolas Cage, John Malkovich, John Cusack"],"Lord of War":["U.S.A. / France","Andrew Niccol","Nicolas Cage, Ethan Hawke, Jared Leto"],"Jiu Jitsu":["U.S.A.","Dimitri Logothetis","Nicolas Cage, Tony Jaa, Frank Grillo"],"12 heures":["U.S.A.","Simon West","Nicolas Cage, Josh Lucas, Danny Huston"],"Froide Vengeance":["U.S.A.","Shawn Ku","Nicolas Cage, Benjamin Bratt, Noah Le Gros, Karolina Wydra, Ian Tracey"],"Le Chaos":["U.S.A.","Vic Armstrong","Nicolas Cage, Chad Michael Murray, Lea Thompson"],"The Humanity Bureau : Menace sur l’humanité":["Canada","Rob W. King","Nicolas Cage, Sarah Lind, Jakob Davies"],"Code 211":["U.S.A.","York Alec Shackleton","Velizar Binev, Nicolas Cage, Dwayne Cameron"],"Un talent en or massif":["U.S.A.","Tom Gormican","Nicolas Cage, Pedro Pascal, Tiffany Haddish"],"L’Honneur du Dragon 2":["Thaïlande","Prachya Pinkaew","Tony Jaa, RZA, Phetthai Vongkumlao"],"L’honneur du dragon":["Thaïlande","Prachya Pinkaew","Tony Jaa, Petthai Wongkhamlao, Bongkoj Khongmalai"],"La Filature":["Chine / Hong Kong / U.S.A.","Renny Harlin","Jackie Chan, Johnny Knoxville, Bingbing Fan"],"Action Point":["U.S.A.","Tim Kirkby","Johnny Knoxville, Eleanor Worthington-Cox, Chris Pontius"],"Nobody 2":["U.S.A.","Timo Tjahjanto","Bob Odenkirk, Connie Nielsen, Christopher Lloyd"],"Gladiator":["U.S.A. / Grande-Bretagne","Ridley Scott","Russell Crowe, Joaquin Phoenix, Connie Nielsen"],"Benjamin Gates et le Livre des Secrets":["U.S.A.","Jon Turteltaub","Nicolas Cage, Diane Kruger, Jon Voight"],"Bait":["Australie / Singapour","Kimble Rendall","Xavier Samuel, Sharni Vinson, Julian McMahon"],"Kick-Ass 2":["U.S.A. / Grande-Bretagne","Jeff Wadlow","Aaron Taylor-Johnson, Chloë Grace Moretz, Christopher Mintz-Plasse"],"Kick-Ass":["U.S.A. / Grande-Bretagne","Matthew Vaughn","Aaron Taylor-Johnson, Nicolas Cage, Chloë Grace Moretz"],"Sans Issue":["U.S.A. / Espagne","Mabrouk El Mechri","Henry Cavill, Bruce Willis, Sigourney Weaver"]};
+function openFilm(f){
+  if(typeof f==='string') f=films.find(x=>x.name===f);
+  else if(f && f.name) f=films.find(x=>x.name===f.name) || f;
+  if(!f)return;
+  activeFilm=f;
+  window.activeFilm=f;
+  modal.hidden=false;
+  document.body.style.overflow='hidden';
+  detailTitle.textContent=f.name;
+  detailYear.textContent=f.year;
+  detailYear2.textContent=f.year;
+  detailLanguage2.textContent=f.lang || 'Français (VF)';
+  detailTime.textContent=f.time;
+  detailDesc.textContent=f.desc;
+  detailGenre.textContent=f.genre.split(' ').map(x=>x[0].toUpperCase()+x.slice(1)).join(' · ');
+  const cinema=cinemaMeta[f.name] || ['—','—','—'];
+  const originEl=document.getElementById('detailOrigin');
+  const directorEl=document.getElementById('detailDirector');
+  const castEl=document.getElementById('detailCast');
+  if(originEl) originEl.textContent=f.origin || '—';
+  if(directorEl) directorEl.textContent=cinema[1];
+  if(castEl) castEl.textContent=cinema[2];
+  detailArt.style.backgroundImage='linear-gradient(145deg,#20252d,#080a0e)';
+  if(typeof loadPoster==='function') loadPoster(detailArt,f);
+  if(window.setupDetailPlayer) window.setupDetailPlayer(f);
+}
+document.getElementById('close').onclick=()=>{
+  modal.hidden=true;
+  document.body.style.overflow='';
+};
+modal.onclick=e=>{
+  if(e.target===modal){
+    modal.hidden=true;
+    document.body.style.overflow='';
+  }
+};
+const search=document.getElementById('search'),input=document.getElementById('searchInput'),results=document.getElementById('searchResults');
+document.getElementById('openSearch').onclick=()=>{search.classList.add('open');input.focus();};document.getElementById('closeSearch').onclick=()=>search.classList.remove('open');
+input.oninput=()=>{let q=input.value.toLowerCase().trim();results.innerHTML=films.map((f,i)=>({f,i})).filter(x=>!q||x.f.name.toLowerCase().includes(q)).map(x=>`<button class="card" style="text-align:left;border:1px solid var(--line);color:#fff" data-index="${x.i}"><div class="art" style="--art:${x.f.art||'linear-gradient(145deg,#20252d,#080a0e)'};height:160px"><b>${x.f.name}</b></div><div class="cardInfo"><strong>${x.f.name}</strong><small>${x.f.year} · ${x.f.time}</small></div></button>`).join('');results.querySelectorAll('[data-index]').forEach(c=>{const f=films[+c.dataset.index];c.onclick=()=>{search.classList.remove('open');openFilm(f)};loadPoster(c.querySelector('.art'),f)});};
+</script>
+
+
+
+
+
+<script id="nox-home-start">
+window.addEventListener('load',function(){
+  if(!location.hash) window.scrollTo(0,0);
+});
+</script>
+
+<script id="nox-v50-genres">
+(function(){
+  const genres=["Action", "Animation", "Arts Martiaux", "Aventure", "Biopic", "Comédie", "Comédie Dramatique", "Epouvante Horreur", "Drame", "Documentaire", "Espionnage", "Famille", "Fantastique", "Guerre", "Historique", "Musical", "Policier", "Romance", "Science Fiction", "Spectacles", "Thriller", "Western"];
+  window.NoxGenres=genres.slice();
+  document.querySelectorAll('[data-genre]').forEach(function(el){
+    el.addEventListener('click',function(){
+      const g=el.getAttribute('data-genre');
+      if(typeof window.filterGenre==='function') window.filterGenre(g);
+    });
+  });
+})();
+</script>
+
+
+<script id="nox-player-init">
+(function(){
+  function setupDetailPlayer(movie){
+  const video=document.getElementById('detailVideo');
+  const frame=document.getElementById('detailFrame');
+  const empty=document.getElementById('detailPlayerEmpty');
+  if(!video || !frame || !empty) return;
+
+  const film=movie || window.activeFilm || null;
+  const sourceList=Array.isArray(film && film.sourceUrls)
+    ? film.sourceUrls.filter(Boolean)
+    : [];
+  const playerUrl=film && typeof film.playerUrl==='string'
+    ? film.playerUrl.trim()
+    : '';
+  const sourceUrl=playerUrl || sourceList[0] || '';
+
+  frame.removeAttribute('src');
+  frame.removeAttribute('sandbox');
+  frame.removeAttribute('referrerpolicy');
+  frame.setAttribute('allow','autoplay; fullscreen; picture-in-picture; encrypted-media');
+  frame.setAttribute('allowfullscreen','');
+  frame.style.display='none';
+
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+  video.hidden=true;
+
+  empty.style.display='none';
+
+  if(sourceUrl){
+    // TV/desktop/mobile all use the same native media endpoint.
+    // The provider embed URL stays internal and is resolved server-side.
+    const apiUrl='/api/video?url='+encodeURIComponent(sourceUrl);
+    frame.style.display='none';
+    video.hidden=false;
+    video.controls=true;
+    video.playsInline=true;
+    video.src=apiUrl;
+    video.load();
+    return;
+  }
+
+  empty.textContent='Lien vidéo indisponible';
+  empty.style.display='flex';
+}
+  window.setupDetailPlayer=setupDetailPlayer;
+})();
+</script>
+
+
+<script>
+(function(){
+  const btn=document.getElementById('reportLinkBtn');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    const film=window.activeFilm && window.activeFilm.name
+      ? window.activeFilm.name
+      : (document.getElementById('detailTitle')?.textContent || 'Film');
+    const subject=encodeURIComponent('Lien vidéo indisponible - '+film);
+    const body=encodeURIComponent(
+      'Bonjour,\n\nLe lien vidéo du film « '+film+
+      ' » ne fonctionne pas.\nMerci de me tenir informé lorsque le lien sera rétabli.\n\nCordialement'
+    );
+    window.location.href='mailto:?subject='+subject+'&body='+body;
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  const form=document.getElementById('commentForm');
+  const input=document.getElementById('commentText');
+  const list=document.getElementById('commentsList');
+  const stars=[...document.querySelectorAll('.ratingStar')];
+  const ratingValue=document.getElementById('ratingValue');
+  if(!form || !input || !list) return;
+  let selectedRating=0;
+  function key(){
+    const film=window.activeFilm && window.activeFilm.name ? window.activeFilm.name : 'Film';
+    return 'noxstream-comments-'+film;
+  }
+  function ratingKeyForActive(){
+    const film=window.activeFilm && window.activeFilm.name ? window.activeFilm.name : 'Film';
+    return 'noxstream-ratings-'+film;
+  }
+  function readComments(){let comments=[];try{comments=JSON.parse(localStorage.getItem(key())||'[]');}catch(e){} return Array.isArray(comments)?comments:[];}
+  function syncRatings(comments){
+    const ratings=comments.map(c=>typeof c==='number'?c:c?.rating).filter(r=>Number(r)>=1&&Number(r)<=5).map(Number);
+    try{localStorage.setItem(ratingKeyForActive(),JSON.stringify(ratings));}catch(e){}
+  }
+  function render(){
+    const comments=readComments();
+    syncRatings(comments);
+    list.innerHTML='';
+    if(!comments.length){
+      const empty=document.createElement('div');empty.className='commentItem';empty.style.color='#888';empty.textContent='Aucun commentaire pour le moment.';list.appendChild(empty);
+    }else{
+      comments.forEach(function(entry){
+        const item=document.createElement('div');item.className='commentItem';
+        const text=typeof entry==='string'?entry:(entry?.text||'');
+        const rating=typeof entry==='object'?Number(entry.rating)||0:0;
+        if(rating){const r=document.createElement('div');r.className='commentRating';r.textContent=renderStars(rating);r.setAttribute('aria-label',rating+' sur 5 étoiles');item.appendChild(r);}
+        const body=document.createElement('div');body.textContent=text;item.appendChild(body);
+        list.appendChild(item);
+      });
+    }
+    if(window.activeFilm) document.querySelectorAll('[data-rating-badge]').forEach(b=>{const filmName=b.getAttribute('data-rating-badge');updateRatingBadge(filmName,b.parentElement||document);});
+  }
+  function paintStars(n){stars.forEach(s=>s.classList.toggle('active',Number(s.dataset.rating)<=n));if(ratingValue)ratingValue.textContent=n?`${n}/5`:'0/5';}
+  stars.forEach(s=>{s.addEventListener('click',()=>{selectedRating=Number(s.dataset.rating);paintStars(selectedRating);});s.addEventListener('mouseenter',()=>paintStars(Number(s.dataset.rating)));});
+  document.querySelector('.ratingPicker')?.addEventListener('mouseleave',()=>paintStars(selectedRating));
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const text=input.value.trim();
+    if(!text) return;
+    const comments=readComments();
+    comments.push({text,rating:selectedRating||0});
+    localStorage.setItem(key(),JSON.stringify(comments));
+    syncRatings(comments);
+    input.value='';selectedRating=0;paintStars(0);render();
+  });
+  document.addEventListener('click',function(e){if(e.target.closest('[data-open],.card,[data-index]')) setTimeout(render,80);});
+  render();
+})();
+</script>
+
+</body></html>
