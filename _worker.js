@@ -167,7 +167,7 @@ const KFP_INJECT = `
 'use strict';
 
 var KFP_NAME='Kung Fu Panda 2';
-var KFP_POSTER='https://www.impawards.com/2011/posters/kung_fu_panda_two.jpg';
+var KFP_POSTER='https://www.impawards.com/2011/posters/kung_fu_panda_two_ver2.jpg';
 var KFP_TRAILER='FQ63rqSRrEI';
 var kfpTimer=null;
 var kfpObserver=null;
@@ -228,7 +228,7 @@ function kfpShowPreview(){
   kfpFrame.title='Aperçu Kung Fu Panda 2';
   kfpFrame.allow='autoplay; fullscreen; picture-in-picture';
   kfpFrame.allowFullscreen=true;
-  kfpFrame.src='https://www.youtube.com/embed/'+KFP_TRAILER+'?autoplay=1&mute=1&controls=1&playsinline=1&rel=0&modestbranding=1';
+  kfpFrame.src='https://www.youtube.com/embed/'+KFP_TRAILER+'?autoplay=1&mute=1&controls=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1';
   var mute=document.createElement('button');
   mute.type='button';
   mute.textContent='🔇';
@@ -246,6 +246,14 @@ function kfpShowPreview(){
   kfpWrap.appendChild(mute);
   art.appendChild(kfpWrap);
   requestAnimationFrame(function(){if(kfpWrap)kfpWrap.classList.add('is-visible');});
+  kfpFrame.addEventListener('load',function(){});
+  window.addEventListener('message',function(e){
+    if(!kfpFrame || e.source!==kfpFrame.contentWindow) return;
+    try{
+      var data=typeof e.data==='string'?JSON.parse(e.data):e.data;
+      if(data && data.event==='onStateChange' && data.info===0) kfpCleanup();
+    }catch(err){}
+  });
 }
 
 function kfpSchedule(){
