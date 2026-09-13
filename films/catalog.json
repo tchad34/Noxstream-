@@ -2,16 +2,17 @@
   {
     "name": "The Last Day",
     "year": 2009,
-    "genre": "Film Ancien, Action, Drame, Thriller",
+    "genre": "Film Ancien , Action , Drame , Thriller",
     "time": "2h",
-    "lang": "Français",
+    "desc": "Ville balnéaire de Hauendae. Printemps 2008. Malgré des signes annonciateurs préoccupants, les autorités n'imaginent pas évacuer les côtes de ce haut lieu touristique, pourtant menacé par des séismes sous-marins pouvant donner lieu à un raz-de-marée. Soudain de plus en plus violentes, les alertes ne laissent plus place au doute : un tsunami d'une ampleur inégalée menace tout le pays...",
+    "lang": "TrueFrench",
     "origin": "Corée du Sud",
     "director": "Je-gyun Yun",
-    "cast": ["Sol Kyung-Gu", "Ji-won Ha", "Joong-Hoon Park"],
-    "desc": "Ville balnéaire de Hauendae. Printemps 2008. Malgré des signes annonciateurs préoccupants, les autorités n'imaginent pas évacuer les côtes de ce haut lieu touristique, pourtant menacé par des séismes sous-marins pouvant donner lieu à un raz-de-marée. Soudain de plus en plus violentes, les alertes ne laissent plus place au doute : un tsunami d'une ampleur inégalée menace tout le pays...",
-    "poster": "https://pub-8f45777ec3cc4df7bbbac0efe48a9d90.r2.dev/Image%20noxstream/The%20Last%20Day.jpg",
+    "actors": "Sol Kyung-Gu, Ji-won Ha, Joong-Hoon Park",
+    "quality": "HDLight",
     "playerUrl": "https://uqload.vc/kqgr9s4g7vc5.html",
     "sourceUrls": ["https://uqload.vc/kqgr9s4g7vc5.html"],
+    "poster": "https://pub-8f45777ec3cc4df7bbbac0efe48a9d90.r2.dev/Image%20noxstream/The%20Last%20Day.jpg",
     "trailerYoutubeId": "MpykB_5IMec",
     "tag": "FILM ANCIEN"
   }
