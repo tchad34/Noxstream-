@@ -1,7 +1,33 @@
 const UQLOAD_API = "https://uqload.vc/api/file/direct_link";
 const EMBED_RE = /^https?:\/\/(?:www\.)?uqload\.vc\/embed-([^/?#]+)\.html(?:[?#].*)?$/i;
 function getFileCode(value){try{const match=new URL(value).href.match(EMBED_RE);return match?match[1]:null}catch{return null}}
-async function resolveUqload(embedUrl){const fileCode=getFileCode(embedUrl);if(!fileCode)return null;const api=new URL(UQLOAD_API);api.searchParams.set("key","45eo2waz0k7v9x8v5");api.searchParams.set("file_code",fileCode);api.searchParams.set("q","o");const response=await fetch(api,{headers:{Accept:"application/json","User-Agent":"Mozilla/5.0"}});if(!response.ok)return null;const data=await response.json();const versions=Array.isArray(data?.result?.versions)?data.result.versions:[];for(const quality of ["o","h","n","l"]){const v=versions.find(x=>x?.name===quality&&typeof x?.url==="string"&&/^https?:\/\//i.test(x.url));if(v)return v.url}return versions.find(x=>typeof x?.url==="string"&&/^https?:\/\//i.test(x.url))?.url||null}
+function qualityScore(v){
+  if(!v||typeof v.url!=="string"||!/^https?:\/\//i.test(v.url))return -1;
+  const text=[v.name,v.quality,v.label,v.resolution,v.title].filter(Boolean).join(" ").toLowerCase();
+  const height=Number(v.height)||0;
+  const width=Number(v.width)||0;
+  const numeric=text.match(/(?:^|[^0-9])(4320|2160|1440|1080|900|720|576|540|480|360|240)(?:p)?(?:[^0-9]|$)/);
+  const parsed=numeric?Number(numeric[1]):0;
+  const pixels=height>0?height:(width>0?Math.round(width*9/16):0);
+  const resolution=Math.max(parsed,pixels);
+  if(resolution)return 100000+resolution;
+  if(/\b(?:original|source|orig|o)\b/.test(text))return 40000;
+  if(/\b(?:high|hd|hq|1080|720|h)\b/.test(text))return 30000;
+  if(/\b(?:normal|medium|n)\b/.test(text))return 20000;
+  if(/\b(?:low|l)\b/.test(text))return 10000;
+  return 1;
+}
+async function resolveUqload(embedUrl){
+  const fileCode=getFileCode(embedUrl);if(!fileCode)return null;
+  const api=new URL(UQLOAD_API);api.searchParams.set("key","45eo2waz0k7v9x8v5");api.searchParams.set("file_code",fileCode);api.searchParams.set("q","o");
+  const response=await fetch(api,{headers:{Accept:"application/json","User-Agent":"Mozilla/5.0"}});if(!response.ok)return null;
+  const data=await response.json();
+  const versions=Array.isArray(data?.result?.versions)?data.result.versions:[];
+  const valid=versions.filter(v=>typeof v?.url==="string"&&/^https?:\/\//i.test(v.url));
+  if(!valid.length)return null;
+  valid.sort((a,b)=>qualityScore(b)-qualityScore(a));
+  return valid[0].url;
+}
 function copyMediaHeaders(upstream){const headers=new Headers();for(const name of ["content-type","content-length","content-range","accept-ranges","etag","last-modified"]){const value=upstream.headers.get(name);if(value)headers.set(name,value)}headers.set("Accept-Ranges","bytes");headers.set("Cache-Control","no-store");headers.set("Access-Control-Allow-Origin","*");headers.set("Cross-Origin-Resource-Policy","cross-origin");return headers}
 async function handleVideo(request){const embedUrl=new URL(request.url).searchParams.get("url");if(!embedUrl)return new Response("Missing video URL",{status:400});const mediaUrl=await resolveUqload(embedUrl);if(!mediaUrl)return new Response("Video source unavailable",{status:502});const upstreamUrl=new URL(mediaUrl);if(!/^https?:$/.test(upstreamUrl.protocol))return new Response("Unsupported video protocol",{status:502});const headers=new Headers({"User-Agent":request.headers.get("User-Agent")||"Mozilla/5.0","Accept":"*/*","Referer":embedUrl});const range=request.headers.get("Range");if(range)headers.set("Range",range);const upstream=await fetch(upstreamUrl,{method:request.method==="HEAD"?"HEAD":"GET",headers,redirect:"follow"});return new Response(request.method==="HEAD"?null:upstream.body,{status:upstream.status,headers:copyMediaHeaders(upstream)})}
 
